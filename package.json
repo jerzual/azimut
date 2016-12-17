@@ -9,7 +9,11 @@
     "watch": "webpack --watch",
     "test": "mocha"
   },
-  "author": "",
+  "author": "Benjamin Legrand",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jerzual/plague.git"
+  },
   "license": "CC-BY-NC-4.0",
   "devDependencies": {
     "awesome-typescript-loader": "^3.0.0-beta.17",
@@ -68,7 +72,7 @@
     "uuid": "^3.0.1"
   },
   "engines": {
-    "node": ">=6.9.2",
-    "npm": ">=2.7.1"
+    "node": "6.9.2",
+    "npm": "2.7.1"
   }
 }
