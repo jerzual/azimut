@@ -1,12 +1,15 @@
 // server entry point
 import * as IO  from "socket.io";
 import * as express from "express";
+import morgan from "morgan";
 
 const serverPort = process.env.PORT || 5000;
 // express app config
 const app:express.Application = express();
 app.use(express.static('./www'));
-const server = app.listen(serverPort);
+const server = app.listen(serverPort,()=>{
+    console.log(`Plague server started on ${serverPort}`);
+});
 
 // socket.io config
 const io = IO();
