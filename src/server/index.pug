@@ -1,0 +1,50 @@
+html
+  head
+    title Plague
+    link(rel='stylesheet',href='https://fonts.googleapis.com/css?family=Quicksand')
+  body
+    #plague.container
+      #home.screen.fade
+        .centered
+          h1 Plague
+          a(href='#game') New Game
+          br
+          a(href='#options') Options
+          br
+          a(href='#about') About
+      #pause.screen.fade(onclick='location.hash="game"')
+        h2 Pause
+        figure
+          canvas#minimap
+          figcaption.legend
+      #death.screen.fade(onclick='location.hash="home"')
+        h2 You are dead!
+      #about.screen.fade(onclick='location.hash="home"')
+        h2 About
+      #options.screen.fade(onclick='location.hash="home"')
+        h2 Options
+        a(href='#home') Back
+      #game.screen
+        .ui
+          #hud
+            img#current-hero-img
+            .hud-life
+              42
+            .hud-ammo
+            
+          #actions.popup
+              button(onclick='rotateLeft()') &lt;
+              a.btn(href='#pause') II
+              button(onclick='rotateRight()') &gt;
+              button Generate &#10052;
+              button Move &#128099;
+              button Attack  	&#9876;
+              button End Turn
+          #party-members
+              button.member A
+              button.member B
+              button.member C
+              button.member D
+          #hero-items
+              .hero-item
+              .hero-item

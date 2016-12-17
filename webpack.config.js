@@ -8,7 +8,7 @@ module.exports = {
        client: "./src/index.ts",
        // server: "./src/server/index.ts",
        // test: "./test/index.ts",
-       vendor: ["three","react","react-dom","lodash"]
+       vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "lodash"]
     },
     output: {
         path: path.join(__dirname, "dist", "www"),
@@ -33,7 +33,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"],
+                loader: "style!css!sass",
                 exclude: /node_modules/
             },
             { 
@@ -56,14 +56,13 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: {
+    /*externals: {
         "react": "React",
         "react-dom": "ReactDOM",
         "three": "THREE"
-    },
+},*/
     plugins: [
-        
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
         new HtmlWebpackPlugin({
             template: 'src/server/index.pug'
         }),
