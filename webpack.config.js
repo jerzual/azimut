@@ -2,13 +2,14 @@ var webpack = require('webpack');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path');
+var pkg = require('./package.json');
 
 module.exports = {
     entry: {
-       client: "./src/index.ts",
-       // server: "./src/server/index.ts",
-       // test: "./test/index.ts",
-       vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "lodash"]
+        client: "./src/index.ts",
+        // server: "./src/server/index.ts",
+        // test: "./test/index.ts",
+        vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "lodash"]
     },
     output: {
         path: path.join(__dirname, "dist", "www"),
@@ -26,7 +27,7 @@ module.exports = {
     module: {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { 
+            {
                 test: /\.tsx?$/,
                 loader: "awesome-typescript",
                 exclude: /node_modules/
@@ -36,7 +37,7 @@ module.exports = {
                 loader: "style!css!sass",
                 exclude: /node_modules/
             },
-            { 
+            {
                 test: /\.pug$/,
                 loader: "pug",
                 exclude: /node_modules/
@@ -45,7 +46,7 @@ module.exports = {
 
         preLoaders: [
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { 
+            {
                 test: /\.(js|ts)$/,
                 loader: "source-map-loader"
             }
@@ -62,7 +63,13 @@ module.exports = {
         "three": "THREE"
 },*/
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
+        new webpack.ProvidePlugin({
+            THREE: "three"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { unused: true, dead_code: true, warnings: false }
+        }),
         new HtmlWebpackPlugin({
             template: 'src/server/index.pug'
         }),
