@@ -1,7 +1,6 @@
-
 $mainColor:#7AB793;//neon green
-//$mainColor:#2CF56B;
-$shadowSize:.5em;
+// $mainColor:#2CF56B;
+$shadowSize: .5em;
 $shadowColor:rgba($mainColor,0.75);
 
 body,html{
@@ -14,7 +13,6 @@ body,html{
     text-shadow:0 0 $shadowSize $shadowColor;
     padding: 0;
     margin: 0;
-
 }
 h1,h1,h2,h4{
     color:#7AB793;

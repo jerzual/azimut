@@ -1,1 +1,1 @@
-node www/server.min.js
+node dist/index.js

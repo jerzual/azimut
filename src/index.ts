@@ -1,6 +1,6 @@
 //client entry point
 // import Plague from './Plague';
-import './index.scss';
+import "./index.scss";
 
 // new Plague();
 

@@ -6,9 +6,10 @@
     "sourceMap": false,
     "strictNullChecks": true,
     "removeComments": true,
-    "noLib": false
+    "noLib": false,
+    "jsx": "react"
   },
-  "out":"./www",
+  "out":"./dist",
   "include":[
     "src/**/*"
   ],
