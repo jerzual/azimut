@@ -2,10 +2,11 @@
 import * as IO  from "socket.io";
 import * as express from "express";
 
+const serverPort = process.env.PORT || 5000;
 // express app config
 const app:express.Application = express();
 app.use(express.static('./www'));
-const server = app.listen(3000);
+const server = app.listen(serverPort);
 
 // socket.io config
 const io = IO();
