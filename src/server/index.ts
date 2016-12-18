@@ -28,7 +28,7 @@ if (cluster.isMaster) {
     // express app config
     const app: express.Application = express();
     app.set('port', serverPort);
-    app.use(express.static(path.join(__dirname,'www'));
+    app.use(express.static(path.join(__dirname,'www')));
     app.use(bodyParser.json());
     app.use(methodOverride());
 
