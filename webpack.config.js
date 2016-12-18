@@ -9,7 +9,7 @@ module.exports = {
         client: "./src/index.ts",
         // server: "./src/server/index.ts",
         // test: "./test/index.ts",
-        vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "lodash"]
+        vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "redux-socket.io"]
     },
     output: {
         path: path.join(__dirname, "dist", "www"),
