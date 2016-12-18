@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "postinstall": "webpack && tsc src/server/index.ts --outDir dist --module commonjs",
+    "postinstall": "npm run build-client && npm run build-server",
+    "build-client": "webpack -p",
+    "build-server": "tsc src/server/index.ts --outDir dist --module commonjs",
     "watch": "webpack --watch",
     "test": "mocha"
   },
