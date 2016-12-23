@@ -1,0 +1,36 @@
+{
+  "base-human": {
+    "size": {
+      "width": 32,
+      "height": 64
+    },
+    "hitbox": {
+      "x": 0,
+      "y": 54,
+      "width": 32,
+      "height": 7
+    },
+    "center": {
+      "x": 16,
+      "y": 58
+    }
+  },
+  "base-box":{
+
+  },
+  "sprites": {
+    "hero":{
+      "fileName":"sprite-hero.png",
+      "type":"base-human"
+    },
+    "default": {
+      "spriteName": "enemy-base.png",
+      "hitbox": {
+        "x": 0,
+        "y": 54,
+        "width": 32,
+        "height": 7
+      }
+    }
+  }
+}
