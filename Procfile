@@ -1,1 +1,1 @@
-node dist/index.js
+node dist/server.bundle.js
