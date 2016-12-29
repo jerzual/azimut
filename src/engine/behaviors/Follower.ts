@@ -1,0 +1,4 @@
+//NPC ai : follower
+{
+    
+}
