@@ -6,7 +6,7 @@ $shadowColor:rgba($mainColor,0.75);
 body,html{
     width:100%;height:100%;
     overflow:hidden;
-    background-color:#666;
+    background-color:#242424;
     color:$mainColor;
     font-family:'Quicksand',Courier, monospace;
     font-size:24px;
@@ -14,7 +14,8 @@ body,html{
     padding: 0;
     margin: 0;
 }
-h1,h1,h2,h4{
+h1,h1,h2,h4,h5,h6{
+    margin:0;
     color:#7AB793;
 }
 a{
@@ -45,11 +46,16 @@ button, .btn{
         
     }
 } 
+.screen{
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    text-align:center;
+}
 .screen.fade{
     background-color:rgba(0,0,0,0.625);
-}
-.screen:not(:target){
-    display:none;
 }
 .screen:target{
     display:block;
