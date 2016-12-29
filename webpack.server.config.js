@@ -74,7 +74,6 @@ module.exports = {
 },*/
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.PORT': process.env.PORT,
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         new webpack.ProvidePlugin({
