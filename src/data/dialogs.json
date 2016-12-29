@@ -1,0 +1,17 @@
+{
+  "dialogs":{"byCharacter":
+    {
+      "character":"",
+      "description":"a welcoming but sticky friend",
+      "key":"character.name",
+      "randomLines":["... anyway"],
+      "questLi":{}
+    },
+    "byLocation":{
+      
+    },
+    "byQuest":{
+
+    }
+  }
+}
