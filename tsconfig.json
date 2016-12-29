@@ -9,9 +9,15 @@
     "noLib": false,
     "jsx": "react"
   },
-  "out":"./dist",
-  "include":[
+  "out": "./dist",
+  "types": [
+    "mocha",
+    "expect.js"
+  ],
+  "include": [
     "src/**/*"
   ],
-  "exclude":["node_modules","**/*spec.ts"]
+  "exclude": [
+    "node_modules"
+  ]
 }
