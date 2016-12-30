@@ -32,23 +32,21 @@ export default class PlagueServer {
         this.app.use(express.static(path.join(process.cwd(), 'dist', 'www')));
         this.app.use(bodyParser.json());
         this.app.use(methodOverride());
-        this.app.get('*',(req,res,next)=>{
-            res.sendFile(path.join(process.cwd(), 'dist', 'www', 'index.html'));
-        });
         this.server = http.createServer(this.app);
         // server start
         this.db = this.configureDatabase();
         this.configureSockets();
         // this.configureRoutes();
         this.configurePassport();
-
-
-
+        // everything not found redirect to index.html (404 is the default view)
+        this.app.get('*',(req,res,next)=>{
+            res.sendFile(path.join(process.cwd(), 'dist', 'www', 'index.html'));
+        });
     }
     configureDatabase(): Database {
 
         const dbOptions = {
-            logging: true,
+            logging: false,
         };
         this.sequelize = new Sequelize(dbUrl, dbOptions);
         return new Database(this.sequelize);
@@ -137,7 +135,7 @@ export default class PlagueServer {
 
         if (cluster.isMaster) {
             this.sequelize.sync(
-                { force: true, logging: winston.info }
+                { force: true }
             ).then(
                 (result) => {
                     winston.info('Sequelize initialized', result);
@@ -152,7 +150,7 @@ export default class PlagueServer {
                     });
                 }
                 ).catch((error: Error) => {
-                    winston.error(error.message);
+                    winston.error('SEQUELIZE ERROR',error.message);
                 });
         } else {
             this.server = this.app.listen(
