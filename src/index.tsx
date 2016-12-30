@@ -9,7 +9,7 @@ import { createInitialState } from './views/InitialState';
 import { init as unirouterInit } from 'unirouter'
 import reducers from './views/reducers/index';
 
-let socket = io(`http://localhost:${process.env.PORT}`);
+let socket = io();
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 let store = createStore(reducers, createInitialState(), applyMiddleware(socketIoMiddleware));
