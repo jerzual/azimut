@@ -37,7 +37,7 @@ export function defineTurn(sequelize: Sequelize, dataTypes: DataTypes): TurnMode
     }, {
             indexes: [],
             classMethods: {},
-            timestamps: false
+            timestamps: true
         });
 
     return turnModel;

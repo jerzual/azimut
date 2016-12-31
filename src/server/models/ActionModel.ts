@@ -1,4 +1,4 @@
-import * as SequelizeStatic from "sequelize";
+import * as SequelizeStatic from 'sequelize';
 import { DataTypes, Sequelize } from 'sequelize';
 
 export interface ActionAttributes {
@@ -19,13 +19,16 @@ export interface ActionModel extends SequelizeStatic.Model<ActionInstance, Actio
 
 export function defineAction(sequelize: Sequelize, dataTypes: DataTypes): ActionModel {
     const actionModel = sequelize.define<ActionInstance, ActionAttributes>(
-        "Action",
+        'Action',
         {
-            "id": {
-                "type": dataTypes.UUID,
-                "allowNull": false,
-                "primaryKey": true
+            uuid: {
+                type: dataTypes.UUID,
+                allowNull: false,
+                primaryKey: true
             }
+        },
+        {
+            timestamps: true
         }
     );
     return actionModel;

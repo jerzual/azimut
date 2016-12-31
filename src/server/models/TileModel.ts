@@ -23,7 +23,7 @@ export interface TileModel extends SequelizeStatic.Model<TileInstance, TileAttri
 
 export function defineTile(sequelize: Sequelize, dataTypes: DataTypes): TileModel {
     let tileModel = sequelize.define<TileInstance, TileAttributes>("Tile", {
-        id: {
+        uuid: {
             type: dataTypes.UUID,
             primaryKey: true
         },
