@@ -1,20 +1,22 @@
 // server entry point
-import * as IO from "socket.io";
-import * as express from "express";
-import methodOverride = require("method-override");
-import bodyParser = require("body-parser");
-import morgan from "morgan";
-import * as winston from "winston";
-import * as path from "path";
-import * as http from "http";
-import * as cluster from "cluster";
-import { Worker } from "cluster";
-import * as passport from "passport";
+import * as IO from 'socket.io';
+import * as express from 'express';
+import methodOverride = require('method-override');
+import bodyParser = require('body-parser');
+import morgan from 'morgan';
+import * as winston from 'winston';
+import * as path from 'path';
+import * as http from 'http';
+import * as cluster from 'cluster';
+import { Worker } from 'cluster';
+import * as passport from 'passport';
 import { cpus } from 'os';
-import * as Sequelize from "sequelize";
+import * as Sequelize from 'sequelize';
 import { Models, Database } from './models/index';
+import * as expressSession from 'express-session';
+import * as sharedSession from 'express-socket.io-session';
 
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || 'development';
 const serverPort = process.env.PORT || 5000;
 const dbUrl = process.env.DATABASE_URL || 'postgres://plague:plague@localhost:5432/plague';
 
@@ -25,6 +27,7 @@ export default class PlagueServer {
     server: http.Server;
     sequelize: Sequelize.Sequelize;
     db: Database;
+    session: any;
     constructor(app = express(), db?: { url: string, options: Sequelize.Options }) {
         this.app = app;
         // express app config
@@ -32,6 +35,12 @@ export default class PlagueServer {
         this.app.use(express.static(path.join(process.cwd(), 'dist', 'www')));
         this.app.use(bodyParser.json());
         this.app.use(methodOverride());
+        this.session = expressSession({
+            secret: "my-secret",
+            resave: true,
+            saveUninitialized: true
+        });
+        this.app.use(this.session);
         this.server = http.createServer(this.app);
         // server start
         this.db = this.configureDatabase();
@@ -39,7 +48,7 @@ export default class PlagueServer {
         // this.configureRoutes();
         this.configurePassport();
         // everything not found redirect to index.html (404 is the default view)
-        this.app.get('*',(req,res,next)=>{
+        this.app.get('*', (req, res, next) => {
             res.sendFile(path.join(process.cwd(), 'dist', 'www', 'index.html'));
         });
     }
@@ -58,13 +67,14 @@ export default class PlagueServer {
     configureSockets() {
         // socket.io config
         this.io = IO();
-        this.io.attach(this.server);
-        this.io.on("connection", function (socket: SocketIO.Socket) {
-            winston.info("Socket connected: ", socket.id);
-            socket.on("action", (action) => {
-                if (action.type === "server/hello") {
-                    winston.info("Got hello data!", action.data);
-                    socket.emit("action", { type: "message", data: "good day!" });
+        this.io.listen(this.server);
+        this.io.use(sharedSession(this.session));
+        this.io.on('connection', function (socket: SocketIO.Socket) {
+            winston.info('Socket connected: ', socket.id);
+            socket.on('action', (action) => {
+                if (action.type === 'server/hello') {
+                    winston.info('Got hello data!', action.data);
+                    socket.emit('action', { type: 'message', data: 'good day!' });
                 }
             });
         });
@@ -98,7 +108,7 @@ export default class PlagueServer {
             req: express.Request, res: express.Response) => {
 
             winston.info(`${req.method} ${req.path}`);
-            res.send(JSON.stringify({turns:[{id:1}]}))
+            res.send(JSON.stringify({ turns: [{ id: 1 }] }))
         });
     }
 
@@ -111,11 +121,11 @@ export default class PlagueServer {
         let bind = `Port ${port}`;
 
         switch (error.code) {
-            case "EACCES":
+            case 'EACCES':
                 winston.error(`[EACCES] ${bind} requires elevated privileges.`);
                 process.exit(1);
                 break;
-            case "EADDRINUSE":
+            case 'EADDRINUSE':
                 winston.error(`[EADDRINUSE] ${bind} is already in use.`);
                 process.exit(1);
                 break;
@@ -124,11 +134,6 @@ export default class PlagueServer {
         }
     };
 
-    private onListening(): void {
-        let address = this.server.address();
-        let bind = `port ${address.port}`;
-        winston.info(`Listening on ${bind}.`);
-    };
     start() {
 
         const numCPUs = cpus().length;
@@ -145,15 +150,15 @@ export default class PlagueServer {
                     cluster.on('exit', (worker, code, signal) => {
                         winston.warn(`worker ${worker.process.pid} died`);
                     });
-                    cluster.on("listening", (worker: Worker, address: any) => {
+                    cluster.on('listening', (worker: Worker, address: any) => {
                         winston.info(`Worker ${worker.process.pid} connected to port ${address.port}.`);
                     });
                 }
                 ).catch((error: Error) => {
-                    winston.error('SEQUELIZE ERROR',error.message);
+                    winston.error('SEQUELIZE ERROR', error.message);
                 });
         } else {
-            this.server = this.app.listen(
+            this.server.listen(
                 this.app.get('port'),
                 '0.0.0.0',
                 (err) => {
@@ -163,8 +168,7 @@ export default class PlagueServer {
 
                 }
             );
-            this.server.on("error", error => this.onError(error));
-            this.server.on("listening", () => this.onListening());
+            this.server.on('error', error => this.onError(error));
         }
     }
 
@@ -177,6 +181,6 @@ export default class PlagueServer {
 // routes:
 let server = new PlagueServer();
 server.start();
-process.on("SIGINT", () => {
+process.on('SIGINT', () => {
     server.stop();
 });
