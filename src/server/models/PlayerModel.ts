@@ -23,34 +23,33 @@ export interface PlayerModel extends SequelizeStatic.Model<PlayerInstance, Playe
 
 
 export function definePlayer(sequelize: Sequelize, dataTypes: DataTypes): PlayerModel {
-    let playerModel = sequelize.define<PlayerInstance, PlayerAttributes>("Player", {
-        "id": {
-            "type": dataTypes.UUID,
-            "allowNull": false,
-            "primaryKey": true
-        },
-        "name": {
-            "type": dataTypes.STRING(128),
-            "allowNull": false
-        },
-        "email": {
-            "type": dataTypes.STRING(128),
-            "allowNull": false,
-            "unique": true,
-            "validate": {
-                "isEmail": true
+    let playerModel = sequelize.define<PlayerInstance, PlayerAttributes>(
+        "Player",
+        {
+            uuid: {
+                type: dataTypes.UUID,
+                allowNull: false,
+                primaryKey: true
+            },
+            name: {
+                type: dataTypes.STRING(128),
+                allowNull: false
+            },
+            email: {
+                type: dataTypes.STRING(128),
+                allowNull: false,
+                unique: true,
+                validate: {
+                    isEmail: true
+                }
+            },
+            password: {
+                type: dataTypes.STRING(128),
+                allowNull: false
             }
         },
-        "password": {
-            "type": dataTypes.STRING(128),
-            "allowNull": false
-        }
-    },
         {
-            "tableName": "accounts",
-            "timestamps": true,
-            "createdAt": "created_at",
-            "updatedAt": "updated_at",
+            timestamps: true
         });
 
     return playerModel;

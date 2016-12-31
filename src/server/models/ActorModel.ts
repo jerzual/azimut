@@ -4,11 +4,11 @@ import { DataTypes, Sequelize } from 'sequelize';
 /**
  *
  */
-export interface ActorAttributes{
+export interface ActorAttributes {
     uuid: string;
     actionPoints: number;
     lifePoints: number;
-    items:Array<any>;
+    items: Array<any>;
 }
 
 export interface ActorInstance extends SequelizeStatic.Instance<ActorAttributes>, ActorAttributes {
@@ -17,27 +17,25 @@ export interface ActorInstance extends SequelizeStatic.Instance<ActorAttributes>
 
 export interface ActorModel extends SequelizeStatic.Model<ActorInstance, ActorAttributes> {
     // todo
- }
+}
 
 export function defineActor(sequelize: Sequelize, dataTypes: DataTypes): ActorModel {
-const actorModel = sequelize.define<ActorInstance, ActorAttributes>(
-        "Actor",
+    const actorModel = sequelize.define<ActorInstance, ActorAttributes>(
+        'Actor',
         {
-            "id": {
-                "type": dataTypes.UUID,
-                "allowNull": false,
-                "primaryKey": true
+            id: {
+                type: dataTypes.UUID,
+                allowNull: false,
+                primaryKey: true
             },
-            "actionPoints": {
-                "type": dataTypes.STRING(128),
-                "allowNull": false
-            }
+            actionPoints: {
+                type: dataTypes.STRING(128),
+                allowNull: false
+            },
         },
-            {
-                "tableName": "addresses",
-                "timestamps": true,
-                "createdAt": "created_at",
-                "updatedAt": "updated_at",
-            });
+        {
+            timestamps: true,
+        }
+    );
     return actorModel;
 }
