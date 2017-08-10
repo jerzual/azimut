@@ -10,7 +10,7 @@ var plugins = [
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
         new webpack.ProvidePlugin({
-            THREE: "three"
+            BABYLON: "babylonjs"
         }),
         new HtmlWebpackPlugin({
             template: 'src/server/index.pug'
@@ -57,7 +57,7 @@ module.exports = {
         client: "./src/index.tsx",
         // server: "./src/server/index.ts",
         // test: "./test/index.ts",
-        vendor: ["three", "react", "react-dom", "socket.io-client", "redux", "redux-socket.io"]
+        vendor: ["babylonjs", "react", "react-dom", "socket.io-client", "redux", "redux-socket.io"]
     },
     output: {
         path: path.join(__dirname, "dist", "www"),

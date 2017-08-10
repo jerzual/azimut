@@ -19,6 +19,10 @@ export function createInitialState() {
         // default options
         options: {
             theme: 'dark',
+            render: {
+                wireframes: true,
+                shaders: true    
+            },
             keyBindings: {
                 top: '',
                 right: '',
@@ -40,7 +44,7 @@ export function createInitialState() {
                 }
             ]
         },
-        parties: [{
+        party: {
             members: {
                 A: {
 
@@ -55,7 +59,7 @@ export function createInitialState() {
 
                 },
             }
-        }],
+        },
         // hero is the selected party member, has camera focus.
         hero: {
             stats: {
@@ -76,8 +80,11 @@ export function createInitialState() {
                     y: 12
                 }
             },
-            camera: {},
-            objects: {},
+            camera: {
+
+            },
+            objects: [{}],
+            actors: [],
             tiles: [
                 [{ id: 0 }, { id: 1 }, { id: 3 }],
                 [{ id: 4 }, { id: 5 }, { id: 6 }],

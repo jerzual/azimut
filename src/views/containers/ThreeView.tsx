@@ -1,12 +1,30 @@
-import { Scene, Camera, AmbientLight, Mesh } from 'react-three';
-import * as THREE from 'three';
+import { Stage } from '../components/Stage';
 import * as React from 'react';
 interface ThreeViewProps {
-   // position: any;
+    // position: any;
 }
-export class ThreeView extends React.Component<ThreeViewProps, undefined>{
+export class ThreeView extends React.Component<ThreeViewProps, {width:number, height:number}>{
+    resize(event: Event) {
+        console.log('resize event', event);
+
+        this.setState({
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+        
+    }
+    componentDidMount() {
+        window.addEventListener("resize", this.resize);
+    }
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
+    }
     render() {
-        return (
+        return (<Stage 
+            width={window.innerWidth}
+            height={window.innerHeight} />
+        );
+        /*
             <Scene
                 width={window.innerWidth}
                 height={window.innerHeight}
@@ -16,7 +34,7 @@ export class ThreeView extends React.Component<ThreeViewProps, undefined>{
                     far={1000}
                     fov={50}
                     near={1}
-                    />{/*
+                    />
                 <AmbientLight
                     color={this.props.color}
                     intensity={this.props.intensity}
@@ -25,7 +43,9 @@ export class ThreeView extends React.Component<ThreeViewProps, undefined>{
                     position={this.props.position}
                     geometry={new THREE.BoxGeometry(this.props.size, this.props.size, this.props.size)}
                     material={new THREE.MeshBasicMaterial({ color: this.props.color })}
-                    />*/}
-            </Scene>);
+                    />
+            </Scene>
+        */
+
     }
 }
