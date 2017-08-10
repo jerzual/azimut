@@ -1,5 +1,5 @@
+import {Sprite} from 'babylonjs';
 
-// import {Sprite} from 'three';
 export interface Item {
     uuid:string;
     //display name

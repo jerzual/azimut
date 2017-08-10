@@ -1,4 +1,5 @@
 import Tile, {TileImpl, TileType} from "../engine/Tile";
+
 class ThreeTile extends TileImpl {
     x: number;
     y: number;
@@ -9,3 +10,5 @@ class ThreeTile extends TileImpl {
         this.y = y;
     }
 }
+
+export default ThreeTile;

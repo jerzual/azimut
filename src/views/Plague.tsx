@@ -23,10 +23,10 @@ interface PlagueProps {
 
 export class Plague extends React.Component<PlagueProps, undefined> {
     render(){
-        return (<div className="container">
-        {/*<ThreeView/>*/}
-        {this.getScreen()}
-        </div>)
+        return (<main id="plague-main">
+            {<ThreeView/>}
+            {this.getScreen()}
+        </main>)
     }
     getScreen() {
         if (this.props.isLoading){
