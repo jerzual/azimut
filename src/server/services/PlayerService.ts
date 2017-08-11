@@ -1,5 +1,5 @@
 import { PlayerAttributes, PlayerInstance } from '../models/PlayerModel';
-import {Transaction} from "sequelize";
+import { Transaction } from "sequelize";
 import { Models, Database } from '../models/index';
 import * as logger from 'winston';
 import * as Sequelize from 'sequelize';
