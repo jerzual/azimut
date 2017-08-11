@@ -14,8 +14,10 @@ import turnReducer from './TurnReducer';
 export default combineReducers({
     actions: actionReducer,
     scene: sceneReducer,
-    cities: cityReducer,
-    parties: partyReducer,
+    city: cityReducer,
+    party: partyReducer,
+    options: optionsReducer,
+    hero: actorReducer,
     content: contentReducer,
     navigation: unirouterReducer,
     message: messageReducer,

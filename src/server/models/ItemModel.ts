@@ -1,4 +1,4 @@
-import {Sprite} from 'three';
+import {Sprite} from 'babylonjs';
 import * as SequelizeStatic from 'sequelize';
 import { DataTypes, Sequelize } from 'sequelize';
 
