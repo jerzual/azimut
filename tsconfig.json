@@ -12,7 +12,8 @@
   "out": "./dist",
   "types": [
     "mocha",
-    "expect.js"
+    "expect.js",
+    "jest"
   ],
   "include": [
     "src/**/*"
