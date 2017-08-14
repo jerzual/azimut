@@ -25,6 +25,7 @@ if(process.env.NODE_ENV === 'production'){
         })
     );
 }else{
+    // development plugins
     const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
     plugins.push(
         new BrowserSyncPlugin({
