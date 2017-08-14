@@ -5,7 +5,7 @@ export interface GameProps {
     city?: Object;
 }
 
-export class GameScreen extends Component<GameProps, undefined>{
+export class GameScreen extends Component<GameProps, any>{
     rotateLeft(evt:Event){
 
     }

@@ -2,7 +2,12 @@ import Actor from "./Actor";
 
 const MAX_PARTY_MEMBERS = 7;
 
-export default class Party {
+export interface Party{
+    uuid: string;
+    members: Array<Actor>;
+}
+
+export class PartyImpl implements Party {
     uuid: string;
     members: Array<Actor>;
     constructor() {
@@ -13,3 +18,5 @@ export default class Party {
         this.members.push(member);
     }
 }
+
+export default Party;

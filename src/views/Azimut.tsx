@@ -11,20 +11,21 @@ import { AboutScreen } from './containers/AboutScreen';
 import { DeathScreen } from './containers/DeathScreen';
 import { ErrorScreen } from './containers/ErrorScreen';
 import LoadingScreen from './containers/LoadingScreen';
-import { ThreeView } from './containers/ThreeView';
+import { GameView } from './containers/GameView';
 
-interface PlagueProps {
+interface AzimutProps {
     isLoading:boolean;
     route:{
         name:string,
         options?:any
-    }
+    },
+    options?: any
 }
 
-export class Plague extends React.Component<PlagueProps, undefined> {
+export class Azimut extends React.Component<AzimutProps, any> {
     render(){
-        return (<main id="plague-main">
-            {<ThreeView/>}
+        return (<main id="azimut-main">
+            {<GameView options={this.props.options} />}
             {this.getScreen()}
         </main>)
     }
@@ -48,8 +49,9 @@ export class Plague extends React.Component<PlagueProps, undefined> {
 const mapStateToProps = (state) => {
   return {
     isLoading: state.isLoading,
-    route: state.navigation.route
+    route: state.navigation.route,
+    options: state.options
   }
 }
 
-export default connect(mapStateToProps)(Plague);
+export default connect(mapStateToProps)(Azimut);

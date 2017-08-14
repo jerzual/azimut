@@ -2,7 +2,7 @@ import 'mocha';
 import * as chai from 'chai';
 import * as http from 'http';
 import * as supertest from 'supertest';
-import {PlagueServer} from '../../src/server/index';
+import { AzimutServer } from '../../src/server/index';
 
 const expect = chai.expect;
 

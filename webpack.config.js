@@ -18,7 +18,7 @@ var plugins = [
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
         
 ];
-if(process.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: { unused: true, dead_code: true, warnings: false },
@@ -52,7 +52,7 @@ if(process.NODE_ENV === 'production'){
         })
     );
 }
-module.exports = {
+const config =  {
     entry: {
         client: "./src/index.tsx",
         // server: "./src/server/index.ts",
@@ -65,33 +65,33 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    // devtool: "source-map",
+    devtool: "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"]
     },
 
     module: {
-        loaders: [
+        rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript",
-                exclude: /node_modules/
+                use:  [ { loader: "awesome-typescript-loader" } ],
+                exclude: /node_modules|server/
             },
             {
                 test: /\.scss$/,
-                loader: "style!css!sass",
+                use:  [ "style-loader", "css-loader", "sass-loader" ],
                 exclude: /node_modules/
             },
             {
                 test: /\.pug$/,
-                loader: "pug",
+                use:  [ { loader: "pug-loader" } ],
                 exclude: /node_modules/
             }
         ],
-
+/*
         preLoaders: [
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
@@ -99,7 +99,7 @@ module.exports = {
                 loader: "source-map-loader"
             }
         ]
-
+*/
     },
 
     // When importing a module whose path matches one of the following, just
@@ -113,3 +113,5 @@ module.exports = {
 },*/
     plugins: plugins
 };
+
+module.exports = config;

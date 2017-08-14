@@ -28,9 +28,9 @@ class GamepadControls{
         window.addEventListener('gamepaddisconnected',this.disconnected);
     }
     connected(event:GamepadEvent){
-       const gamepad = event.gamepad;
+       const gamepad:Gamepad = event.gamepad;
         console.log(
-            `Gamepad connected at index ${gamepad.index}: ${gamepad.displayId}. \n
+            `Gamepad connected at index ${gamepad.index}: ${gamepad.id}. \n
             \t${gamepad.buttons.length} buttons\t ${gamepad.axes.length} axes.`,
     
         );

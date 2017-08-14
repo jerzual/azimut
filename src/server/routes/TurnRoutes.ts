@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { TurnService } from '../services/TurnService';
-import { TurnInstance, TurnAttributes } from '../models/TurnModel';
+import { TurnModel, TurnRecord } from '../models/TurnModel';
 
 export default class TurnRoutes {
   router: Router;
@@ -17,18 +17,15 @@ export default class TurnRoutes {
     // this.router.get('/turns/:turnId/actions', this.getTurnActions);
     return this.router;
   }
-  public getUser(req: Request, res: Response, next: NextFunction) {
-    console.log(req.params.id);
-  }
   public postTurn(req: Request, res: Response) {
-    this.turnService.createTurn(req.body).then((turn: TurnInstance) => {
+    this.turnService.createTurn(req.body).then((turn: TurnModel) => {
       return res.status(201).send(turn);
     }).catch((error: Error) => {
       return res.status(409).send(error);
     });
   }
-  getTurn(req: Request, res: Response) {
-    this.turnService.retrieveTurn(req.params.name).then((turn: TurnInstance) => {
+  public getTurn(req: Request, res: Response) {
+    this.turnService.getTurn(req.params.id).then((turn: TurnModel) => {
       if (turn) {
         return res.send(turn);
       } else {
@@ -39,14 +36,14 @@ export default class TurnRoutes {
     });
   }
   getTurns(req: Request, res: Response) {
-    this.turnService.retrieveTurns().then((turns: Array<TurnInstance>) => {
+    this.turnService.retrieveTurns().then((turns: Array<TurnModel>) => {
       return res.send(turns);
     }).catch((error: Error) => {
       return res.status(500).send(error);
     });
   }
   putTurn(req: Request, res: Response) {
-    this.turnService.updateTurn(req.params.name, req.body).then(() => {
+    this.turnService.updateTurn(req.params.turnId, req.body).then(() => {
       return res.sendStatus(200);
     }).catch((error: Error) => {
       return res.status(409).send(error);

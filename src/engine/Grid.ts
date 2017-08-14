@@ -4,3 +4,5 @@ import Tile from './Tile';
 interface Grid{
     getTileAt(x:number,y:number):Tile;
 }
+
+export default Grid;

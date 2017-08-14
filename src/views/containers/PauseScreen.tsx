@@ -4,7 +4,7 @@ export interface PauseProps {
 
 }
 
-export class PauseScreen extends React.Component<PauseProps, undefined>{
+export class PauseScreen extends React.Component<PauseProps, any>{
     render() {
         return (
             <div className="screen fade" id="pause">

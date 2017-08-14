@@ -28,39 +28,30 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"]
     },
     // don't treat require node libs as modues to include.
     externals: nodeModules,
 
     module: {
-        loaders: [
+        rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript",
+                use: [ { loader: "awesome-typescript-loader"} ],
                 exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
-                loader: "style!css!sass",
+                use: [ "style-loader","css-loader","sass-loader" ],
                 exclude: /node_modules/
             },
             {
                 test: /\.pug$/,
-                loader: "pug",
+                use:  [ { loader: "pug-loader" } ],
                 exclude: /node_modules/
             }
         ],
-        /*
-                preLoaders: [
-                    // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-                    {
-                        test: /\.(js|ts)$/,
-                        loader: "source-map-loader"
-                    }
-                ]
-        */
     },
 
     // When importing a module whose path matches one of the following, just
@@ -76,15 +67,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
-        new webpack.ProvidePlugin({
-            THREE: "three"
-        }),
-        new webpack.BannerPlugin('require("source-map-support").install();',
-            {
-                 raw: true, 
-                 entryOnly: false
-            }
-            ),
+        /*
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 unused: true,
@@ -93,6 +76,7 @@ module.exports = {
             },
             // sourceMap: false
         }),
+        */
         new webpack.HotModuleReplacementPlugin()
     ]
 };

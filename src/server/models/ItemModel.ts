@@ -1,8 +1,7 @@
-import {Sprite} from 'babylonjs';
-import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
+import { model, Schema, Document } from 'mongoose';
+import { Item } from '../../engine/Item';
 
-export interface ItemAttributes {
+export interface ItemModel extends Item, Document{
     uuid: string;
     name: string;
     ap: number;
@@ -10,25 +9,8 @@ export interface ItemAttributes {
     description: string;
 }
 
-export interface ItemInstance extends SequelizeStatic.Instance<ItemAttributes>, ItemAttributes {
-    // todo
-}
-
-export interface ItemModel extends SequelizeStatic.Model<ItemInstance, ItemAttributes> {
-    // todo
- }
- 
-export function defineItem(sequelize: Sequelize, dataTypes: DataTypes): ItemModel {
+const ItemSchema = new Schema({
     
-        const itemModel = sequelize.define<ItemInstance, ItemAttributes>(
-            "Item",
-            {
-                "id": {
-                    "type": dataTypes.UUID,
-                    "allowNull": false,
-                    "primaryKey": true
-                }
-            }
-        );
-        return itemModel;
-};
+});
+
+export const ItemRecord = model<ItemModel>('ItemSchema', ItemSchema);

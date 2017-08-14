@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import { DirectionalLight } from "babylonjs";
 
 const HOUR_PER_DAY = 24;
 const MIN_PER_HOUR = 60;
@@ -11,7 +11,7 @@ class DayNightCycle {
     timeAngle: number;
     speed: number;
     phase: Phase;
-    sun: THREE.AmbientLight;
+    sun: DirectionalLight;
     constructor() {
         this.timeAngle = TAU / 2;
         this.phase = Phase.night;

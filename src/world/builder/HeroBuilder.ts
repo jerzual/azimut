@@ -1,11 +1,10 @@
-import Hero from '../../engine/Hero';
+import Actor from '../../engine/Actor';
 import RandomBuilder from './RandomBuilder';
 
 export default class HeroBuilder extends RandomBuilder{
-    hero:Hero;
+    hero:Actor;
     constructor({seed}){
         super({seed});
-        this.hero = new Hero({});
     }
     hair(){
 
@@ -22,7 +21,7 @@ export default class HeroBuilder extends RandomBuilder{
     pantsColor(){
 
     }
-    build(){
+    build(): Actor{
         return this.hero;
     }
 }

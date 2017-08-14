@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 export interface AboutProps {
 
 }
 
-export class AboutScreen extends Component<AboutProps, undefined>{
+export class AboutScreen extends Component<AboutProps, any>{
     render() {
         return (
             <div className="screen fade" id="about">

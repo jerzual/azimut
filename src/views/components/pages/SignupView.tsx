@@ -5,13 +5,12 @@ interface SignupViewProps {
     loginHandler?: Function;
 }
 
-export default class SignupView extends React.Component<SignupViewProps, undefined>{
+export default class SignupView extends React.Component<SignupViewProps, any>{
     render() {
         return (
             <form id='signup'>
                 <div className='input-group'>
                 </div>
-                
             </form>
         );
     }

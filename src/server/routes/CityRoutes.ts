@@ -1,6 +1,5 @@
-import { CityModel, CityAttributes} from '../models/CityModel';
 import CityService from '../services/CityService';
-import {Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 
 
 export default class CityRoutes{

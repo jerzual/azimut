@@ -1,53 +1,33 @@
-import { ActionAttributes, ActionInstance, ActionModel, defineAction } from '../models/ActionModel';
-import { ActorAttributes, ActorInstance, ActorModel, defineActor } from '../models/ActorModel';
-import { ItemAttributes, ItemInstance, ItemModel, defineItem } from '../models/ItemModel';
-import { CityAttributes, CityInstance, CityModel, defineCity } from '../models/CityModel';
-import { PartyAttributes, PartyInstance, PartyModel, defineParty } from '../models/PartyModel';
-import { PlayerAttributes, PlayerInstance, PlayerModel, definePlayer } from '../models/PlayerModel';
-import { TileAttributes, TileInstance, TileModel, defineTile } from '../models/TileModel';
-import { TurnAttributes, TurnInstance, TurnModel, defineTurn } from '../models/TurnModel';
-import * as Sequelize from 'sequelize';
+import { ActionModel } from '../models/ActionModel';
+import { ActorModel } from '../models/ActorModel';
+import { CityModel } from '../models/CityModel';
+import { ItemModel } from '../models/ItemModel';
+import { PartyModel } from '../models/PartyModel';
+import { PlayerModel } from '../models/PlayerModel';
+import { TileModel } from '../models/TileModel';
+import { TurnModel } from '../models/TurnModel';
 
-export interface Models {
-    Action: ActionModel;
-    Actor: ActorModel;
-    City: CityModel;
-    Item: ItemModel;
-    Party: PartyModel;
-    Player: PlayerModel;
-    Tile: TileModel;
-    Turn: TurnModel;
+import { Model, Schema, Connection } from 'mongoose';
+
+export interface Core {
+    action:Model<ActionModel>;
+    actor:Model<ActorModel>;
+    city:Model<CityModel>;
+    item:Model<ItemModel>;
+    party:Model<PartyModel>;
+    player:Model<PlayerModel>;
+    tile:Model<TileModel>;
+    turn:Model<TurnModel>;
 }
 
 export class Database{
-    public models: Models;
-    constructor(sequelize: Sequelize.Sequelize) {
-        const models:Models = {
-         Action : sequelize.import('ActionModel', defineAction),
-         Actor : sequelize.import('ActorModel', defineActor),
-         City : sequelize.import('CityModel', defineCity),
-         Item : sequelize.import('ItemModel', defineItem),
-         Party : sequelize.import('PartyModel', defineParty),
-         Player : sequelize.import('PlayerModel', definePlayer),
-         Tile : sequelize.import('TileModel', defineTile),
-         Turn : sequelize.import('TurnModel', defineTurn)
-        };
-        models.Action.belongsTo(models.Actor);
-        models.Actor.hasMany(models.Action);
-        models.Player.belongsTo(models.City);
-        models.City.hasMany(models.Player);
-        models.City.hasMany(models.Actor);
-        models.City.hasMany(models.Tile);
-        models.City.hasMany(models.Item);
-        Object.keys(models)
-            .forEach(function(modelName) {
-            if ("associate" in models[modelName]) {
-                models[modelName].associate(models);
-            }
-        });
-        this.models = models;
+    models: Core;
+    constructor(connection:Connection) {
+        
     }
-    getModels():Models{
+    getModels():Core{
         return this.models;
     }
 }
+
+export default Core;

@@ -3,7 +3,7 @@ import { Flex, Donut } from 'rebass';
 export interface ScoresProps {
 
 }
-export class Scores extends React.Component<ScoresProps, undefined>{
+export class Scores extends React.Component<ScoresProps, any>{
     render() {
         return (
             <Flex

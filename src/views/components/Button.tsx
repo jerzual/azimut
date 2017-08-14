@@ -1,9 +1,11 @@
-import { Component } from 'react';
+import * as React from 'react';
 
 export interface ButtonProps{
     action:string;
     payload?:any;
 }
-export default class Button extends Component<ButtonProps, undefined>{
-        
+export default class Button extends React.Component<ButtonProps, any>{
+        render(){
+            return (<button />)
+        }
 }

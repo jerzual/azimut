@@ -6,7 +6,7 @@ interface LinkProps{
     options?:any;
 }
 
-export default class Link extends Component<LinkProps, undefined>{
+export default class Link extends Component<LinkProps, any>{
     render(){
              return (<a href="uniloc(name)">this.props.children</a>);
     }

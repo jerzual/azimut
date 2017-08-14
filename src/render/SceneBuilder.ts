@@ -1,20 +1,18 @@
 // constructs a THREE.js scene from world objects.
-import * as THREE from "three";
+import { Scene, SceneLoader, ArcRotateCamera, Sprite } from "babylonjs";
 import ThreeTile from "./ThreeTile";
 
 export default class SceneBuilder {
-  scene: THREE.Scene;
-  camera: THREE.OrthographicCamera;
-  sprites: Array<THREE.Sprite>;
+  scene: Scene;
+  camera: ArcRotateCamera;
+  sprites: Array<Sprite>;
   tiles: Array<ThreeTile>;
-  constructor() {
-    this.scene = new THREE.Scene();
+  constructor(scene:Scene) {
+    this.scene = scene;
     this.tiles = [];
     this.sprites = []
   }
   build() {
     return this.scene;
-  }
-  render(){
   }
 }
