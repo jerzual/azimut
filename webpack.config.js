@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path');
 var pkg = require('./package.json');
@@ -26,6 +25,7 @@ if(process.env.NODE_ENV === 'production'){
         })
     );
 }else{
+    const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
     plugins.push(
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development, 
