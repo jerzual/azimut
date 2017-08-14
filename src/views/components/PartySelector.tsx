@@ -7,7 +7,7 @@ export class PartySelectorProps{
     selectedParty?:any;
 }
 export class PartySelector 
-       extends React.Component<PartySelectorProps, undefined>{
+       extends React.Component<PartySelectorProps, any>{
     render(){
         return (<ul><li><a></a></li></ul>)
     }

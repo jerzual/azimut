@@ -1,4 +1,4 @@
- interface Tile{
+export interface Tile{
     x:number;
     y:number;
     type:TileType;

@@ -1,11 +1,10 @@
 import Tile from "../../engine/Tile";
-import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
+import { model, Schema, Document, Model } from 'mongoose';
 
 /**
  *
  */
-export interface TileAttributes extends Tile {
+export interface TileModel extends Tile, Document {
     uuid: string;
     x: number;
     y: number;
@@ -13,34 +12,11 @@ export interface TileAttributes extends Tile {
     city_id: string;
 }
 
-export interface TileInstance extends SequelizeStatic.Instance<TileAttributes>, TileAttributes {
-    // todo
-}
+const TileSchema = new Schema({
+    x: Number,
+    y: Number,
+    z: Number,
+    city: Object
+});
 
-export interface TileModel extends SequelizeStatic.Model<TileInstance, TileAttributes> {
-    // todo
-}
-
-export function defineTile(sequelize: Sequelize, dataTypes: DataTypes): TileModel {
-    let tileModel = sequelize.define<TileInstance, TileAttributes>("Tile", {
-        uuid: {
-            type: dataTypes.UUID,
-            primaryKey: true
-        },
-        name: {
-            type: dataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        description: {
-            type: dataTypes.TEXT,
-            allowNull: true
-        }
-    }, {
-            indexes: [],
-            classMethods: {},
-            timestamps: false
-        });
-
-    return tileModel;
-}
+export const TileRecord:Model<TileModel> = model<TileModel>('TileSchema', TileSchema);

@@ -34,13 +34,13 @@ store.subscribe(() => {
 });
 store.dispatch({ type: 'server/hello', data: 'Hello!' });
 
-import Plague from "./views/Plague";
+import Azimut from "./views/Azimut";
 if (process.env.NODE_ENV !== 'production'){
   localStorage['debug'] = true;
 }
 ReactDOM.render(
   <Provider store={store}>
-    <Plague store={store} dispatch={store.dispatch} />
+    <Azimut store={store} dispatch={store.dispatch} />
   </Provider>,
-  document.getElementById("plague")
+  document.getElementById("azimut")
 );

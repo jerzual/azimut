@@ -1,12 +1,14 @@
 import { Component } from 'react';
 import * as React from 'react';
+import * as dat from 'react-dat-gui';
+import PropTypes from 'prop-types';
 
 export interface SettingsProps {
     compiler?: string;
     framework?: string;
 }
 
-export class OptionsScreen extends Component<SettingsProps, undefined>{
+export class OptionsScreen extends Component<SettingsProps, any>{
     render() {
         return (
             <div className="screen fade" id="options">

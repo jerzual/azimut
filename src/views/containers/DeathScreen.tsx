@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 export interface DeathProps {
+
 }
 
-export class DeathScreen extends React.Component<DeathProps, undefined>{
+export class DeathScreen extends React.Component<DeathProps, any>{
     render() {
         return (
             <div className="screen fade" id="death">

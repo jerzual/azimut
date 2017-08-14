@@ -1,4 +1,4 @@
-import { PartyModel, PartyAttributes} from '../models/PartyModel';
+import { PartyModel, PartyRecord } from '../models/PartyModel';
 import PartyService from '../services/PartyService';
 import {Router, Request, Response, NextFunction } from 'express';
 

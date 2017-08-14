@@ -1,44 +1,31 @@
 import { Turn } from '../../engine/Turn';
-import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
+import { model, Schema, Document, Model } from 'mongoose';
 
 /**
  *
  */
-export interface TurnAttributes extends Turn {
+export interface TurnModel extends Turn, Document {
     uuid: string;
     timeout: number;
+    nextPlayer: string;
+    currentPlayer: string;
+    createdAt: Date
 }
 
-export interface TurnInstance extends SequelizeStatic.Instance<TurnAttributes>, TurnAttributes {
-    // todo
-}
+const TurnSchema = new Schema({
+    _id: String,
+    timeout: Number,
+    nextPlayerId: String,
+    currentPlayerId: String,
+    createdAt: Date
+});
 
-export interface TurnModel extends SequelizeStatic.Model<TurnInstance, TurnAttributes> {
-    // todo
-}
+TurnSchema.pre("save", function(next) {
+  let now = new Date();
+  if (!this.createdAt) {
+    this.createdAt = now;
+  }
+  next();
+});
 
-export function defineTurn(sequelize: Sequelize, dataTypes: DataTypes): TurnModel {
-    let turnModel = sequelize.define<TurnInstance, TurnAttributes>("Turn", {
-        uuid: {
-            type: dataTypes.UUID,
-            allowNull: false,
-            primaryKey: true
-        },
-        name: {
-            type: dataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        description: {
-            type: dataTypes.TEXT,
-            allowNull: true
-        }
-    }, {
-            indexes: [],
-            classMethods: {},
-            timestamps: true
-        });
-
-    return turnModel;
-}
+export const TurnRecord = model<TurnModel>('Turn', TurnSchema);

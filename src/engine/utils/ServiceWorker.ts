@@ -12,3 +12,5 @@ class ServiceWorker{
     }
 
 }
+
+export default ServiceWorker;

@@ -5,6 +5,6 @@ export interface PartyProps{
     
 }
 
-export class PartyScreen extends Component<PartyProps, undefined>{
+export class PartyScreen extends Component<PartyProps, any>{
     
 }

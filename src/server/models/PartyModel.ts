@@ -1,36 +1,17 @@
-import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
+import { model, Schema, Document } from 'mongoose';
+import  { Actor } from '../../engine/Actor';
+import { Party } from '../../engine/Party';
 
-export interface PartyAttributes {
+export interface PartyModel extends Party, Document{
     uuid: string;
     name: string;
-    //members:Array<Actor>;
-}
-export interface PartyInstance extends SequelizeStatic.Instance<PartyAttributes>, PartyAttributes {
-    // todo
+    members:Array<Actor>;
 }
 
-export interface PartyModel extends SequelizeStatic.Model<PartyInstance, PartyAttributes> {
-    // todo
-}
+const PartySchema = new Schema({
+    _id: String,
+    members: Array,
 
-export function defineParty(sequelize: Sequelize, dataTypes: DataTypes): PartyModel {
-    let partyModel = sequelize.define<PartyInstance, PartyAttributes>(
-        'Party',
-        {
-            uuid: {
-                type: dataTypes.UUID,
-                allowNull: false,
-                primaryKey: true
-            },
-            name: {
-                type: dataTypes.STRING,
-                allowNull: false,
-                unique: true
-            },
-        },
-        {
+});
 
-        });
-    return partyModel;
-}
+export const PartyRecord = model<PartyModel>('PartySchema', PartySchema);

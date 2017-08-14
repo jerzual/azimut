@@ -1,13 +1,14 @@
-import { Models, Database } from '../models/index';
-import { ActionAttributes, ActionModel } from '../models/ActionModel';
+import { Core, Database } from '../models/index';
+import { Action } from '../../engine/Action';
+import { ActionRecord, ActionModel } from '../models/ActionModel';
 
 export default class ActionService {
 
-    protected models: Models;
+    protected models: Core;
     constructor(db: Database) {
         this.models = db.getModels();
     }
-    createAction(action: ActionAttributes) {
-
+    createAction(action: Action): Promise<ActionModel | null> {
+        return ActionRecord.create(action);
     }
 }

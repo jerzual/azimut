@@ -1,5 +1,7 @@
+import { ActorRecord, ActorModel } from '../models/ActorModel';
+
 export default class MovementService{
-    constructor(storage:Storage){
+    constructor(db:any){
         
     }
 }

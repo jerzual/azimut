@@ -1,14 +1,14 @@
 import 'mocha';
-import {expect} from 'chai';
-import PlagueServer from './index';
+import { expect } from 'chai';
+import { AzimutServer } from './index';
 
 describe('server index', () => {
-    let plagueServer:PlagueServer;
+    let server:AzimutServer;
     beforeEach(() => {
-        plagueServer = new PlagueServer();
+        server = new AzimutServer();
     });
-    describe('should start on given port',()=>{
-        plagueServer.start();
-        expect(plagueServer.server).to.exist;
+    describe('should start on given port',() =>{
+        server.start();
+        expect(server.server).to.exist;
     });
 });

@@ -8,7 +8,7 @@ interface StageProps {
   actors?: Array<any>;
   width: number;
   height: number;
-  options: any;
+  options?: any;
 }
 
 export class Stage extends React.Component<StageProps, any> {
@@ -88,7 +88,7 @@ export class Stage extends React.Component<StageProps, any> {
   }
 
   render() {
-    const { options } = this.props;
+    const { options, width, height } = this.props;
 
     return (
       <div>
@@ -96,7 +96,9 @@ export class Stage extends React.Component<StageProps, any> {
           onSceneMount={this.onSceneMount}
           onMeshPicked={this.onTilePicked}
           shadersRepository={"/shaders/"}
-          visible={options.show3D}
+          visible={options.show3D} 
+          width={width}
+          height={height}
         />
       </div>
     );

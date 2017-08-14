@@ -1,15 +1,17 @@
 import CityBuilder from "./world/builder/CityBuilder";
 import HeroBuilder from "./world/builder/HeroBuilder";
 import Tile from "./engine/Tile";
+import Actor from "./engine/Actor";
 import Turn, { TurnImpl } from "./engine/Turn";
 import City from "./world/City";
 import Party from "./engine/Party";
 import { Chance } from "chance";
+import { Engine } from "babylonjs";
 //principal events binding and game init /loop
 
-export default class PlagueGame{
+export default class AzimutGame {
     city: City;
-    party: Party;
+    party: Array<Actor>;
     turns: Array<Turn>;
     chance: Chance.Chance;
     startTime:number;

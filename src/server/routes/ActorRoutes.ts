@@ -1,4 +1,4 @@
-import { ActorModel, ActorAttributes} from '../models/ActorModel';
+import { ActorModel, ActorRecord} from '../models/ActorModel';
 import ActorService from '../services/ActorService';
 import {Router, Request, Response, NextFunction } from 'express';
 

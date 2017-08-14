@@ -1,41 +1,17 @@
-import * as SequelizeStatic from 'sequelize';
-import { DataTypes, Sequelize } from 'sequelize';
-
+import { model, Schema, Document } from 'mongoose';
+import Actor from '../../engine/Actor';
 /**
- *
+ * an Actor is something that can move and drop objects, player included.
  */
-export interface ActorAttributes {
+export interface ActorModel extends Actor, Document {
     uuid: string;
     actionPoints: number;
     lifePoints: number;
     items: Array<any>;
 }
 
-export interface ActorInstance extends SequelizeStatic.Instance<ActorAttributes>, ActorAttributes {
-    // todo
-}
+const ActorSchema = new Schema({
 
-export interface ActorModel extends SequelizeStatic.Model<ActorInstance, ActorAttributes> {
-    // todo
-}
+});
 
-export function defineActor(sequelize: Sequelize, dataTypes: DataTypes): ActorModel {
-    const actorModel = sequelize.define<ActorInstance, ActorAttributes>(
-        'Actor',
-        {
-            id: {
-                type: dataTypes.UUID,
-                allowNull: false,
-                primaryKey: true
-            },
-            actionPoints: {
-                type: dataTypes.STRING(128),
-                allowNull: false
-            },
-        },
-        {
-            timestamps: true,
-        }
-    );
-    return actorModel;
-}
+export const ActorRecord = model('ActorSchema', ActorSchema);

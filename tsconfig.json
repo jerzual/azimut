@@ -10,15 +10,7 @@
     "jsx": "react"
   },
   "out": "./dist",
-  "types": [
-    "mocha",
-    "expect.js",
-    "jest"
-  ],
   "include": [
     "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
   ]
 }

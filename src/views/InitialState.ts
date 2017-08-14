@@ -19,6 +19,7 @@ export function createInitialState() {
         // default options
         options: {
             theme: 'dark',
+            show3D: true,
             render: {
                 wireframes: true,
                 shaders: true    

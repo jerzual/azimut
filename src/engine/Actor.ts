@@ -2,7 +2,14 @@ import Item from './Item';
 import { Entity } from './Entity';
 import { Action } from './Action';
 
-export default class Actor extends Entity {
+export interface Actor{
+    actionPoints: number;
+    isAlive: boolean;
+    items: Array<Item>;
+    actionsQueue: Array<Action>;
+}
+export class ActorImpl extends Entity implements Actor {
+    uuid:string;
     //
     actionPoints: number;
     isAlive: boolean;
@@ -17,3 +24,4 @@ export default class Actor extends Entity {
         this.items = [];
     }
 }
+export default Actor;

@@ -1,4 +1,10 @@
-import {Color3  } from 'babylonjs';
+import { Color3 } from 'babylonjs';
+
+export interface Color{
+   r:number;
+   g:number;
+   b:number;
+}
 
 export class Colors{
     BLUE:Color3          = new Color3(0,0,0);

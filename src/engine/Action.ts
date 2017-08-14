@@ -1,6 +1,5 @@
 export interface Action{
-    id:string;
+    uuid:string;
     timestamp:number;
-    
 }
 export default Action;

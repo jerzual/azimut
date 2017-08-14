@@ -7,7 +7,7 @@ export interface RegisterProps{
     login:boolean;
 }
 
-export class RegisterScreen extends Component<RegisterProps, undefined>{
+export class RegisterScreen extends Component<RegisterProps, any>{
     render(){
         return (<div>
             {

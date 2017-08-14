@@ -7,12 +7,12 @@ export interface MenuProps {
 
 }
 
-export class MenuScreen extends Component<MenuProps, undefined>{
+export class MenuScreen extends Component<MenuProps, any>{
     render() {
         return (
             <div className="screen fade" id="home">
                 <div className="centered">
-                    <h1>Plague</h1>
+                    <h1>Azimut</h1>
                     <ul>
                         <li>
                             <Link name="game">New Game</Link>
