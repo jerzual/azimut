@@ -1,6 +1,6 @@
 import * as SocketIO from 'socket.io';
 
-export default class CityHandler{
+export class CityHandler{
     constructor(io:SocketIO.Server){
         
     }
@@ -11,3 +11,5 @@ export default class CityHandler{
 
     }
 }
+
+export default CityHandler;

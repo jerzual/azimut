@@ -4,7 +4,7 @@ interface GameViewProps {
   // position: any;
   options: any;
 }
-export class GameView extends React.Component<GameViewProps,{ width: number; height: number }> {
+export class GameView extends React.Component<GameViewProps,{ width: number; height: number, options: any }> {
   constructor(props){
     super(props);
     this.resize = this.resize.bind(this);
@@ -28,9 +28,9 @@ export class GameView extends React.Component<GameViewProps,{ width: number; hei
   }
   render() {
     return <Stage 
-    options={this.props.options}
-    width={window.innerWidth} 
-    height={window.innerHeight} 
+      options={this.props.options}
+      width={window.innerWidth} 
+      height={window.innerHeight} 
     />;
   }
 }

@@ -1,14 +1,14 @@
 import { model, Schema, Document } from 'mongoose';
+import { Player } from '../../engine/Player';
 
-export interface FacebookAuthProps {
-    tokenID;
-}
-export interface PlayerModel extends Document {
-    uuid?: string;
+export interface PlayerModel extends Player, Document {
+    uuid: string;
     name?: string;
-    email?: string;
-    password?: string;
-    facebook?: FacebookAuthProps;
+    host: String;
+    socketId?: String;
+    createdAt: number;
+    cityId?: String;
+    levelId?: String;
 }
 
 const PlayerSchema = new Schema({
