@@ -4,8 +4,8 @@
 export interface Message {
   uuid: string;
   fromActorId: string;
-  inCityId: string;
-  inLevelId: string;
+  cityId: string;
+  levelId: string;
   toActor: string;
   createdAt: Date;
 }
