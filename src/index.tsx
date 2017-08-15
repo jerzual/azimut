@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSocketIoMiddleware from 'redux-socket.io';
 import * as io from 'socket.io-client';
 import './index.scss';
@@ -12,7 +12,9 @@ import reducers from './views/reducers/index';
 let socket = io();
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
-let store = createStore(reducers, createInitialState(), applyMiddleware(socketIoMiddleware));
+
+const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
+let store = createStore(reducers, createInitialState(), composeEnhancers(applyMiddleware(socketIoMiddleware)));
 
 // router
 const routes = {
