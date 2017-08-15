@@ -10,7 +10,7 @@
     "serve": "npm run build-server &&  npm run start ",
     "heroku-postbuild": "npm run build",
     "build": "npm run build-client && npm run build-server",
-    "build-client": "webpack -p --define process.env.NODE_ENV=production --progress --colors",
+    "build-client": "webpack --define process.env.NODE_ENV=production --progress --colors",
     "build-server": "webpack --config webpack.server.config.js --progress --colors",
     "build-test": "tsc test/index.ts --outDir dist/test --module commonjs",
     "watch": "webpack --watch --progress",
