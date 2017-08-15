@@ -58,7 +58,16 @@ const config =  {
         client: "./src/index.tsx",
         // server: "./src/server/index.ts",
         // test: "./test/index.ts",
-        vendor: ["babylonjs", "react", "react-dom", "socket.io-client", "redux", "redux-socket.io"]
+        vendor: [
+            "babylonjs",
+            "react",
+            "react-dom",
+            "redux",
+            "redux-socket.io",
+            "socket.io-client",
+            "tone",
+            "rot.js",
+        ]
     },
     output: {
         path: path.join(__dirname, "dist", "www"),
