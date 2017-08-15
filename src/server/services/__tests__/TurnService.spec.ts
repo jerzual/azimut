@@ -1,5 +1,4 @@
-import { expect } from 'chai';
-import TurnService from './TurnService';
+import { TurnService } from '../TurnService';
 
 describe('TurnService', () => {
     let turnService;

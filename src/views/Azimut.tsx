@@ -14,15 +14,19 @@ import LoadingScreen from './containers/LoadingScreen';
 import { GameView } from './containers/GameView';
 
 interface AzimutProps {
-    isLoading:boolean;
+    isLoading?:boolean;
     route:{
         name:string,
         options?:any
     },
     options?: any
 }
-
-export class Azimut extends React.Component<AzimutProps, any> {
+interface RootState {
+    isLoading: boolean;
+    navigation?: any,
+    options?: any
+}
+export class Azimut extends React.Component<AzimutProps, void> {
     render(){
         return (<main id="azimut-main">
             {<GameView options={this.props.options} />}

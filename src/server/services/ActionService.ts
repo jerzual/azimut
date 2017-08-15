@@ -2,7 +2,7 @@ import { Core, Database } from '../models/index';
 import { Action } from '../../engine/Action';
 import { ActionRecord, ActionModel } from '../models/ActionModel';
 
-export default class ActionService {
+export class ActionService {
 
     protected models: Core;
     constructor(db: Database) {
@@ -12,3 +12,5 @@ export default class ActionService {
         return ActionRecord.create(action);
     }
 }
+
+export default ActionService;

@@ -39,7 +39,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 use: [ { loader: "awesome-typescript-loader"} ],
-                exclude: /node_modules/
+                exclude: [ /node_modules/, /test/, /__tests__/ ]
             },
             {
                 test: /\.scss$/,

@@ -1,5 +1,7 @@
-export default class PartyService{
+export class PartyService{
     constructor(storage:Storage){
         
     }
 }
+
+export default PartyService;

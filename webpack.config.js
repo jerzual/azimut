@@ -88,7 +88,7 @@ const config =  {
             {
                 test: /\.tsx?$/,
                 use:  [ "babel-loader", "awesome-typescript-loader" ],
-                exclude: [/node_modules/, /\/server/, /__test__/ ]
+                exclude: [/node_modules/, /src\/server/, /test/, /__tests__/]
             },
             {
                 test: /\.scss$/,
