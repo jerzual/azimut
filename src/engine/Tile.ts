@@ -1,10 +1,13 @@
+import Item from './Item';
+
 export interface Tile{
-    x:number;
-    y:number;
-    type:TileType;
-    walkable:boolean;
-    diggable:boolean;
-    transportTo:Tile;
+    x: number;
+    y: number;
+    type: TileType;
+    walkable: boolean;
+    diggable: boolean;
+    transportTo?: Tile;
+    items?: Array<Item>;
 }
 export enum TileType{
     EMPTY,
