@@ -1,5 +1,8 @@
-
-export default class SceneActions{
+import { Dispatch } from 'redux';
+/**
+ * Actions thrown from the mini-map.
+ */
+export default class MapActions{
     static rotateLeft(){
         return {
 
@@ -29,5 +32,11 @@ export default class SceneActions{
         return {
             
         }
+    }
+    static loadChunk(){
+
+    }
+    static chunkLoaded(){
+
     }
 }

@@ -2,7 +2,7 @@ import uuid from 'uuid';
 /**
  * Actions are user
  */
-export interface Actor{
+export interface Action{
     uuid:string;
     timestamp:number;
     type:ActionTypes;
@@ -17,11 +17,11 @@ export enum ActionTypes{
     ENTER,
     LEAVE
 }
-export const actionFactory = (type: ActionTypes):Actor =>  {
+export const actionFactory = (type: ActionTypes):Action =>  {
     return {
         uuid: uuid.v4(), 
         timestamp: Date.now(), 
         type
     }
 };
-export default Actor;
+export default Action;

@@ -178,7 +178,11 @@ export class AzimutServer {
 
 // routes:
 let server = new AzimutServer();
-server.start();
+// don't start the server if module is imported (tests)
+if(!module.parent) {
+  server.start();
+}
 process.on("SIGINT", () => {
   server.stop();
 });
+export default server.app;

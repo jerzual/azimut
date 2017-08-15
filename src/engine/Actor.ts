@@ -1,12 +1,14 @@
 import Item from './Item';
 import { Entity } from './Entity';
-import { Actor } from './Action';
+import { Action } from './Action';
+import uuid from 'uuid';
 
 export interface Actor{
+    uuid: string;
     actionPoints: number;
     life: number;
     items: Array<Item>;
-    actionsQueue: Array<Actor>;
+    actionsQueue: Array<Action>;
     status: ActorStatus;
 }
 
@@ -23,7 +25,7 @@ export class ActorImpl extends Entity implements Actor {
     actionPoints: number;
     life: number;
     items: Array<Item>;
-    actionsQueue: Array<Actor>;
+    actionsQueue: Array<Action>;
     status: ActorStatus;
     constructor(clone) {
         super();
@@ -32,6 +34,14 @@ export class ActorImpl extends Entity implements Actor {
         this.actionsQueue = [];
         this.items = [];
         this.status = ActorStatus.IDLING;
+        Object.assign(this, clone);
     }
 }
+
+export function actorFactory(): Actor {
+    return new ActorImpl({
+        uuid: uuid.v4()
+    });
+}
+
 export default Actor;

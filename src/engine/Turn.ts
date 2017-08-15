@@ -4,7 +4,6 @@ import { Action } from './Action';
  */
 export interface Turn {
     playerActions:Array<Action>;
-
 }
 export class TurnImpl implements Turn{
     playerActions:Array<Action>;
