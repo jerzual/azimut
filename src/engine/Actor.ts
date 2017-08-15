@@ -1,7 +1,7 @@
 import Item from './Item';
 import { Entity } from './Entity';
 import { Action } from './Action';
-import uuid from 'uuid';
+import { v4 } from 'uuid';
 
 export interface Actor{
     uuid: string;
@@ -40,7 +40,7 @@ export class ActorImpl extends Entity implements Actor {
 
 export function actorFactory(): Actor {
     return new ActorImpl({
-        uuid: uuid.v4()
+        uuid: v4()
     });
 }
 

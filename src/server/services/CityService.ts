@@ -1,7 +1,7 @@
 import { CityRecord, CityModel } from '../models/CityModel';
 import { Database, Core } from '../models/index';
 
-export default class CityService{
+export class CityService{
     models: Core;
     constructor(db: Database) {
         this.models = db.getModels();
@@ -10,3 +10,5 @@ export default class CityService{
         return CityRecord.findById(id).exec();
     }
 }
+
+export default CityService;

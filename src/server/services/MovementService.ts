@@ -1,7 +1,9 @@
 import { ActorRecord, ActorModel } from '../models/ActorModel';
 
-export default class MovementService{
+export class MovementService{
     constructor(db:any){
         
     }
 }
+
+export default MovementService;

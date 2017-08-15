@@ -18,7 +18,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "test": "npm run test-client && npm run test-server",
     "test-client": "jest",
-    "test-server": "mocha --reporter spec --require ./test/utils/jsdom.ts --compilers ts:ts-node/register ./**/*.spec.ts"
+    "test-engine": "jest ./src/engine/*",
+    "test-server": "mocha --reporter spec --require ./test/utils/node.ts --compilers ts:ts-node/register"
   },
   "author": "Benjamin Legrand",
   "repository": {
@@ -27,6 +28,7 @@
   },
   "license": "CC-BY-NC-4.0",
   "devDependencies": {
+    "@types/chai": "^4.0.3",
     "@types/jest": "^20.0.6",
     "@types/jsdom": "^11.0.1",
     "@types/mongodb": "^2.2.9",
@@ -36,6 +38,7 @@
     "@types/react-dom": "^15.5.2",
     "@types/socket.io": "^1.4.29",
     "@types/socket.io-client": "^1.4.29",
+    "@types/supertest": "^2.0.2",
     "@types/webpack": "^3.0.8",
     "awesome-typescript-loader": "^3.2.2",
     "babel-core": "^6.25.0",
@@ -71,10 +74,10 @@
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.2",
     "webdriver-manager": "^11.1.0",
+    "webpack": "^2.7.0",
     "webpack-dev-server": "<3.0.0"
   },
   "dependencies": {
-    "webpack": "^2.7.0",
     "babylonjs": "^3.1.0-alpha1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
@@ -117,6 +120,7 @@
     "uniloc": "^0.3.0",
     "unirouter": "^6.0.2",
     "uuid": "^3.1.0",
+    "webpack": "^2.7.0",
     "whatwg-fetch": "^2.0.3",
     "winston": "^2.3.1"
   },
@@ -130,14 +134,13 @@
     },
     "moduleFileExtensions": [
       "ts",
+      "tsx",
       "js"
     ],
     "transform": {
       "^.+\\.(ts)$": "./node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": [
-      "**/test/**/*.(spec|test).(tsx?|jsx?)"
-    ],
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
     "testEnvironment": "node"
   }
 }

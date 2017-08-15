@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 } from 'uuid';
 /**
  * Actions are user
  */
@@ -19,7 +19,7 @@ export enum ActionTypes{
 }
 export const actionFactory = (type: ActionTypes):Action =>  {
     return {
-        uuid: uuid.v4(), 
+        uuid: v4(), 
         timestamp: Date.now(), 
         type
     }
