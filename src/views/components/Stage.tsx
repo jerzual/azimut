@@ -1,7 +1,15 @@
 import * as React from "react";
 // encapsulate a BabylonJS Scene and its camera / lightning
 import { Scene, registerHandler, removeHandler } from "react-babylonjs";
-import { ArcRotateCamera, ShaderMaterial, Vector3 } from "babylonjs";
+import {
+  Scene as BabylonScene,
+  ShaderMaterial,
+  Vector3,
+  Mesh,
+  Camera,TargetCamera,ArcRotateCamera,
+  HemisphericLight,
+  DirectionalLight
+} from "babylonjs";
 
 interface StageProps {
   cubeRotation?: Vector3;
@@ -15,13 +23,15 @@ export class Stage extends React.Component<StageProps, any> {
   cameraProperties: { position: Vector3 };
   cubeRotation: Vector3;
   actors: Array<any>;
-  actionHandler:any;
-  scene:any;
+  actionHandler: any;
+  scene: BabylonScene;
   constructor(props, context) {
     super(props, context);
     // methods used by Scene (more will be added soon and documentation)
-    this.onSceneMount = this.onSceneMount.bind(this);
-    this.onTilePicked = this.onTilePicked.bind(this);
+    this.handleSceneMount = this.handleSceneMount.bind(this);
+    this.handleMeshPicked = this.handleMeshPicked.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
 
     // construct the position vector here, because if we use 'new' within render,
     // React will think that things have changed when they have not.
@@ -29,13 +39,13 @@ export class Stage extends React.Component<StageProps, any> {
       position: new Vector3(0, 0, 5)
     };
   }
-  onTilePicked(mesh, scene) {
+  handleMeshPicked(mesh, scene) {
     // This will be called when a mesh is picked in the canvas
   }
 
-  onSceneMount(e) {
-    const { canvas, scene, engine } = e;
-
+  handleSceneMount(event) {
+    const { canvas, scene, engine } = event;
+    this.scene = this.initScene(scene, canvas);
     // Scene to build your environment, Canvas you need to attach your camera.
     var camera = new ArcRotateCamera(
       "Camera",
@@ -55,6 +65,47 @@ export class Stage extends React.Component<StageProps, any> {
         scene.render();
       }
     });
+  }
+ initScene(scene:BabylonScene, canvas:HTMLCanvasElement):BabylonScene {
+   
+    // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
+    var ground = Mesh.CreateGround("ground1", 6, 6, 2, scene);
+
+    // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
+    var sphere = Mesh.CreateSphere("sphere1", 16, 2, scene);
+    // Move the sphere upward 1/2 its height
+    sphere.position.y = 1;
+	
+	
+    // This creates and positions a free camera (non-mesh)
+    var camera = new TargetCamera("camera1", new Vector3(5, 5, -5), scene);
+    camera.mode = Camera.ORTHOGRAPHIC_CAMERA;
+    camera.orthoTop = 5;
+    camera.orthoBottom = -5;
+    camera.orthoLeft = -5;
+    camera.orthoRight = 5;
+
+    // This targets the camera to scene origin
+    camera.setTarget(sphere.position);
+
+    // This attaches the camera to the canvas
+    camera.attachControl(canvas, false);
+
+    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+    var light = new HemisphericLight("light1", new Vector3(0, 1, 0), scene);
+
+    // Default intensity is 1. Let's dim the light a small amount
+    light.intensity = 0.7;
+
+
+    return scene;
+ }
+  handleBlur() {
+    
+  }
+
+  handleFocus() {
+
   }
 
   componentDidMount() {
@@ -83,7 +134,7 @@ export class Stage extends React.Component<StageProps, any> {
   }
 
   componentWillUnmount() {
-    this.scene = null;
+    delete this.scene;
     removeHandler(this.actionHandler);
   }
 
@@ -93,10 +144,12 @@ export class Stage extends React.Component<StageProps, any> {
     return (
       <div>
         <Scene
-          onSceneMount={this.onSceneMount}
-          onMeshPicked={this.onTilePicked}
+          onSceneMount={this.handleSceneMount}
+          onMeshPicked={this.handleMeshPicked}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           shadersRepository={"/shaders/"}
-          visible={options.show3D} 
+          visible={options.show3D}
           width={width}
           height={height}
         />

@@ -9,6 +9,14 @@ export class PartySelectorProps{
 export class PartySelector 
        extends React.Component<PartySelectorProps, any>{
     render(){
-        return (<ul><li><a></a></li></ul>)
+        return (
+        <ul>
+            <li>
+                <a></a>
+            </li>
+        </ul>
+        );
     }
 }
+
+export default PartySelector;

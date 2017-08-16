@@ -1,10 +1,10 @@
-██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ 
-█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    
-█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █    
-█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █     
-   █           ▐    █  █▄ ▄█  ▀      
-  █                ▀    ▀▀▀          
- ▀                                   
+██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ <br/>
+█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    <br/>
+█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █    <br/>
+█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █     <br/>
+   █           ▐    █  █▄ ▄█  ▀      <br/>
+  █                ▀    ▀▀▀          <br/>
+ ▀                                   <br/>
 a turn based party survival game
 
 ## principles :
@@ -37,3 +37,28 @@ javascript(typescript) and web stuff
 
 - Zombie movies
 - Stranger things
+
+## Gameplay loop
+
+1. explore, move your party around in the overworld.
+2. dungeon (inside of buildings, underground mines, caves or find key or boss item)
+3. stealth or fight :
+
+## Level generation
+
+generates a city-like area with biomes :
+
+* a downtown / huge buildings area
+* residential / commercial area
+* countryside
+* mountain
+* seashore
+* swamp
+* desert
+
+then each biomes have levels like :
+
+* bubbles (caves, mine)
+* dungeon
+* building (levels on top of each other)
+

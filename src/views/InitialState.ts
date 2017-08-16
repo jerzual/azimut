@@ -71,7 +71,7 @@ export function createInitialState() {
 
             }
         },
-        // scene details, THREE.js 3D info extracted from city data
+        // scene details, 3D info extracted from city data
         scene: {
             details: {
                 cityUUID: '',

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Flex, Donut } from 'rebass';
+/**
+ * Score screen component
+ */
 export interface ScoresProps {
 
 }
@@ -24,7 +27,7 @@ export class Scores extends React.Component<ScoresProps, any>{
                     value={0.5625}
                     >
                     9/16
-  </Donut>
+                </Donut>
                 <Donut
                     color="primary"
                     size={128}
@@ -35,3 +38,5 @@ export class Scores extends React.Component<ScoresProps, any>{
         );
     }
 }
+
+export default Scores;
