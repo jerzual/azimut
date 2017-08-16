@@ -135,7 +135,7 @@
       "js"
     ],
     "transform": {
-      "^.+\\.(ts)$": "./node_modules/ts-jest/preprocessor.js"
+      "^.+\\.(tsx?)$": "./node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
     "testEnvironment": "node"
