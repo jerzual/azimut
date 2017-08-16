@@ -1,7 +1,15 @@
+import * as React from 'react';
 // Minimap of th City;
 
 interface MiniMapProps{
-  
-  city?:Array<Array<any>>;
+  level?:Array<Array<any>>;
   fogOfWar?:Array<Array<any>>;
 }
+export class MiniMap
+       extends React.Component<MiniMapProps, any>{
+    render(){
+        return (<canvas/>)
+    }
+}
+
+export default MiniMap;

@@ -14,4 +14,7 @@ export default class SignupView extends React.Component<SignupViewProps, any>{
             </form>
         );
     }
+    handleCreatePlayer() {
+
+    }
 }

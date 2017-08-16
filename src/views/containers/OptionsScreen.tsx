@@ -27,7 +27,7 @@ export class OptionsScreen extends Component<SettingsProps, any>{
                         <input type="radio" name="type" value="gamepad" />
                     </fieldset>
                 </form>
-                <a href="#home">Back</a>
+                <a href="/">Back</a>
             </div>
         )
     }

@@ -1,5 +1,4 @@
-import 'mocha';
-import {expect} from 'chai';
+
 import {createInitialState} from './InitialState';
 
 describe('InitialState',()=>{
@@ -8,9 +7,10 @@ describe('InitialState',()=>{
         initialState = createInitialState();
     })
     it('should present default options',()=>{
-        expect(initialState.options).to.exist;
+        expect(initialState.options).toBeDefined();
+        expect(initialState.navigation.url).toBe('/');
     });
-    it('should present default options',()=>{
-        expect(initialState.options).to.exist;
+    it('should restore options from localStorage if defined',()=>{
+        expect(initialState.options).toBeDefined();
     });
 })

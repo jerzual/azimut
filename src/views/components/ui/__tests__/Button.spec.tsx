@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
-import Button from "./Button";
+import Button from "../Button";
 
 describe("Button", () => {
     beforeEach(() => {
-        renderer.render(<Button action="quit" />);
+        renderer.render(<Button>Hello</Button>);
     });
 
     it("should render correctly", () => {

@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === 'production'){
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: { unused: true, dead_code: true, warnings: false },
-            // sourceMap: false
+            sourceMap: true
         })
     );
 }else{

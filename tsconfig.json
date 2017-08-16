@@ -3,9 +3,10 @@
     "target": "es6",
     "module": "commonjs",
     "noImplicitAny": false,
-    "sourceMap": false,
+    "sourceMap": true,
     "strictNullChecks": true,
     "removeComments": true,
+    "preserveConstEnums": true,
     "noLib": false,
     "jsx": "react"
   },

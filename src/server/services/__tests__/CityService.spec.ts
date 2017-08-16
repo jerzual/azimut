@@ -6,7 +6,7 @@ describe('CityService', () => {
         // service = new CityService();
     });
 
-    it('it can create a city', () => {
+    test('it can create a city', () => {
 
     });
 });
