@@ -4,7 +4,6 @@
     "module": "commonjs",
     "noImplicitAny": false,
     "sourceMap": true,
-    "strictNullChecks": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "noLib": false,
