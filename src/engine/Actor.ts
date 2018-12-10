@@ -28,7 +28,7 @@ export class ActorImpl extends Entity implements Actor {
     actionsQueue: Array<Action>;
     status: ActorStatus;
     constructor(clone) {
-        super();
+        super(clone);
         this.actionPoints = 10;
         this.life = 1;
         this.actionsQueue = [];

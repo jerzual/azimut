@@ -1,3 +1,3 @@
-export default class HeroRoutes{
+export default class ItemRoutes{
     
 }

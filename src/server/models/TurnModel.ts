@@ -20,12 +20,4 @@ const TurnSchema = new Schema({
     createdAt: Date
 });
 
-TurnSchema.pre("save", function(next) {
-  let now = new Date();
-  if (!this.createdAt) {
-    this.createdAt = now;
-  }
-  next();
-});
-
 export const TurnRecord = model<TurnModel>('Turn', TurnSchema);

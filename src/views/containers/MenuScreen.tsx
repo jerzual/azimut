@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { Link } from 'unirouter'
+import { Link } from 'unirouter';
 import './MenuScreen.scss';
 
-export interface MenuProps {
+export interface MenuProps {}
 
-}
-
-export class MenuScreen extends React.Component<MenuProps, any>{
-    render() {
-        return (
-            <div className="screen fade" id="home">
-                <div className="centered">
-                    <h1>Azimut</h1>
-                    <ul>
-                        <li>
-                            <Link name="game">New Game</Link>
-                        </li>
-                        <li>
-                            <Link name="options">Options</Link>
-                        </li>
-                        <li>
-                            <Link name="about">About</Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        )
-    }
+export class MenuScreen extends React.Component<MenuProps, any> {
+  render() {
+    return (
+      <div className="screen fade" id="home">
+        <div className="centered">
+          <h1>Azimut</h1>
+          <ul>
+            <li>
+              <Link name="game">New Game</Link>
+            </li>
+            <li>
+              <Link name="options">Options</Link>
+            </li>
+            <li>
+              <Link name="about">About</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
