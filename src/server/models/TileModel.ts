@@ -4,7 +4,7 @@ import { model, Schema, Document, Model } from 'mongoose';
 /**
  *
  */
-export interface TileModel extends Tile, Document {
+export interface TileModel extends Tile {
     uuid: string;
     x: number;
     y: number;

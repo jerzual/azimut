@@ -17,7 +17,7 @@ export interface Core {
     party:Model<PartyModel>;
     player:Model<PlayerModel>;
     tile:Model<TileModel>;
-    turn:Model<TurnModel>;
+    turn: Model<TurnModel>;
 }
 
 export class Database{

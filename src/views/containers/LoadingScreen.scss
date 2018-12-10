@@ -1,49 +1,52 @@
 //amount (start with 0 see each in html/jade)
-$circles:4;
-$radius:4em;
+$circles: 4;
+$radius: 4em;
 //ball width
-$width:.5em;
+$width: 0.5em;
 
-@keyframes rotate-animation{
-    0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
+@keyframes rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 //Centered box, circle container
-.circle-loader{
-    position:absolute;
-    left:50%;
-    top:50%;
-    width:$radius*2;
-    height:$radius * 2;
-    margin-left:-$radius;
-    margin-top:-$radius;
-    //border:1px white solid;
-    //border-radius:$radius;
+.circle-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $radius * 2;
+  height: $radius * 2;
+  margin-left: -$radius;
+  margin-top: -$radius;
+  //border:1px white solid;
+  //border-radius:$radius;
 }
 //base circle
-.circle{
-    position:absolute;
-    //align in the container
-    top:0;
-    left:50%;
-    margin-left:-$width/2;
-    //rotation
-    transform-origin:$width/2 $radius;
-    animation:rotate-animation 2.5s infinite;
-    //round
-    width:$width;
-    height:$width;
-    border-radius:$width/2;
-    //color
-    background-color:#CCFFCC;
-    box-shadow:0 0 $width rgba(255,255,255,.5)
-;}
+.circle {
+  position: absolute;
+  //align in the container
+  top: 0;
+  left: 50%;
+  margin-left: -$width/2;
+  //rotation
+  transform-origin: $width/2 $radius;
+  animation: rotate-animation 2.5s infinite;
+  //round
+  width: $width;
+  height: $width;
+  border-radius: $width/2;
+  //color
+  background-color: #ccffcc;
+  box-shadow: 0 0 $width rgba(255, 255, 255, 0.5);
+}
 
 //here comes the magic
-@for $i from 0 through $circles{
-    $percent:($i/$circles)*.65;
-    .circle-#{$i}{
-        animation-timing-function:cubic-bezier(  $percent,0, 1-$percent, 1);
-        
-    }
+@for $i from 0 through $circles {
+  $percent: ($i/$circles) * 0.65;
+  .circle-#{$i} {
+    animation-timing-function: cubic-bezier($percent, 0, 1-$percent, 1);
+  }
 }
