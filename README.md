@@ -1,10 +1,13 @@
-██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ <br/>
-█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    <br/>
-█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █    <br/>
-█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █     <br/>
-   █           ▐    █  █▄ ▄█  ▀      <br/>
-  █                ▀    ▀▀▀          <br/>
- ▀                                   <br/>
+<pre>
+██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ 
+█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    
+█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █    
+█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █     
+   █           ▐    █  █▄ ▄█  ▀      
+  █                ▀    ▀▀▀          
+ ▀                                   
+</pre>
+
 a turn based party survival game
 
 ## principles :
@@ -16,7 +19,7 @@ team based, turn based, isometric / 3D mixed with sprites.
 javascript(typescript) and web stuff
 
 - babylonjs for the 3D / game engine 
-- react.js for the ui / 
+- inferno for the ui / 
 - rot.js for level generation / rogue-like aspects.
 - tone.js for music / sound
 - node.js / express / mongodb for server-side storage.
