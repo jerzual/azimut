@@ -7,10 +7,10 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "noLib": false,
-    "jsx": "react"
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
   },
   "out": "./dist",
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

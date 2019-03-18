@@ -1,12 +1,14 @@
-import { Database, Core } from '../models/';
-import { TurnRecord, TurnModel} from '../models/TurnModel';
-import * as logger from 'winston';
+import { Database, Core } from "../models/";
+import { TurnRecord, TurnModel } from "../models/TurnModel";
+import * as logger from "winston";
+import { Injectable } from "../core/injectable";
 
+@Injectable()
 export class TurnService {
-    models:Core;
-    constructor(models:Core){
-      this.models = models;
-    }
+  models: Core;
+  constructor(models: Core) {
+    this.models = models;
+  }
   createTurn(turnAttributes: TurnModel): Promise<TurnModel> {
     return TurnRecord.create(turnAttributes);
   }
@@ -27,5 +29,3 @@ export class TurnService {
     return new TurnRecord().remove();
   }
 }
-
-export default TurnService;
