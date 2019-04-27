@@ -1,7 +1,4 @@
-import { Component } from 'react';
-import * as React from 'react';
-import * as dat from 'react-dat-gui';
-import PropTypes from 'prop-types';
+import { Component } from 'inferno';
 
 export interface SettingsProps {
   compiler?: string;

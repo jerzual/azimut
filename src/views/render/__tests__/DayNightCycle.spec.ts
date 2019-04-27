@@ -20,7 +20,7 @@ describe('DayNightCycle', () => {
     describe('when dawn or dusk', () => {
         test('when dawn', () => {
             cycle.update( moment().hour(6).minute(0) );
-            expect( cycle.minutesOfDay ).toBeCloseTo( 6*60, 0 );
+            expect( Math.floor( cycle.minutesOfDay ) ).toBeCloseTo( 6*60, 0);
             expect( cycle.timeAngle ).toBeCloseTo( Math.PI/2, 1 );
         });
         test('when dusk', () => {
@@ -38,7 +38,7 @@ describe('DayNightCycle', () => {
     test('update should change time of day', () => {
         cycle.update(moment().hour(14).minute(42));
         cycle.tick(10);
-        expect(cycle.minutesOfDay).toBeCloseTo(14*60+42,0);
+        expect(Math.floor(cycle.minutesOfDay)).toBeCloseTo(14*60+42,0);
     });
 
 });

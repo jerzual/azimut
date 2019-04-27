@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as redux from 'redux';
-import { connect } from 'react-redux';
+import { Component } from 'inferno';
+
+import { connect } from 'inferno-redux';
+
 import { GameScreen } from './containers/GameScreen';
 import { MenuScreen } from './containers/MenuScreen';
 import { OptionsScreen } from './containers/OptionsScreen';
@@ -26,7 +26,7 @@ type RootState = {
   navigation?: any;
   options?: any;
 };
-export class Azimut extends React.Component<AzimutProps, any> {
+export class Azimut extends Component<AzimutProps, any> {
   render() {
     return (
       <main id="azimut-main">

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';

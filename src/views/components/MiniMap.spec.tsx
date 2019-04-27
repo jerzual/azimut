@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import renderer from 'react-test-renderer';
+import { Component } from 'inferno';
+import { renderIntoContainer } from 'inferno-test-utils';
+
 import MiniMap from '../MiniMap';
 
 describe('HeroActions', () => {
   let component;
   beforeEach(() => {
-    component = renderer.render(<MiniMap />);
+    component = renderIntoContainer(<MiniMap />);
   });
 
   it('should render correctly', () => {

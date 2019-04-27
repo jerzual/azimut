@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 
 export interface PauseProps {}
 
-export class PauseScreen extends React.Component<PauseProps, any> {
+export class PauseScreen extends Component<PauseProps, any> {
   render() {
     return (
       <div className="screen fade" id="pause">

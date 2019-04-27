@@ -1,7 +1,6 @@
-import { Component } from 'react';
-import * as React from 'react';
+import { Component } from 'inferno';
+
 import { Input } from 'rebass';
-import PropTypes from 'prop-types';
 
 interface LoginViewProps {
   prefill?: string;

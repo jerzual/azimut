@@ -1,10 +1,10 @@
 import { Stage } from '../components/Stage';
-import * as React from 'react';
+import { Component } from 'inferno';
 interface GameViewProps {
   // position: any;
   options: any;
 }
-export class GameView extends React.Component<GameViewProps, { width: number; height: number; options: any }> {
+export class GameView extends Component<GameViewProps, { width: number; height: number; options: any }> {
   constructor(props) {
     super(props);
     this.resize = this.resize.bind(this);

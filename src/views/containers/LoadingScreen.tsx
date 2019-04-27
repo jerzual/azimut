@@ -1,6 +1,6 @@
 import './LoadingScreen.scss';
 
-import * as React from 'react';
+import { Component } from 'inferno';
 
 export default () => {
   return (

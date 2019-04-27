@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 
 export interface DeathProps {
   cause?: string;
 }
 
-export class DeathScreen extends React.Component<DeathProps, any> {
+export class DeathScreen extends Component<DeathProps, any> {
   render() {
     return (
       <div className="screen fade" id="death">

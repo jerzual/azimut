@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 
 interface SignupViewProps {
   prefill?: string;
   loginHandler?: Function;
 }
 
-export default class SignupView extends React.Component<SignupViewProps, any> {
+export default class SignupView extends Component<SignupViewProps, any> {
   render() {
     return (
       <form id="signup">

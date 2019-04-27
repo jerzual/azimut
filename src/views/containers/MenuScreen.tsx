@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 import { Link } from 'unirouter';
 import './MenuScreen.scss';
 
 export interface MenuProps {}
 
-export class MenuScreen extends React.Component<MenuProps, any> {
+export class MenuScreen extends Component<MenuProps, any> {
   render() {
     return (
       <div className="screen fade" id="home">
