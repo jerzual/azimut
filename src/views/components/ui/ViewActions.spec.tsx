@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
-import ViewActions from '../ViewActions';
+import { Component } from 'inferno';
+import { renderIntoContainer } from 'inferno-test-utils';
+
+import ViewActions from './ViewActions';
 
 describe('ViewActions', () => {
   const abilities = {
@@ -10,11 +10,11 @@ describe('ViewActions', () => {
   };
   let component;
   beforeEach(() => {
-    component = renderer.create(<ViewActions abilities={abilities} />);
+    component = (<ViewActions abilities={abilities} />);
   });
 
   it('should render like snapshot', () => {
-    const tree = component.toJSON();
+    const tree = renderIntoContainer(component);
     expect(tree).toMatchSnapshot();
   });
 

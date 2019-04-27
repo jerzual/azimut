@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 /**
  * displays bubbles around the selected hero avatar.
  */
@@ -6,7 +6,7 @@ export class HeroActionsProps {
   selectedHero?: Array<String>;
   availableActions?: any;
 }
-export default class HeroActions extends React.Component<HeroActionsProps, any> {
+export default class HeroActions extends Component<HeroActionsProps, any> {
   render() {
     return (
       <div>

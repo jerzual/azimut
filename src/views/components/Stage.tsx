@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 // encapsulate a BabylonJS Scene and its camera / lightning
 import { Scene, registerHandler, removeHandler } from 'react-babylonjs';
 import {
@@ -21,7 +21,7 @@ interface StageProps {
   options?: any;
 }
 
-export class Stage extends React.Component<StageProps, any> {
+export class Stage extends Component<StageProps, any> {
   cameraProperties: { position: Vector3 };
   cubeRotation: Vector3;
   actors: Array<any>;

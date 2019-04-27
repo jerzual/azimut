@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 import { Relative, Absolute, Button } from 'rebass';
 /**
  * Launch actions such as rotate minimap,
@@ -8,7 +8,7 @@ export interface ViewActionsProps {
   abilities: any;
 }
 
-export default class ViewActions extends React.Component<ViewActionsProps, any> {
+export default class ViewActions extends Component<ViewActionsProps, any> {
   render() {
     return (
       <Relative>

@@ -1,5 +1,6 @@
-import { Component } from 'react';
-import * as React from 'react';
+import { Component } from 'inferno';
+
+import { Component } from 'inferno';
 
 export interface PartyProps {}
 

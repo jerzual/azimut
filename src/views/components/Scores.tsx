@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { Component } from 'inferno';
 import { Flex, Donut } from 'rebass';
 /**
  * Score screen component
  */
 export interface ScoresProps {}
-export class Scores extends React.Component<ScoresProps, any> {
+export class Scores extends Component<ScoresProps, any> {
   render() {
     return (
       <Flex align="center" justify="space-between" wrap>
