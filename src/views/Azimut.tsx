@@ -15,7 +15,7 @@ import { GameView } from './containers/GameView';
 
 interface AzimutProps {
   isLoading?: boolean;
-  route: {
+  route?: {
     name: string;
     options?: any;
   };

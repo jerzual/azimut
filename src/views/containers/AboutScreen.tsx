@@ -9,7 +9,7 @@ export class AboutScreen extends Component<AboutProps, any> {
         <h2>About</h2>
         <p>A game prototype crafted with love by jibhaine</p>
         <p>made using the following techs : html5 / javascript / webgl</p>
-        <p>libs : react, Babylon.js, tone.js, </p>
+        <p>libs : inferno, Babylon.js, tone.js, </p>
       </div>
     );
   }
