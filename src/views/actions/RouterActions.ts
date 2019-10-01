@@ -1,4 +1,4 @@
-import Router from '../client/Router';
+import Router from '../inputs/Router';
 
 export default class RouterActions{
     static navigationComplete(){

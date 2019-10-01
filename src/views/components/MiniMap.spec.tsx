@@ -1,7 +1,7 @@
 import { Component } from 'inferno';
 import { renderIntoContainer } from 'inferno-test-utils';
 
-import MiniMap from '../MiniMap';
+import MiniMap from './MiniMap';
 
 describe('HeroActions', () => {
   let component;

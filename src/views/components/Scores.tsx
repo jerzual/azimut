@@ -1,5 +1,5 @@
-import { Component } from 'inferno';
-import { Flex, Donut } from 'rebass';
+import { Component } from "inferno";
+import { Flex, Donut } from "rebass";
 /**
  * Score screen component
  */

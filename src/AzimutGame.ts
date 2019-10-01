@@ -1,5 +1,5 @@
-import CityBuilder from "./world/builder/CityBuilder";
-import HeroBuilder from "./world/builder/HeroBuilder";
+import CityBuilder from "./world/builder/city.builder";
+import HeroBuilder from "./world/builder/hero.builder";
 import Tile from "./engine/Tile";
 import Actor from "./engine/Actor";
 import Turn, { TurnImpl } from "./engine/Turn";
