@@ -19,27 +19,34 @@ team based, turn based, isometric / 3D mixed with sprites.
 javascript(typescript) and web stuff
 
 - babylonjs for the 3D / game engine 
-- inferno for the ui / 
+- angular/ngrx/custom svgs for the ui / 
 - rot.js for level generation / rogue-like aspects.
 - tone.js for music / sound
-- node.js / express / mongodb for server-side storage.
+- nest.js / express / couchdb / pouchdb for server-side storage.
+
+## how to run
+
+### prerequisites
+have docker + docker-compose installed
 
 ## inspiration
 
 ### Gameplay
 
-- klei's
+- klei's invisible inc
+- dishonored series
+- little big adventure
 
 ### Art style
 
-- Another world style
+- Another world style : flat shapes, simple SVg shapes as much as possible
 - flat shapes, pastel colors
-
 
 ### Story
 
 - Zombie movies
 - Stranger things
+- Groundhound day
 
 ## Gameplay loop
 
