@@ -10,9 +10,15 @@
 
 a turn based party survival game
 
-## principles :
+it is a total rework of old code, based on couchdb sync + docker dev env
+
+## Principle
 
 team based, turn based, isometric / 3D mixed with sprites.
+
+worlds are created by each players, connected by synchronized replicated dbs.
+game allows you a number of points per turn, you have 12 hours to compute a turn.
+you have a party of one to 4 heroes, in a world shared between players.
 
 ## tech stack
 
