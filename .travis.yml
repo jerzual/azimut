@@ -1,0 +1,33 @@
+sudo: required
+dist: trusty
+language: node_js
+
+node_js:
+   - node # will use latest node
+sudo: required
+before_script: # commands to run before the build step
+  - npm install -g @angular/cli
+  - npm install
+
+notifications:
+  email: # only receive email when the build status changes (someone broke the build!)
+    on_failure: change
+    on_success: change
+
+cache:
+  directories:
+    - "node_modules"
+
+script:
+  - ng test --runInBand --collectCoverage
+  - ng build --prod --base-href=/azimut-angular/
+
+deploy:
+  local_dir: dist/
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep_history: true
+  on:
+    branch: master
+
