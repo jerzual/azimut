@@ -107,6 +107,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "azimut-angular"
+    }
+  },
+  "defaultProject": "azimut-angular",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
