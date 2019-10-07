@@ -1,0 +1,47 @@
+version: '3'
+volumes:
+  logs:
+    driver: local
+  db:
+    driver: local
+networks: 
+  azimut-network:
+services:
+  # MySQL database
+  couchdb:
+    image: couchdb
+    command: --max-allowed-packet=64MB
+    restart: always
+    env_file:
+      #- .env.dist
+      - .env
+    environment:
+      - AZIMUT_COUCHDB_HOST
+      - COUCHDB_USER:AZIMUT_COUCHDB_USER
+      - COUCHDB_PASSWORD:AZIMUT_COUCHDB_PASSWORD
+    volumes:
+      - db:/opt/couchdb/data 
+    ports: 
+      - 5984:5984
+
+  # Angular + express running on node
+  server:
+    build:
+      context: .
+      args:
+        NG_ENV: local
+    volumes:
+      - .:/usr/src/azimut
+      - /usr/src/app/node_modules
+    restart: always
+    links:
+      - couchdb
+    ports:
+      - 4000:4000
+      - 4200:4200
+    environment:
+      - NODE_ENV=development
+      - AZIMUT_COUCHDB_HOST
+      - AZIMUT_FRONT_URL
+
+
