@@ -23,7 +23,7 @@ cache:
 
 script:
   - docker-compose --version
-  - ng test --runInBand --collectCoverage
+  #- ng test --runInBand --collectCoverage
   - ng build --prod --base-href=/azimut-angular/
 
 deploy:
