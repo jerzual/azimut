@@ -19,6 +19,13 @@ team based, turn based, isometric / 3D mixed with sprites.
 worlds are created by each players, connected by synchronized replicated dbs.
 game allows you a number of points per turn, you have 12 hours to compute a turn.
 you have a party of one to 4 heroes, in a world shared between players.
+world has biomes and sould be a graph of
+
+| worlds
+| / -> view
+| 000/ -> 
+
+| /worlds/000/ -> 
 
 ## tech stack
 
