@@ -24,7 +24,7 @@ cache:
 script:
   - docker-compose --version
   #- ng test --runInBand --collectCoverage
-  - ng build --prod --base-href=/${branch}/ --out-dir=dist/${branch}
+  - ng build --prod --base-href=/${branch}/ --output-path=dist/${branch}
 
 deploy:
   local_dir: dist/
