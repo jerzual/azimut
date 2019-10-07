@@ -10,6 +10,7 @@ import {
 import * as fromRoot from '../../reducers';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { NewGlobalError } from '../actions/core.actions';
 
 @Injectable()
 export class AzimutHttpInterceptor implements HttpInterceptor {
@@ -21,7 +22,7 @@ export class AzimutHttpInterceptor implements HttpInterceptor {
   ): Observable<any> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        // this.store.dispatch(new AddGlobalError(error));
+        this.store.dispatch(new NewGlobalError(error));
         return throwError(error);
       }),
     );

@@ -5,9 +5,13 @@ export const gameFeatureKey = 'game';
 
 export interface State {
   items: any[];
+  world: object;
+  actors: any[];
 }
 
 export const initialState: State = {
+  world: {},
+  actors: [],
   items: [],
 };
 
