@@ -24,7 +24,7 @@ cache:
 script:
   - docker-compose --version
   #- ng test --runInBand --collectCoverage
-  - ng build --prod --base-href=/azimut-angular/
+  - ng build --prod --base-href=/azimut-angular/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}/ --output-path=dist/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
 
 deploy:
   local_dir: dist/
@@ -32,6 +32,4 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep_history: true
-  on:
-    branch: master
 
