@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducers, metaReducers/*, REDUCERS_TOKEN*/ } from './reducers';
+import { reducers, metaReducers, REDUCERS_TOKEN } from './reducers';
 import { AppEffects } from './app.effects';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
@@ -22,7 +22,7 @@ import { SceneModule } from './scene/scene.module';
     CoreModule,
     SceneModule,
     // ngrx
-    StoreModule.forRoot(/*REDUCERS_TOKEN*/ reducers, {
+    StoreModule.forRoot(REDUCERS_TOKEN, {
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
@@ -36,7 +36,7 @@ import { SceneModule } from './scene/scene.module';
       logOnly: environment.production,
     }),
   ],
-  providers: [/*{ provide: REDUCERS_TOKEN, useValue: reducers }*/],
+  providers: [{ provide: REDUCERS_TOKEN, useValue: reducers }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

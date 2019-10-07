@@ -19,7 +19,6 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: UserInterfaceActions): State {
   switch (action.type) {
-
     case UserInterfaceActionTypes.Resize:
       return state;
 
