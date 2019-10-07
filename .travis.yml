@@ -24,7 +24,7 @@ cache:
 script:
   - docker-compose --version
   #- ng test --runInBand --collectCoverage
-  - ng build --prod --base-href=/azimut-angular/${branch}/ --output-path=dist/${branch}
+  - ng build --prod --base-href=/azimut-angular/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}/ --output-path=dist/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
 
 deploy:
   local_dir: dist/
