@@ -10,6 +10,7 @@ import * as fromUserInterface from '../ui/reducers/user-interface.reducer';
 import * as fromAdmin from '../admin/reducers/admin.reducer';
 import * as fromGame from '../game/reducers/game.reducer';
 import * as fromConfig from '../core/reducers/config.reducer';
+import { InjectionToken } from '@angular/core';
 
 export interface State {
 
@@ -26,6 +27,7 @@ export const reducers: ActionReducerMap<State> = {
   [fromGame.gameFeatureKey]: fromGame.reducer,
   [fromConfig.configFeatureKey]: fromConfig.reducer,
 };
+export const REDUCERS_TOKEN = new InjectionToken<ActionReducerMap<State>>('App Reducers');
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
