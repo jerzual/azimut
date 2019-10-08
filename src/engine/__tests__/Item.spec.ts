@@ -1,7 +1,8 @@
-import { Item } from '../Item';
+import { Item, ItemImpl } from '../Item';
 
 describe('Item interface', () => {
-    it('', () => {
-
+    it('can be created', () => {
+        const item = new ItemImpl();
+        expect(item).toBeDefined();
     });
 });

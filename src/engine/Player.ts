@@ -1,18 +1,18 @@
 import uuid from 'uuid';
 
 export interface Player {
-    uuid: String;
-    host: String;
-    socketId?: String;
+    uuid: string;
+    host: string;
+    socketId?: string;
     createdAt: number;
-    cityId?: String;
-    levelId?: String;
+    cityId?: string;
+    levelId?: string;
 }
 
-export function playerFactory(): Player{
+export function playerFactory(): Player {
     return {
         uuid: uuid.v4(),
         host: 'localhost',
         createdAt: Date.now()
-    }
+    };
 }

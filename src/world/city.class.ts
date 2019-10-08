@@ -1,8 +1,8 @@
-import Tile from "../engine/Tile";
-import Level from "../engine/Level";
+import Tile from '../engine/Tile';
+import Level from '../engine/Level';
 
 const MIN_CITY_SIZE = 512;
-export interface City{
+export interface City {
     levels: Array<Level>;
     width: number;
     height: number;

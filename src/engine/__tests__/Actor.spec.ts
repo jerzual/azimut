@@ -1,11 +1,11 @@
 import { Actor, ActorStatus, actorFactory } from '../Actor';
 
-describe('Actor interface',() => {
+describe('Actor interface', () => {
 
-    it('provides a factory function', ()=>{
+    it('provides a factory function', () => {
         const object = actorFactory();
 
         expect(object.uuid).toBeDefined();
-        expect(object.status).toBe(ActorStatus.IDLING)
-    })
+        expect(object.status).toBe(ActorStatus.IDLING);
+    });
 });

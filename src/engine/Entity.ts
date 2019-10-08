@@ -1,16 +1,16 @@
-import {Behavior, Behaviors} from './behaviors/Behavior'
+import {Behavior, Behaviors} from './behaviors/Behavior';
 import { v4 } from 'uuid';
 
-export class Entity{
+export class Entity {
     uuid: string;
-    private behaviors:Behavior[];
-    constructor(components: Behavior[]){
+    private behaviors: Behavior[];
+    constructor(components: Behavior[]) {
         this.uuid = v4();
     }
-    getBehavior(type:Behaviors){
+    getBehavior(type: Behaviors) {
         return this.behaviors.filter(behavior => behavior.type === type);
     }
-    addBehavior(behavior:Behavior){
+    addBehavior(behavior: Behavior) {
         this.behaviors.push(behavior);
     }
 }

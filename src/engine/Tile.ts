@@ -1,6 +1,6 @@
 import Item from './Item';
 
-export interface Tile{
+export interface Tile {
     x: number;
     y: number;
     type: TileType;
@@ -9,7 +9,7 @@ export interface Tile{
     transportTo?: Tile;
     items?: Array<Item>;
 }
-export enum TileType{
+export enum TileType {
     EMPTY,
     FLOOR,
     WALL,
@@ -17,18 +17,18 @@ export enum TileType{
     DEATH,
     TELEPORTER
 }
-export class TileImpl implements Tile{
-    x:number;
-    y:number;
-    type:TileType;
-    walkable:boolean;
-    diggable:boolean;
-    transportTo:Tile;
-    get key(){
+export class TileImpl implements Tile {
+    x: number;
+    y: number;
+    type: TileType;
+    walkable: boolean;
+    diggable: boolean;
+    transportTo: Tile;
+    get key() {
         return `${this.x},${this.y}`;
     }
-    set key(key:string){
+    set key(key: string) {
         console.log();
     }
 }
- export default Tile;
+export default Tile;

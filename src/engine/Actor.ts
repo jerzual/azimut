@@ -3,7 +3,7 @@ import { Entity } from './Entity';
 import { Action } from './Action';
 import { v4 } from 'uuid';
 
-export interface Actor{
+export interface Actor {
     uuid: string;
     actionPoints: number;
     life: number;
@@ -20,7 +20,7 @@ export enum ActorStatus {
 }
 
 export class ActorImpl extends Entity implements Actor {
-    uuid:string;
+    uuid: string;
     //
     actionPoints: number;
     life: number;
