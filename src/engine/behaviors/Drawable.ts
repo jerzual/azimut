@@ -1,5 +1,5 @@
-export class Drawable{
-    draw(canvas:HTMLCanvasElement){
-        
+export class DrawableBehavior {
+    draw(canvas: HTMLCanvasElement) {
+
     }
 }

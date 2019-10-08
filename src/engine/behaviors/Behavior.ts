@@ -1,7 +1,7 @@
 // this will allow for behaviors to know each others.
 import { v4 } from 'uuid';
 
-export const enum Behaviors{
+export const enum Behaviors {
     EnvironmentAware,
     Fightable,
     Droppable,
@@ -17,23 +17,23 @@ export interface Agent {
     params?: any[];
 }
 /** behavior required fields */
-export interface Behavior{
+export interface Behavior {
     uuid: string;
-    execute?: Function;
+    execute?: () => void;
     type: Behaviors;
     agent: Agent;
 }
-export class ConcreteBehavior implements Behavior{
+export class ConcreteBehavior implements Behavior {
     constructor(
         public uuid: string,
-        public execute: Function,
+        public execute: () => void,
         public type: Behaviors,
         public agent: Agent,
-    ){
+    ) {
 
     }
 }
 
-export function behaviorFactory(execute: Function, type, agent: any): Behavior {
-    return new ConcreteBehavior(v4(),execute, type, agent);
+export function behaviorFactory(execute: () => void, type, agent: any): Behavior {
+    return new ConcreteBehavior(v4(), execute, type, agent);
 }

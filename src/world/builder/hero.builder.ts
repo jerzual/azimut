@@ -1,27 +1,27 @@
 import Actor from '../../engine/Actor';
-import RandomBuilder from './RandomBuilder';
+import RandomBuilder from './random.builder';
 
-export default class HeroBuilder extends RandomBuilder{
-    hero:Actor;
-    constructor({seed}){
+export default class HeroBuilder extends RandomBuilder {
+    hero: Actor;
+    constructor({seed}) {
         super({seed});
     }
-    hair(){
+    hair() {
 
     }
-    facialHair(){
+    facialHair() {
 
     }
-    skinColor(){
+    skinColor() {
 
     }
-    pantsShape(){
+    pantsShape() {
 
     }
-    pantsColor(){
+    pantsColor() {
 
     }
-    build(): Actor{
+    build(): Actor {
         return this.hero;
     }
 }
