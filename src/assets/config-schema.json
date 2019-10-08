@@ -1,25 +1,21 @@
 {
-   "definitions": {},
-   "$schema": "http://json-schema.org/draft-07/schema#",
-   "$id": "http://example.com/root.json",
-   "type": "object",
-   "title": "The Root Schema",
-   "required": [
-     "backendurl"
-   ],
-   "properties": {
-     "backendurl": {
-       "$id": "#/properties/backendurl",
-       "type": "string",
-       "title": "The Backendurl Schema",
-       "default": "",
-       "examples": [
-         "http://azimut_server"
-       ],
-       "pattern": "^(.*)$"
-     }
-   }
- }
-   
-   
-   
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "ConfigurationSchema",
+  "required": [
+    "backendurl"
+  ],
+  "properties": {
+    "backendurl": {
+      "$id": "#/properties/backendurl",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "http://azimut_server"
+      ],
+      "pattern": "^https?:\/\/(.*)$"
+    }
+  }
+}
