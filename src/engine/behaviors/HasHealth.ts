@@ -1,4 +1,4 @@
-export class HealthAgent{
+export class HealthAgent {
     healthPoints: number;
-    
+
 }
