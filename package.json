@@ -8,7 +8,8 @@
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "gen:types": "json2ts --input src/assets/config-schema.json --output src/assets/config.d.ts"
   },
   "private": true,
   "dependencies": {
