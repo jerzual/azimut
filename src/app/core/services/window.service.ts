@@ -32,9 +32,4 @@ export class WindowService {
     return 0;
   }
 
-  public ga(
-    command: string | Function,
-    params?: any,
-    extra?: any,
-  ): void {}
 }
