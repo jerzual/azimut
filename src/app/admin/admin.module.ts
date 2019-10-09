@@ -7,10 +7,12 @@ import * as fromAdmin from './reducers/admin.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AdminEffects } from './effects/admin.effects';
 import { AdminRootComponent } from './components/admin-root/admin-root.component';
+import { AdminService } from './services/admin.service';
 
 
 @NgModule({
   declarations: [AdminRootComponent],
+  providers: [AdminService],
   imports: [
     CommonModule,
     AdminRoutingModule,
