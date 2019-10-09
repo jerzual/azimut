@@ -9,8 +9,7 @@ networks:
 services:
   # MySQL database
   couchdb:
-    image: couchdb
-    command: --max-allowed-packet=64MB
+    image: couchdb:2.3.1
     restart: always
     env_file:
       #- .env.dist
@@ -32,16 +31,23 @@ services:
         NG_ENV: local
     volumes:
       - .:/usr/src/azimut
-      - /usr/src/app/node_modules
+      - /usr/src/azimut/node_modules
     restart: always
     links:
       - couchdb
     ports:
       - 4000:4000
-      - 4200:4200
+      - 4100:4100
     environment:
       - NODE_ENV=development
       - AZIMUT_COUCHDB_HOST
       - AZIMUT_FRONT_URL
 
+  e2e:
+    image: node:12
+    build:
+      context: ./e2e
+    command: npm ci
+    volumes:
+      - ./e2e:/usr/src/app
 

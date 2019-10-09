@@ -57,13 +57,10 @@
     "@types/node": "~8.9.4",
     "@types/rot-js": "^0.6.5",
     "codelyzer": "^5.0.0",
-    "jasmine-core": "~3.4.0",
-    "jasmine-spec-reporter": "~4.2.1",
     "jest": "^24.9.0",
     "jest-marbles": "^2.5.0",
     "jest-preset-angular": "^7.1.1",
     "json-schema-to-typescript": "^7.1.0",
-    "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
