@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AngularDraggableModule } from 'angular2-draggable';
 
 import * as fromUserInterface from './reducers/user-interface.reducer';
 
@@ -15,6 +16,7 @@ import { WidgetsContainerComponent } from './containers/widgets-container/widget
   declarations: [WidgetComponent, WidgetsContainerComponent],
   imports: [
     CommonModule,
+    AngularDraggableModule,
     StoreModule.forFeature(fromUserInterface.userInterfaceFeatureKey, fromUserInterface.reducer),
     EffectsModule.forFeature([UserInterfaceEffects])
   ]

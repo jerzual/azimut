@@ -2,7 +2,7 @@ import uuid from 'uuid';
 
 export interface Player {
     uuid: string;
-    host: string;
+    host?: string;
     socketId?: string;
     createdAt: number;
     cityId?: string;

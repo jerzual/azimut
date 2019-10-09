@@ -18,4 +18,4 @@ export class NewGlobalError implements Action {
   constructor(readonly payload: {error: Error}) {}
 }
 
-export type CoreActions = IntializerStart | IntializerEnd;
+export type CoreActions = IntializerStart | IntializerEnd | NewGlobalError;

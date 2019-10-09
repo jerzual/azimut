@@ -6,13 +6,21 @@ import { EngineService } from '../../services/engine.service';
 describe('SceneComponent', () => {
   let component: SceneComponent;
   let fixture: ComponentFixture<SceneComponent>;
-
+  let engineServiceMock: EngineService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SceneComponent ],
-      providers: [EngineService]
-    })
-    .compileComponents();
+      declarations: [SceneComponent],
+      providers: [
+        {
+          provide: EngineService,
+          useValue: {
+            createScene: jest.fn(),
+            animate: jest.fn(),
+          },
+        },
+      ],
+    }).compileComponents();
+    engineServiceMock = TestBed.get(EngineService);
   }));
 
   beforeEach(() => {
@@ -23,5 +31,6 @@ describe('SceneComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(engineServiceMock.createScene).toHaveBeenCalled();
   });
 });
