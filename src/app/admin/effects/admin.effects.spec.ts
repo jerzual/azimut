@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { AdminEffects } from './admin.effects';
 import { AdminService } from '../services/admin.service';
@@ -28,6 +28,7 @@ describe('AdminEffects', () => {
   });
 
   it('should be created', () => {
+    actions$ = of({});
     expect(effects).toBeTruthy();
   });
 });
