@@ -21,7 +21,8 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server",
     "test:watch": "jest --watch",
-    "gen:types": "json2ts --input src/assets/config-schema.json --output src/assets/config.d.ts"
+    "gen:types": "json2ts --input src/assets/config-schema.json --output src/assets/config.d.ts",
+    "gen:sprites": "json2ts --input src/assets/sprites-schema.json --output src/assets/sprites.d.ts"
   },
   "private": true,
   "dependencies": {
@@ -82,6 +83,7 @@
     "@types/node": "~8.9.4",
     "@types/rot-js": "^0.6.5",
     "codelyzer": "^5.0.0",
+    "image-size": "^0.8.3",
     "jest": "^24.9.0",
     "jest-marbles": "^2.5.0",
     "jest-preset-angular": "^7.1.1",
