@@ -32,7 +32,7 @@ world has biomes and sould be a graph of
 javascript(typescript) and web stuff
 
 - babylonjs for the 3D / game engine 
-- angular/ngrx/custom svgs for the ui / 
+- angular/ngrx/custom svgs for the ui
 - rot.js for level generation / rogue-like aspects.
 - tone.js for music / sound
 - nest.js / express / couchdb / pouchdb for server-side storage.
@@ -40,6 +40,7 @@ javascript(typescript) and web stuff
 ## how to run
 
 ### prerequisites
+
 have docker + docker-compose installed
 
 ## inspiration
@@ -57,7 +58,7 @@ have docker + docker-compose installed
 
 ### Story
 
-- Zombie movies
+- Zombie movies, sci fi light humor
 - Stranger things
 - Groundhound day
 
@@ -65,7 +66,7 @@ have docker + docker-compose installed
 
 1. explore, move your party around in the overworld.
 2. dungeon (inside of buildings, underground mines, caves or find key or boss item)
-3. stealth or fight :
+3. stealth or fight.
 
 ## Level generation
 
