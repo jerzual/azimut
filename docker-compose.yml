@@ -1,29 +1,53 @@
-version: '2'
+version: '3'
+volumes:
+  logs:
+    driver: local
+  db:
+    driver: local
+networks: 
+  azimut-network:
 services:
-    azimut:
-        build: .
-        container_name: "azimut_game"
-        environment:
-            - NODE_ENV=development
-            - FOO=bar
-        volumes:
-            - .:/usr/src/azimut:rw
-            - /tmp/.X11-unix:/tmp/.X11-unix:rw
-        ports:
-            - 5000:5000
-            - 9000:9000
-        links:
-            - mongodb
-        depends_on:
-            - mongodb
-    mongodb:
-        image: mongo:latest
-        container_name: "azimut_mongodb"
-        environment:
-          - MONGO_DATA_DIR=/data/db
-          - MONGO_LOG_DIR=/dev/null
-        volumes:
-          - ./data/db:/data/db
-        ports:
-            - 27017:27017
-        command: mongod --smallfiles --logpath=/dev/null # --quiet
+  # MySQL database
+  couchdb:
+    image: couchdb:2.3.1
+    restart: always
+    env_file:
+      #- .env.dist
+      - .env
+    environment:
+      - AZIMUT_COUCHDB_HOST
+      - COUCHDB_USER:AZIMUT_COUCHDB_USER
+      - COUCHDB_PASSWORD:AZIMUT_COUCHDB_PASSWORD
+    volumes:
+      - db:/opt/couchdb/data 
+    ports: 
+      - 5984:5984
+
+  # Angular + express running on node
+  server:
+    build:
+      context: .
+      args:
+        NG_ENV: local
+    volumes:
+      - .:/usr/src/azimut
+      - /usr/src/azimut/node_modules
+    restart: always
+    links:
+      - couchdb
+    ports:
+      - 4000:4000
+      - 4100:4100
+    environment:
+      - NODE_ENV=development
+      - AZIMUT_COUCHDB_HOST
+      - AZIMUT_FRONT_URL
+
+  e2e:
+    image: node:12
+    build:
+      context: ./e2e
+    command: npm ci
+    volumes:
+      - ./e2e:/usr/src/app
+

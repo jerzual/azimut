@@ -1,11 +1,11 @@
 import { Action, ActionTypes, actionFactory } from '../Action';
 
-describe('Action interface',() => {
+describe('Action interface', () => {
 
-    test('provides a factory function', ()=>{
+    test('provides a factory function', () => {
         const object = actionFactory(ActionTypes.TALK);
 
         expect(object.uuid).toBeDefined();
-        expect(object.type).toBe(ActionTypes.TALK)
-    })
+        expect(object.type).toBe(ActionTypes.TALK);
+    });
 });

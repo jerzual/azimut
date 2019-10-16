@@ -1,18 +1,18 @@
 /*
  * a Level is a set of tiles, it is linked to a socket.io room.
  */
-import Tile from "./Tile";
+import Tile from './Tile';
 
 export interface Level {
-    //array of positions
-    tiles:Array<Tile>;
-    currentPlayers:number;
-    width:number;
-    height:number;
+    // array of positions
+    tiles: Array<Tile>;
+    currentPlayers: number;
+    width: number;
+    height: number;
 }
 // Each type of level means a different map GeneratorFunction.
 enum LevelType {
-    CAVERN, //ROT.Map.
+    CAVERN, // ROT.Map.
     BUILDING_FLOOR,
     OPEN_FIELD,
     URBAN_AREA,

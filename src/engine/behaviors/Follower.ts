@@ -1,4 +1,3 @@
-//NPC ai : follower
-{
-    
+export class FollowerBehavior {
+
 }

@@ -1,0 +1,26 @@
+:root{
+    --main-color: #7ab793;
+}
+.home-title{
+
+    color: #7ab793;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.home-menu {
+    color: var(--main-color);
+}
+
+.menu-item {
+  list-style-type: none;
+}
+
+.menu-item-link {
+    color: var(--main-color);
+    transition: .3s ease-in-out color;
+}
+
+.menu-item-link:hover,
+.menu-item-link:focus {
+  color: white;
+}
