@@ -1,4 +1,98 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://jerzual.github.io/azimut/assets/sprites-schema.json",
+    "type": "object",
+    "title": "TexturePackerSchema",
+    "required": [
+        "frames"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "frames": {
+            "$id": "#/properties/frames",
+            "type": "object",
+            "title": "Frames Schema",
+            "description": "map of images names and sprite infos",
+            "patternProperties": {
+                "^([A-Za-z_\\.])\\.png": {
+                    "$ref": "#/definitions/sprite"
+                }
+            }
+        },
+        "meta": {
+            "$id": "#/properties/meta",
+            "type": "object",
+            "title": "Meta Schema",
+            "properties": {
+                "app": {
+                    "$id": "#/properties/meta/properties/app",
+                    "type": "string",
+                    "title": "App Schema",
+                    "default": "",
+                    "examples": [
+                        "https://www.codeandweb.com/texturepacker"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "version": {
+                    "$id": "#/properties/meta/properties/version",
+                    "type": "string",
+                    "title": "Version Schema",
+                    "default": "",
+                    "examples": [
+                        "1.0"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "image": {
+                    "$id": "#/properties/meta/properties/image",
+                    "type": "string",
+                    "title": "Image Schema",
+                    "default": "",
+                    "examples": [
+                        "pack1.png"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "format": {
+                    "$id": "#/properties/meta/properties/format",
+                    "type": "string",
+                    "title": "Format Schema",
+                    "default": "",
+                    "examples": [
+                        "RGBA8888"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "size": {
+                    "$id": "#/properties/meta/properties/size",
+                    "$ref": "#/definitions/size",
+                    "title": "Size Schema"
+                },
+                "scale": {
+                    "$id": "#/properties/meta/properties/scale",
+                    "type": "string",
+                    "title": "Scale Schema",
+                    "default": "",
+                    "examples": [
+                        "1"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "smartupdate": {
+                    "$id": "#/properties/meta/properties/smartupdate",
+                    "type": "string",
+                    "title": "Smartupdate Schema",
+                    "default": "",
+                    "examples": [
+                        "$TexturePacker:SmartUpdate:c5944b8d86d99a167f95924d4a62d5c3:3ed0ae95f00621580b477fcf2f6edb75:5d0ff2351eb79b7bb8a91bc3358bcff4$"
+                    ],
+                    "pattern": "^(.*)$"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
     "definitions": {
         "size": {
             "$id": "#/definitions/size",
@@ -93,98 +187,6 @@
                 },
                 "spriteSourceSize": {
                     "$ref": "#/definitions/sizeAndPosition"
-                }
-            },
-            "additionalProperties": false
-        }
-    },
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://jerzual.github.io/azimut/assets/sprites-schema.json",
-    "type": "object",
-    "title": "TexturePackerSchema",
-    "required": [
-        "frames"
-    ],
-    "properties": {
-        "frames": {
-            "$id": "#/properties/frames",
-            "type": "object",
-            "title": "Frames Schema",
-            "patternProperties": {
-                "^([A-Za-z_\\.])\\.png": {
-                    "$ref": "#/definitions/sprite"
-                }
-            }
-        },
-        "meta": {
-            "$id": "#/properties/meta",
-            "type": "object",
-            "title": "Meta Schema",
-            "properties": {
-                "app": {
-                    "$id": "#/properties/meta/properties/app",
-                    "type": "string",
-                    "title": "App Schema",
-                    "default": "",
-                    "examples": [
-                        "https://www.codeandweb.com/texturepacker"
-                    ],
-                    "pattern": "^(.*)$"
-                },
-                "version": {
-                    "$id": "#/properties/meta/properties/version",
-                    "type": "string",
-                    "title": "Version Schema",
-                    "default": "",
-                    "examples": [
-                        "1.0"
-                    ],
-                    "pattern": "^(.*)$"
-                },
-                "image": {
-                    "$id": "#/properties/meta/properties/image",
-                    "type": "string",
-                    "title": "Image Schema",
-                    "default": "",
-                    "examples": [
-                        "pack1.png"
-                    ],
-                    "pattern": "^(.*)$"
-                },
-                "format": {
-                    "$id": "#/properties/meta/properties/format",
-                    "type": "string",
-                    "title": "Format Schema",
-                    "default": "",
-                    "examples": [
-                        "RGBA8888"
-                    ],
-                    "pattern": "^(.*)$"
-                },
-                "size": {
-                    "$id": "#/properties/meta/properties/size",
-                    "$ref": "#/definitions/size",
-                    "title": "Size Schema"
-                },
-                "scale": {
-                    "$id": "#/properties/meta/properties/scale",
-                    "type": "string",
-                    "title": "Scale Schema",
-                    "default": "",
-                    "examples": [
-                        "1"
-                    ],
-                    "pattern": "^(.*)$"
-                },
-                "smartupdate": {
-                    "$id": "#/properties/meta/properties/smartupdate",
-                    "type": "string",
-                    "title": "Smartupdate Schema",
-                    "default": "",
-                    "examples": [
-                        "$TexturePacker:SmartUpdate:c5944b8d86d99a167f95924d4a62d5c3:3ed0ae95f00621580b477fcf2f6edb75:5d0ff2351eb79b7bb8a91bc3358bcff4$"
-                    ],
-                    "pattern": "^(.*)$"
                 }
             },
             "additionalProperties": false

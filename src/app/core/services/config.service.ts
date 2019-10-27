@@ -14,6 +14,6 @@ export class ConfigService {
   constructor(private readonly httpClient: HttpClient) {}
 
   fetchConfig(): Observable<ConfigurationSchema> {
-    return this.httpClient.get<ConfigurationSchema>('assets/config.json');
+    return this.httpClient.get<ConfigurationSchema>('assets/data/config.json');
   }
 }
