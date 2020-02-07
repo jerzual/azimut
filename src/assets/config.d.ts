@@ -5,7 +5,16 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * Environment configuration
+ */
 export interface ConfigurationSchema {
-  backendurl: string;
-  [k: string]: any;
+  /**
+   * Base url
+   */
+  backendUrl?: string;
+  /**
+   * host of couchdb
+   */
+  databaseHost?: string;
 }

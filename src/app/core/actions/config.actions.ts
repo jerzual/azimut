@@ -12,11 +12,11 @@ export class LoadConfig implements Action {
 }
 export class LoadConfigSuccess implements Action {
   readonly type = ConfigActionTypes.LoadConfigSuccess;
-  constructor(payload: { data: ConfigurationSchema }) {}
+  constructor(public payload: { data: ConfigurationSchema }) {}
 }
 export class LoadConfigFailure implements Action {
   readonly type = ConfigActionTypes.LoadConfigfailure;
-  constructor(payload: { error: Error }) {}
+  constructor(public payload: { error: Error }) {}
 }
 
 export type ConfigActions = LoadConfig | LoadConfigSuccess | LoadConfigFailure;

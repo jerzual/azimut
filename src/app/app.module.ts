@@ -1,26 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducers, metaReducers, REDUCERS_TOKEN } from './reducers';
+import {
+  reducers,
+  metaReducers,
+  REDUCERS_TOKEN,
+} from './reducers';
 import { AppEffects } from './app.effects';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
 import { SceneModule } from './scene/scene.module';
-import { HttpClientModule } from '@angular/common/http';
 import { WindowService } from './core/services/window.service';
+import { initApplication } from './app.initializer';
 
 // For AoT compilation:
 export function getWindow() {
   return window;
 }
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -46,6 +52,12 @@ export function getWindow() {
     }),
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApplication,
+      deps: [Store],
+      multi: true,
+    },
     { provide: REDUCERS_TOKEN, useValue: reducers },
     {
       provide: WindowService,

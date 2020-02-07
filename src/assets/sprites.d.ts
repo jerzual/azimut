@@ -21,8 +21,10 @@ export type SmartupdateSchema = string;
 export interface TexturePackerSchema {
   frames: FramesSchema;
   meta?: MetaSchema;
-  [k: string]: any;
 }
+/**
+ * map of images names and sprite infos
+ */
 export interface FramesSchema {
   [k: string]: SpriteSchema;
 }
