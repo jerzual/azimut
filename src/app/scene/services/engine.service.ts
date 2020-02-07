@@ -69,7 +69,7 @@ export class EngineService {
     // create the material with its texture for the sphere and assign it to the sphere
     const spherMaterial = new StandardMaterial('sun_surface', this.scene);
     spherMaterial.diffuseTexture = new Texture(
-      'assets/textures/sun.jpg',
+      'assets/textures/earth.jpg',
       this.scene,
     );
     this.sphere.material = spherMaterial;

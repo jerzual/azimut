@@ -1,16 +1,16 @@
 import { Action } from '@ngrx/store';
 
 export enum CoreActionTypes {
-  IntializerStart = '[Core] App Initializer start',
-  IntializerEnd = '[Core] App Initializer end',
+  InitializerStart = '[Core] App Initializer start',
+  InitializerEnd = '[Core] App Initializer end',
   NewGlobalError = '[Core] ERROR',
 }
 
-export class IntializerStart implements Action {
-  readonly type = CoreActionTypes.IntializerStart;
+export class InitializerStart implements Action {
+  readonly type = CoreActionTypes.InitializerStart;
 }
-export class IntializerEnd implements Action {
-  readonly type = CoreActionTypes.IntializerEnd;
+export class InitializerEnd implements Action {
+  readonly type = CoreActionTypes.InitializerEnd;
 }
 
 export class NewGlobalError implements Action {
@@ -18,4 +18,4 @@ export class NewGlobalError implements Action {
   constructor(readonly payload: {error: Error}) {}
 }
 
-export type CoreActions = IntializerStart | IntializerEnd | NewGlobalError;
+export type CoreActions = InitializerStart | InitializerEnd | NewGlobalError;
