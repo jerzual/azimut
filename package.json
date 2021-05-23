@@ -51,6 +51,7 @@
     "@nguniversal/common": "^12.0.0",
     "@nguniversal/express-engine": "^12.0.0",
     "@tonaljs/tonal": "^3.2.2",
+    "@wdio/schematics": "^1.0.3",
     "angular-audio-context": "^28.0.18",
     "angular2-draggable": "^2.3.2",
     "babylon-navigation-mesh": "^1.2.6",
@@ -91,6 +92,10 @@
     "@types/rot-js": "^0.6.5",
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
+    "@wdio/cucumber-framework": "^7.6.0",
+    "@wdio/junit-reporter": "^7.6.0",
+    "@wdio/local-runner": "^7.6.0",
+    "@wdio/spec-reporter": "^7.6.0",
     "eslint": "^7.26.0",
     "image-size": "^0.8.3",
     "jest": "^25.5.4",
@@ -101,6 +106,9 @@
     "ts-loader": "^6.2.0",
     "ts-node": "~7.0.0",
     "typescript": "~4.2.4",
-    "wait-on": "^3.3.0"
+    "wait-on": "^3.3.0",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-docker-service": "^3.1.2",
+    "wdio-wait-for": "^2.0.3"
   }
 }
