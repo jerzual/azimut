@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -13,8 +13,8 @@ import { ConfigService } from '../services/config.service';
 
 @Injectable()
 export class ConfigEffects {
-  @Effect()
-  loadConfig$ = this.actions$.pipe(
+  
+  loadConfig$ = createEffect(() => this.actions$.pipe(
     ofType(ConfigActionTypes.LoadConfig),
     switchMap(() =>
       // call the service
@@ -25,7 +25,7 @@ export class ConfigEffects {
         catchError(error => of(new LoadConfigFailure({ error }))),
       ),
     ),
-  );
+  ));
 
   constructor(
     private actions$: Actions<ConfigActions>,
