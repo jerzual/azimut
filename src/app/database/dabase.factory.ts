@@ -1,31 +1,40 @@
-import RxDB, { RxDatabase, RxDatabaseCreator } from 'rxdb';
+import {
+  RxDatabase,
+  RxDatabaseCreator,
+  createRxDatabase,
+  addRxPlugin,
+} from 'rxdb';
 import { InjectionToken } from '@angular/core';
 import { AzimutDatabaseCollections } from './collections';
 
+import * as PouchDBAdapterInMemory from 'pouchdb-adapter-memory';
+import * as PouchDBAdapterIndexedDB from 'pouchdb-adapter-idb';
 /**
  * Injection token for RxDB configuration.
  * Allows to pass in memory or real indexed db config depending on context.
  */
-export const RXDB_CONFIG: InjectionToken<
+export const RXDB_CONFIG: InjectionToken<RxDatabaseCreator> = new InjectionToken<
   RxDatabaseCreator
-> = new InjectionToken<RxDatabaseCreator>('RXDB_CONFIG');
+>('RXDB_CONFIG');
 
 /**
  * RxDb azimut database instance
  */
-export const RXDB_DATABASE: InjectionToken<
-  RxDatabase<AzimutDatabaseCollections>
-> = new InjectionToken<RxDatabase<AzimutDatabaseCollections>>('RXDB_DATABASE');
+export const RXDB_DATABASE: InjectionToken<RxDatabase<
+  AzimutDatabaseCollections
+>> = new InjectionToken<RxDatabase<AzimutDatabaseCollections>>('RXDB_DATABASE');
 
 export async function createDatabase(
   config?: RxDatabaseCreator,
 ): Promise<RxDatabase<AzimutDatabaseCollections>> {
-  RxDB.plugin(require('pouchdb-adapter-memory'));
-  RxDB.plugin(require('pouchdb-adapter-idb'));
-  return await RxDB.create<AzimutDatabaseCollections>({
+  addRxPlugin(PouchDBAdapterInMemory);
+  addRxPlugin(PouchDBAdapterIndexedDB);
+  return await createRxDatabase<AzimutDatabaseCollections>({
     ...config,
     name: 'azimut',
     multiInstance: true, // <- multiInstance (optional, default: true)
-    queryChangeDetection: false, // <- queryChangeDetection (optional, default: false) });
+    options: {
+      queryChangeDetection: false, // <- queryChangeDetection (optional, default: false) });
+    },
   });
 }

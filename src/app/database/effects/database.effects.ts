@@ -10,11 +10,9 @@ import { DatabaseActionTypes, DatabaseActions } from '../actions/database.action
 @Injectable()
 export class DatabaseEffects {
 
-
   @Effect()
   initDatabase$ = this.actions$.pipe(
     ofType(DatabaseActionTypes.InitDatabase),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
     concatMap(() => EMPTY)
   );
 
