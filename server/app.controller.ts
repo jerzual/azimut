@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  @Get('api/speakers')
+  @Get('api/boards')
   findAllSpeakers(): any[] {
     return [
       {

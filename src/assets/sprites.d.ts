@@ -11,6 +11,10 @@ export type Left = number;
 export type Top = number;
 export type Width1 = number;
 export type Height1 = number;
+/**
+ * reference to this json schema file
+ */
+export type JsonSchema = string;
 export type AppSchema = string;
 export type VersionSchema = string;
 export type ImageSchema = string;
@@ -20,6 +24,7 @@ export type SmartupdateSchema = string;
 
 export interface TexturePackerSchema {
   frames: FramesSchema;
+  $schema: JsonSchema;
   meta?: MetaSchema;
 }
 /**
