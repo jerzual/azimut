@@ -5,26 +5,27 @@ import { concatMap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { GameActionTypes, GameActions } from '../actions/game.actions';
 
-
-
 @Injectable()
 export class GameEffects {
+  loadGame$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(GameActionTypes.LoadGame),
+        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+        concatMap(() => EMPTY),
+      ),
+    { dispatch: false },
+  );
 
-
-  
-  loadGame$ = createEffect(() => this.actions$.pipe(
-    ofType(GameActionTypes.LoadGame),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
-    concatMap(() => EMPTY)
-  ));
-
-  
-  newGame$ = createEffect(() => this.actions$.pipe(
-    ofType(GameActionTypes.NewGame),
-    /** An EMPTY observable only emits completion. Replace with your own observable API request */
-    concatMap(() => EMPTY)
-  ));
+  newGame$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(GameActionTypes.NewGame),
+        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+        concatMap(() => EMPTY),
+      ),
+    { dispatch: false },
+  );
 
   constructor(private actions$: Actions<GameActions>) {}
-
 }
