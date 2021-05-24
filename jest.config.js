@@ -9,14 +9,19 @@ module.exports = {
     '@core/(.*)': '<rootDir>/src/app/core/$1',
     '@env': '<rootDir>/src/environments/environment',
     '@src/(.*)': '<rootDir>/src/src/$1',
-    '@state/(.*)': '<rootDir>/src/app/state/$1'
+    '@state/(.*)': '<rootDir>/src/app/state/$1',
   },
   transformIgnorePatterns: ['node_modules/(?!(jest-test|@ngrx))'],
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
+      tsconfig: '<rootDir>/tsconfig.spec.json',
       stringifyContentPathRegex: '\\.html$',
-      astTransformers: [require.resolve('jest-preset-angular/build/InlineFilesTransformer'), require.resolve('jest-preset-angular/build/StripStylesTransformer')],
+      astTransformers: {
+        before: [
+          require.resolve('jest-preset-angular/build/InlineFilesTransformer'),
+          require.resolve('jest-preset-angular/build/StripStylesTransformer'),
+        ],
+      },
     },
   },
 };
