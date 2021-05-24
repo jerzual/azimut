@@ -13,11 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/azimut",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -99,11 +100,11 @@
             "outputPath": "dist/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
-            "sourceMap": true,
-            "optimization": false
+            "inlineStyleLanguage": "scss"
           },
           "configurations": {
             "production": {
+              "outputHashing": "media",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -111,8 +112,14 @@
                 }
               ],
               "optimization": true
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
@@ -133,11 +140,16 @@
             "serverTarget": "azimut:server"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "alone2:build:development",
+              "serverTarget": "alone2:server:development"
+            },
             "production": {
               "browserTarget": "azimut:build:production",
               "serverTarget": "azimut:server:production"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
