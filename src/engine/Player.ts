@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 } from 'uuid';
 
 export interface Player {
     uuid: string;
@@ -11,7 +11,7 @@ export interface Player {
 
 export function playerFactory(): Player {
     return {
-        uuid: uuid.v4(),
+        uuid: v4(),
         host: 'localhost',
         createdAt: Date.now()
     };
