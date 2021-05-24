@@ -13,19 +13,20 @@ import { ConfigService } from '../services/config.service';
 
 @Injectable()
 export class ConfigEffects {
-  
-  loadConfig$ = createEffect(() => this.actions$.pipe(
-    ofType(ConfigActionTypes.LoadConfig),
-    switchMap(() =>
-      // call the service
-      this.configService.fetchConfig().pipe(
-        // return a Success action when everything went OK
-        map(config => new LoadConfigSuccess({ data: config })),
-        // return a Failed action when something went wrong
-        catchError(error => of(new LoadConfigFailure({ error }))),
+  loadConfig$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ConfigActionTypes.LoadConfig),
+      switchMap(() =>
+        // call the service
+        this.configService.fetchConfig().pipe(
+          // return a Success action when everything went OK
+          map(config => new LoadConfigSuccess({ data: config })),
+          // return a Failed action when something went wrong
+          catchError(error => of(new LoadConfigFailure({ error }))),
+        ),
       ),
     ),
-  ));
+  );
 
   constructor(
     private actions$: Actions<ConfigActions>,
