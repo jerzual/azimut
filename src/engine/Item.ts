@@ -1,4 +1,4 @@
-import { Sprite } from 'babylonjs';
+import { Sprite } from 'three';
 
 export interface Item {
   uuid: string;
@@ -24,5 +24,7 @@ export class ItemImpl {
   duration: number;
   // sprite
   spriteName: string;
+  // once loaded sprite instance here
+  spriteInstance?: Sprite;
 }
 export default Item;
