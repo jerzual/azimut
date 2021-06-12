@@ -31,11 +31,11 @@ world has biomes and sould be a graph of
 
 javascript(typescript) and web stuff
 
-- babylonjs for the 3D / game engine 
+- THREE.js for the 3D / game engine 
 - angular/ngrx/custom svgs for the ui
 - rot.js for level generation / rogue-like aspects.
 - tone.js for music / sound
-- nest.js / express / couchdb / pouchdb for server-side storage.
+- node.js / express / couchdb / pouchdb for server-side storage.
 
 ## how to run
 
@@ -53,7 +53,7 @@ have docker + docker-compose installed
 
 ### Art style
 
-- Another world style : flat shapes, simple SVg shapes as much as possible
+- Another world style : flat shapes, simple SVG shapes as much as possible
 - flat shapes, pastel colors
 
 ### Story
