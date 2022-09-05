@@ -10,13 +10,12 @@ import { GameComponent } from './components/game/game.component';
 import { GamesListComponent } from './containers/games-list/games-list.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    GameRoutingModule,
-    StoreModule.forFeature(fromGame.gameFeatureKey, fromGame.reducer),
-    EffectsModule.forFeature([GameEffects]),
-  ],
-  declarations: [GameComponent, GamesListComponent],
-  entryComponents: [GameComponent],
+    imports: [
+        CommonModule,
+        GameRoutingModule,
+        StoreModule.forFeature(fromGame.gameFeatureKey, fromGame.reducer),
+        EffectsModule.forFeature([GameEffects]),
+    ],
+    declarations: [GameComponent, GamesListComponent]
 })
 export class GameModule {}
