@@ -1,5 +1,5 @@
 // this will allow for behaviors to know each others.
-import { v4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 export const enum Behaviors {
     EnvironmentAware,
@@ -34,6 +34,6 @@ export class ConcreteBehavior implements Behavior {
     }
 }
 
-export function behaviorFactory(execute: () => void, type, agent: any): Behavior {
-    return new ConcreteBehavior(v4(), execute, type, agent);
+    return new ConcreteBehavior(nanoid(), execute, type, agent);
+export function behaviorFactory(execute: () => void, type: any, agent: any): Behavior {
 }

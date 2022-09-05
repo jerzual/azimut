@@ -1,4 +1,4 @@
-import { v4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 export interface Player {
     uuid: string;
@@ -11,7 +11,7 @@ export interface Player {
 
 export function playerFactory(): Player {
     return {
-        uuid: v4(),
+        uuid: nanoid(),
         host: 'localhost',
         createdAt: Date.now()
     };

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { v4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public newGameKey: string;
+  public newGameKey!: string;
 
   constructor() {}
 
@@ -17,6 +17,6 @@ export class HomeComponent implements OnInit {
   }
 
   getGameKey() {
-    return v4();
+    return nanoid();
   }
 }

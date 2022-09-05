@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Player } from 'src/engine/Player';
 import { of, Observable } from 'rxjs';
-import { v4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AdminService {
 
   getUsers(): Observable<Partial<Player>> {
     return of({
-      uuid: v4(),
+      uuid: nanoid(),
       createdAt: 0,
     });
   }

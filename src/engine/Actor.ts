@@ -1,7 +1,7 @@
 import Item from './Item';
 import { Entity } from './Entity';
 import { Action } from './Action';
-import { v4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 export interface Actor {
     uuid: string;
@@ -20,15 +20,15 @@ export enum ActorStatus {
 }
 
 export class ActorImpl extends Entity implements Actor {
-    uuid: string;
+    uuid!: string;
     //
     actionPoints: number;
     life: number;
     items: Array<Item>;
     actionsQueue: Array<Action>;
     status: ActorStatus;
-    constructor(clone) {
-        super(clone);
+    constructor(clone: Partial<ActorImpl>) {
+        super();
         this.actionPoints = 10;
         this.life = 1;
         this.actionsQueue = [];
@@ -40,7 +40,7 @@ export class ActorImpl extends Entity implements Actor {
 
 export function actorFactory(): Actor {
     return new ActorImpl({
-        uuid: v4()
+        uuid: nanoid()
     });
 }
 
