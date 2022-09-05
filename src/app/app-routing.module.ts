@@ -20,7 +20,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       enableTracing: false,
-      initialNavigation: 'enabled',
+      initialNavigation: 'enabledBlocking',
       relativeLinkResolution: 'legacy',
     }),
   ],
