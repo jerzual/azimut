@@ -5,7 +5,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { StoreModule, Store } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, DefaultRouterStateSerializer } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, FullRouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,19 +45,20 @@ export function getWindow() {
       },
     }),
     EffectsModule.forRoot([AppEffects]),
-    StoreRouterConnectingModule.forRoot({ serializer: DefaultRouterStateSerializer }),
+    StoreRouterConnectingModule.forRoot({ serializer: FullRouterStateSerializer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initApplication,
-      deps: [Store],
-      multi: true,
-    },
+    // FIXME: this do not work anymore on ssr with angular 14 upgrade.
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: initApplication,
+    //   deps: [Store],
+    //   multi: true,
+    // },
     { provide: REDUCERS_TOKEN, useValue: reducers },
     {
       provide: WindowService,
