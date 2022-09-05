@@ -29,7 +29,6 @@
   "private": true,
   "dependencies": {
     "@angular-three/core": "^1.0.0-beta.32",
-    "@angular-three/helpers": "^1.0.0-beta.32",
     "@angular/animations": "~12.0.1",
     "@angular/cdk": "^12.0.1",
     "@angular/common": "^12.0.1",
