@@ -24,7 +24,7 @@
     "prerender": "ng run azimut:prerender"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">16.x"
   },
   "private": true,
   "dependencies": {
@@ -92,7 +92,6 @@
     "image-size": "^1.0.0",
     "jest": "^26.6.3",
     "jest-marbles": "^2.5.1",
-    "jest-preset-angular": "^8.4.0",
     "json-schema-to-typescript": "^10.1.4",
     "postcss": "^8.3.0",
     "supertest": "^6.1.3",
