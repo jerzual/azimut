@@ -1,3 +1,1 @@
-export class PlayerAwareBehavior {
-
-}
+export class PlayerAwareBehavior {}

@@ -5,22 +5,19 @@ import { Observable, of } from 'rxjs';
 import { AppEffects } from './app.effects';
 
 describe('AppEffects', () => {
-  let actions$: Observable<any>;
-  let effects: AppEffects;
+	let actions$: Observable<any>;
+	let effects: AppEffects;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        AppEffects,
-        provideMockActions(() => actions$)
-      ]
-    });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [AppEffects, provideMockActions(() => actions$)],
+		});
 
-    effects = TestBed.get<AppEffects>(AppEffects);
-  });
+		effects = TestBed.get<AppEffects>(AppEffects);
+	});
 
-  it('should be created', () => {
-    actions$ = of({});
-    expect(effects).toBeTruthy();
-  });
+	it('should be created', () => {
+		actions$ = of({});
+		expect(effects).toBeTruthy();
+	});
 });

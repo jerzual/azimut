@@ -4,18 +4,18 @@
 import Tile from './Tile';
 
 export interface Level {
-    // array of positions
-    tiles: Array<Tile>;
-    currentPlayers: number;
-    width: number;
-    height: number;
+	// array of positions
+	tiles: Array<Tile>;
+	currentPlayers: number;
+	width: number;
+	height: number;
 }
 // Each type of level means a different map GeneratorFunction.
 enum LevelType {
-    CAVERN, // ROT.Map.
-    BUILDING_FLOOR,
-    OPEN_FIELD,
-    URBAN_AREA,
+	CAVERN, // ROT.Map.
+	BUILDING_FLOOR,
+	OPEN_FIELD,
+	URBAN_AREA,
 }
 
 export default Level;

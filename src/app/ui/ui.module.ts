@@ -10,15 +10,16 @@ import { UserInterfaceEffects } from './effects/user-interface.effects';
 import { WidgetComponent } from './components/widget/widget.component';
 import { WidgetsContainerComponent } from './containers/widgets-container/widgets-container.component';
 
-
-
 @NgModule({
-  declarations: [WidgetComponent, WidgetsContainerComponent],
-  imports: [
-    CommonModule,
-    AngularDraggableModule,
-    StoreModule.forFeature(fromUserInterface.userInterfaceFeatureKey, fromUserInterface.reducer),
-    EffectsModule.forFeature([UserInterfaceEffects])
-  ]
+	declarations: [WidgetComponent, WidgetsContainerComponent],
+	imports: [
+		CommonModule,
+		AngularDraggableModule,
+		StoreModule.forFeature(
+			fromUserInterface.userInterfaceFeatureKey,
+			fromUserInterface.reducer,
+		),
+		EffectsModule.forFeature([UserInterfaceEffects]),
+	],
 })
-export class UiModule { }
+export class UiModule {}

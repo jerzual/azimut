@@ -1,3 +1,1 @@
-export class FollowerBehavior {
-
-}
+export class FollowerBehavior {}

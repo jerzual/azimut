@@ -9,15 +9,14 @@ import { AdminEffects } from './effects/admin.effects';
 import { AdminRootComponent } from './components/admin-root/admin-root.component';
 import { AdminService } from './services/admin.service';
 
-
 @NgModule({
-  declarations: [AdminRootComponent],
-  providers: [AdminService],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    StoreModule.forFeature(fromAdmin.adminFeatureKey, fromAdmin.reducer),
-    EffectsModule.forFeature([AdminEffects])
-  ]
+	declarations: [AdminRootComponent],
+	providers: [AdminService],
+	imports: [
+		CommonModule,
+		AdminRoutingModule,
+		StoreModule.forFeature(fromAdmin.adminFeatureKey, fromAdmin.reducer),
+		EffectsModule.forFeature([AdminEffects]),
+	],
 })
-export class AdminModule { }
+export class AdminModule {}

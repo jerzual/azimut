@@ -10,38 +10,38 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NoopAnimationsModule],
-      declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [RouterTestingModule, NoopAnimationsModule],
+			declarations: [AppComponent],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+		}).compileComponents();
+	}));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+	it('should create the app', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.debugElement.componentInstance;
+		expect(app).toBeTruthy();
+	});
 
-  it(`should have as title 'azimut-angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('azimut-angular');
-  });
+	it(`should have as title 'azimut-angular'`, () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.debugElement.componentInstance;
+		expect(app.title).toEqual('azimut-angular');
+	});
 
-  it('should render loading component if loading is true', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.componentInstance.loading = true;
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-loading')).toBeDefined();
-  });
-  it('should not render loading component if loading is false', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.componentInstance.loading = false;
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-loading')).toBeNull();
-  });
+	it('should render loading component if loading is true', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		fixture.componentInstance.loading = true;
+		fixture.detectChanges();
+		const compiled = fixture.debugElement.nativeElement;
+		expect(compiled.querySelector('app-loading')).toBeDefined();
+	});
+	it('should not render loading component if loading is false', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		fixture.componentInstance.loading = false;
+		fixture.detectChanges();
+		const compiled = fixture.debugElement.nativeElement;
+		expect(compiled.querySelector('app-loading')).toBeNull();
+	});
 });

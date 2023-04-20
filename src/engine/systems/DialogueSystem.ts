@@ -1,3 +1,1 @@
-export class DialogueSystem {
-
-}
+export class DialogueSystem {}

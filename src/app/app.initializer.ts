@@ -1,4 +1,3 @@
-
 import { Store } from '@ngrx/store';
 import { take, filter } from 'rxjs/operators';
 
@@ -11,19 +10,22 @@ import * as fromRoot from './reducers';
  * @param store ngrx store object
  */
 export function initApplication(store: Store<fromRoot.State>): () => void {
-    return () =>
-      new Promise((resolve, reject) => {
-        store.dispatch(new InitializerStart());
-        store.dispatch(new LoadConfig());
-        store
-          .select((state: fromRoot.State) => state.config)
-          .pipe(
-            filter(config => (!!config && !!config.values)),
-            take(1),
-          )
-          .subscribe(() => {
-            store.dispatch(new InitializerEnd());
-            resolve(true);
-          }, (error) => reject(error));
-      });
-  }
+	return () =>
+		new Promise((resolve, reject) => {
+			store.dispatch(new InitializerStart());
+			store.dispatch(new LoadConfig());
+			store
+				.select((state: fromRoot.State) => state.config)
+				.pipe(
+					filter((config) => !!config && !!config.values),
+					take(1),
+				)
+				.subscribe(
+					() => {
+						store.dispatch(new InitializerEnd());
+						resolve(true);
+					},
+					(error) => reject(error),
+				);
+		});
+}

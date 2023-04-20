@@ -5,9 +5,8 @@ import { Injectable } from '@angular/core';
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
  */
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class GamepadService {
-
-  constructor() { }
+	constructor() {}
 }

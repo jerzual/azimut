@@ -1,5 +1,3 @@
 export class DrawableBehavior {
-    draw(canvas: HTMLCanvasElement) {
-
-    }
+	draw(canvas: HTMLCanvasElement) {}
 }

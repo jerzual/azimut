@@ -1,2 +1,1 @@
-export class MovementSystem {
-}
+export class MovementSystem {}

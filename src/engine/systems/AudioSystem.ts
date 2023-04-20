@@ -1,3 +1,1 @@
-export class AudioSystem {
-
-}
+export class AudioSystem {}

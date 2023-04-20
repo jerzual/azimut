@@ -1,9 +1,9 @@
 import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
+	ActionReducer,
+	ActionReducerMap,
+	createFeatureSelector,
+	createSelector,
+	MetaReducer,
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromUserInterface from '../ui/reducers/user-interface.reducer';
@@ -13,21 +13,22 @@ import * as fromConfig from '../core/reducers/config.reducer';
 import { InjectionToken } from '@angular/core';
 
 export interface State {
-
-  [fromUserInterface.userInterfaceFeatureKey]: fromUserInterface.State;
-  [fromAdmin.adminFeatureKey]: fromAdmin.State;
-  [fromGame.gameFeatureKey]: fromGame.State;
-  [fromConfig.configFeatureKey]: fromConfig.State;
+	[fromUserInterface.userInterfaceFeatureKey]: fromUserInterface.State;
+	[fromAdmin.adminFeatureKey]: fromAdmin.State;
+	[fromGame.gameFeatureKey]: fromGame.State;
+	[fromConfig.configFeatureKey]: fromConfig.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-
-  [fromUserInterface.userInterfaceFeatureKey]: fromUserInterface.reducer,
-  [fromAdmin.adminFeatureKey]: fromAdmin.reducer,
-  [fromGame.gameFeatureKey]: fromGame.reducer,
-  [fromConfig.configFeatureKey]: fromConfig.reducer,
+	[fromUserInterface.userInterfaceFeatureKey]: fromUserInterface.reducer,
+	[fromAdmin.adminFeatureKey]: fromAdmin.reducer,
+	[fromGame.gameFeatureKey]: fromGame.reducer,
+	[fromConfig.configFeatureKey]: fromConfig.reducer,
 };
-export const REDUCERS_TOKEN = new InjectionToken<ActionReducerMap<State>>('App Reducers');
+export const REDUCERS_TOKEN = new InjectionToken<ActionReducerMap<State>>(
+	'App Reducers',
+);
 
-
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<State>[] = !environment.production
+	? []
+	: [];

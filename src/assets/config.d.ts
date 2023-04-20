@@ -9,12 +9,12 @@
  * Environment configuration
  */
 export interface ConfigurationSchema {
-  /**
-   * Base url
-   */
-  backendUrl?: string;
-  /**
-   * host of couchdb
-   */
-  databaseHost?: string;
+	/**
+	 * Base url
+	 */
+	backendUrl?: string;
+	/**
+	 * host of couchdb
+	 */
+	databaseHost?: string;
 }

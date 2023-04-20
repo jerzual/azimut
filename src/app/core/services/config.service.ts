@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
  *
  */
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class ConfigService {
-  constructor(private readonly httpClient: HttpClient) {}
+	constructor(private readonly httpClient: HttpClient) {}
 
-  fetchConfig(): Observable<ConfigurationSchema> {
-    return this.httpClient.get<ConfigurationSchema>('assets/data/config.json');
-  }
+	fetchConfig(): Observable<ConfigurationSchema> {
+		return this.httpClient.get<ConfigurationSchema>('assets/data/config.json');
+	}
 }

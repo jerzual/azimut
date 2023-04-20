@@ -5,22 +5,19 @@ import { Observable, of } from 'rxjs';
 import { GameEffects } from './game.effects';
 
 describe('GameEffects', () => {
-  let actions$: Observable<any>;
-  let effects: GameEffects;
+	let actions$: Observable<any>;
+	let effects: GameEffects;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        GameEffects,
-        provideMockActions(() => actions$)
-      ]
-    });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [GameEffects, provideMockActions(() => actions$)],
+		});
 
-    effects = TestBed.get<GameEffects>(GameEffects);
-  });
+		effects = TestBed.get<GameEffects>(GameEffects);
+	});
 
-  it('should be created', () => {
-    actions$ = of(undefined);
-    expect(effects).toBeTruthy();
-  });
+	it('should be created', () => {
+		actions$ = of(undefined);
+		expect(effects).toBeTruthy();
+	});
 });

@@ -4,16 +4,15 @@ import { of, Observable } from 'rxjs';
 import { nanoid } from 'nanoid';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class AdminService {
+	constructor() {}
 
-  constructor() { }
-
-  getUsers(): Observable<Partial<Player>> {
-    return of({
-      uuid: nanoid(),
-      createdAt: 0,
-    });
-  }
+	getUsers(): Observable<Partial<Player>> {
+		return of({
+			uuid: nanoid(),
+			createdAt: 0,
+		});
+	}
 }
