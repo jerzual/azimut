@@ -17,7 +17,7 @@ import { reducers, metaReducers, REDUCERS_TOKEN } from './reducers';
 import { AppEffects } from './app.effects';
 import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
-import { SceneModule } from './scene/scene.module';
+
 import { WindowService } from './core/services/window.service';
 import { initApplication } from './app.initializer';
 
@@ -29,29 +29,28 @@ export function getWindow() {
 @NgModule({
 	declarations: [AppComponent],
 	imports: [
-		BrowserModule.withServerTransition({ appId: 'azimut' }),
-		TransferHttpCacheModule,
-		AppRoutingModule,
-		HttpClientModule,
-		CoreModule,
-		SceneModule,
-		// ngrx
-		StoreModule.forRoot(REDUCERS_TOKEN, {
-			metaReducers,
-			runtimeChecks: {
-				strictStateImmutability: true,
-				strictActionImmutability: true,
-			},
-		}),
-		EffectsModule.forRoot([AppEffects]),
-		StoreRouterConnectingModule.forRoot({
-			serializer: FullRouterStateSerializer,
-		}),
-		StoreDevtoolsModule.instrument({
-			maxAge: 25,
-			logOnly: environment.production,
-		}),
-	],
+    BrowserModule.withServerTransition({ appId: 'azimut' }),
+    TransferHttpCacheModule,
+    AppRoutingModule,
+    HttpClientModule,
+    CoreModule,
+    // ngrx
+    StoreModule.forRoot(REDUCERS_TOKEN, {
+        metaReducers,
+        runtimeChecks: {
+            strictStateImmutability: true,
+            strictActionImmutability: true,
+        },
+    }),
+    EffectsModule.forRoot([AppEffects]),
+    StoreRouterConnectingModule.forRoot({
+        serializer: FullRouterStateSerializer,
+    }),
+    StoreDevtoolsModule.instrument({
+        maxAge: 25,
+        logOnly: environment.production,
+    })
+],
 	providers: [
 		// FIXME: this do not work anymore on ssr with angular 14 upgrade.
 		// {
