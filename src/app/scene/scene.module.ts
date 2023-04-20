@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SceneComponent } from './components/scene/scene.component';
 
 @NgModule({
-	declarations: [SceneComponent],
-	imports: [CommonModule],
+	imports: [CommonModule, SceneComponent],
 	providers: [],
 	exports: [SceneComponent],
 })

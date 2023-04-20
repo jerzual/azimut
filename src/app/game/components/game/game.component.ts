@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 	selector: 'app-game',
 	templateUrl: './game.component.html',
 	styleUrls: ['./game.component.css'],
+	standalone: true,
 })
 export class GameComponent implements OnInit {
 	constructor() {}

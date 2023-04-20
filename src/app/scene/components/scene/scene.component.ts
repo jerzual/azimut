@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 	selector: 'app-scene',
 	templateUrl: './scene.component.html',
 	styleUrls: ['./scene.component.css'],
+	standalone: true,
 })
 export class SceneComponent implements OnInit {
 	@ViewChild('renderZone', { static: true })

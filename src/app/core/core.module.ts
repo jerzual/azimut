@@ -10,12 +10,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './effects/config.effects';
 
 @NgModule({
-	declarations: [LoadingComponent, NotFoundComponent, HomeComponent],
 	imports: [
 		CommonModule,
 		RouterModule,
 		StoreModule.forFeature(fromConfig.configFeatureKey, fromConfig.reducer),
 		EffectsModule.forFeature([ConfigEffects]),
+		LoadingComponent,
+		NotFoundComponent,
+		HomeComponent,
 	],
 	exports: [LoadingComponent, RouterModule],
 })

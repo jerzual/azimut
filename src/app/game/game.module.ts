@@ -15,7 +15,8 @@ import { GamesListComponent } from './containers/games-list/games-list.component
 		GameRoutingModule,
 		StoreModule.forFeature(fromGame.gameFeatureKey, fromGame.reducer),
 		EffectsModule.forFeature([GameEffects]),
+		GameComponent,
+		GamesListComponent,
 	],
-	declarations: [GameComponent, GamesListComponent],
 })
 export class GameModule {}
