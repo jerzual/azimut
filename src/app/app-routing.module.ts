@@ -21,7 +21,6 @@ const routes: Routes = [
 		RouterModule.forRoot(routes, {
 			enableTracing: false,
 			initialNavigation: 'enabledBlocking',
-			relativeLinkResolution: 'legacy',
 		}),
 	],
 	exports: [RouterModule],
