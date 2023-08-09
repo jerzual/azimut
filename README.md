@@ -32,7 +32,7 @@ world has biomes and sould be a graph of
 javascript(typescript) and web stuff
 
 - THREE.js for the 3D / game engine 
-- angular/ngrx/custom svgs for the ui
+- angular/elf/custom svgs for the ui
 - rot.js for level generation / rogue-like aspects.
 - tone.js for music / sound
 - node.js / express / couchdb / pouchdb for server-side storage.
