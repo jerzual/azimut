@@ -1,5 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AngularDraggableModule } from 'angular2-draggable';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WidgetComponent } from './widget.component';
 
@@ -7,12 +6,9 @@ describe('WidgetComponent', () => {
 	let component: WidgetComponent;
 	let fixture: ComponentFixture<WidgetComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [WidgetComponent],
-			imports: [AngularDraggableModule],
-		}).compileComponents();
-	}));
+	beforeEach(() => {
+		TestBed.createComponent(WidgetComponent);
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(WidgetComponent);

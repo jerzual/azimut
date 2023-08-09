@@ -10,7 +10,7 @@ describe('WindowService', () => {
 	);
 
 	it('should be created', () => {
-		const service: WindowService = TestBed.get(WindowService);
+		const service: WindowService = TestBed.inject(WindowService);
 		expect(service).toBeTruthy();
 	});
 });
