@@ -111,13 +111,15 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true
+              "optimization": true,
+              "buildOptimizer": true
             },
             "development": {
               "optimization": false,
               "sourceMap": true,
               "extractLicenses": false,
-              "vendorChunk": true
+              "vendorChunk": true,
+              "buildOptimizer": false
             }
           },
           "defaultConfiguration": "production"

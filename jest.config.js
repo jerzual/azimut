@@ -9,6 +9,6 @@ module.exports = {
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
   globalSetup: 'jest-preset-angular/global-setup',
-  transformIgnorePatterns: ['node_modules/(?!(nanoid|@angular|@ngrx))'],
+  transformIgnorePatterns: ['node_modules/(?!(nanoid|@angular|@ngrx|angular2-draggable))'],
   "testEnvironment": "jest-environment-jsdom"
 };
