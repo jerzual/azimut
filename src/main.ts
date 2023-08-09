@@ -6,6 +6,8 @@ import { appConfig } from './app/app.config';
 
 if (environment.production) {
 	enableProdMode();
+}else {
+	import('@ngneat/elf-devtools').then(m => m.devTools());
 }
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>
