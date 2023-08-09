@@ -4,7 +4,7 @@ volumes:
     driver: local
   db:
     driver: local
-networks: 
+networks:
   azimut-network:
 services:
   # MySQL database
@@ -19,8 +19,8 @@ services:
       - COUCHDB_USER:AZIMUT_COUCHDB_USER
       - COUCHDB_PASSWORD:AZIMUT_COUCHDB_PASSWORD
     volumes:
-      - db:/opt/couchdb/data 
-    ports: 
+      - db:/opt/couchdb/data
+    ports:
       - 5984:5984
 
   # Angular + express running on node
@@ -44,7 +44,7 @@ services:
       - AZIMUT_FRONT_URL
 
   e2e:
-    image: node:12
+    image: node:18
     build:
       context: ./e2e
     command: npm ci
