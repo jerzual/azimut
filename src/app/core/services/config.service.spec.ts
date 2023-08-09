@@ -15,16 +15,16 @@ describe('ConfigService', () => {
 			providers: [ConfigService],
 			imports: [RouterTestingModule, HttpClientTestingModule],
 		});
-		httpMock = TestBed.get(HttpTestingController);
+		httpMock = TestBed.inject(HttpTestingController);
 	});
 
 	it('should be created', () => {
-		const service: ConfigService = TestBed.get(ConfigService);
+		const service: ConfigService = TestBed.inject(ConfigService);
 		expect(service).toBeTruthy();
 	});
 	describe('fetchConfig()', () => {
 		it('should make a relative requests to assets', (done) => {
-			const service: ConfigService = TestBed.get(ConfigService);
+			const service: ConfigService = TestBed.inject(ConfigService);
 			// execute
 			service.fetchConfig().subscribe((result) => {
 				expect(result).toBeDefined();

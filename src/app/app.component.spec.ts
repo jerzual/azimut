@@ -1,22 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { SceneModule } from './scene/scene.module';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
 describe('AppComponent', () => {
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			imports: [RouterTestingModule, NoopAnimationsModule],
-			declarations: [AppComponent],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [AppComponent, RouterTestingModule, NoopAnimationsModule],
 		}).compileComponents();
-	}));
+	});
 
 	it('should create the app', () => {
 		const fixture = TestBed.createComponent(AppComponent);

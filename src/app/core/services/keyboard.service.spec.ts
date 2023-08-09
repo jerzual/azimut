@@ -6,7 +6,7 @@ describe('KeyboardService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: KeyboardService = TestBed.get(KeyboardService);
+		const service: KeyboardService = TestBed.inject(KeyboardService);
 		expect(service).toBeTruthy();
 	});
 });
