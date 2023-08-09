@@ -6,7 +6,7 @@ describe('GamepadService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: GamepadService = TestBed.get(GamepadService);
+		const service: GamepadService = TestBed.inject(GamepadService);
 		expect(service).toBeTruthy();
 	});
 });

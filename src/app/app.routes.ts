@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './core/components/home/home.component';
 
-const routes: Routes = [
+export const routes: Routes = [
 	{ path: '', component: HomeComponent, pathMatch: 'full' },
 	{
 		path: 'games',
@@ -15,14 +14,3 @@ const routes: Routes = [
 			import('./admin/admin.module').then((mod) => mod.AdminModule),
 	},
 ];
-
-@NgModule({
-	imports: [
-		RouterModule.forRoot(routes, {
-			enableTracing: false,
-			initialNavigation: 'enabledBlocking',
-		}),
-	],
-	exports: [RouterModule],
-})
-export class AppRoutingModule {}
