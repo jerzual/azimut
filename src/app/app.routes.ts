@@ -5,12 +5,10 @@ export const routes: Routes = [
 	{ path: '', component: HomeComponent, pathMatch: 'full' },
 	{
 		path: 'games',
-		loadChildren: () =>
-			import('./game/game.module').then((mod) => mod.GameModule),
+		loadChildren: () => import('./game/').then((mod) => mod.routes),
 	},
 	{
 		path: 'admin',
-		loadChildren: () =>
-			import('./admin/admin.module').then((mod) => mod.AdminModule),
+		loadChildren: () => import('./admin/').then((mod) => mod.routes),
 	},
 ];
