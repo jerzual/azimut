@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import {
 	HttpClientTestingModule,
 	HttpTestingController,
@@ -23,18 +23,17 @@ describe('ConfigService', () => {
 		expect(service).toBeTruthy();
 	});
 	describe('fetchConfig()', () => {
-		it('should make a relative requests to assets', (done) => {
+		it('should make a relative requests to assets', waitForAsync(() => {
 			const service: ConfigService = TestBed.inject(ConfigService);
 			// execute
 			service.fetchConfig().subscribe((result) => {
 				expect(result).toBeDefined();
 				httpMock.verify();
-				done();
 			});
 			// return fake response
 			httpMock
 				.expectOne('assets/data/config.json')
 				.flush({ backendUrl: 'test', databaseHost: 'test' });
-		});
+		}));
 	});
 });

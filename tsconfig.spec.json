@@ -1,19 +1,11 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": [
-      "jest",
-      "node"
-    ],
-    "emitDecoratorMetadata": true,
-    "module": "commonjs"
-  },
-  "files": [
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
-  ]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./out-tsc/spec",
+		"types": ["vitest/globals", "node"],
+		"emitDecoratorMetadata": true,
+		"target": "es2016"
+	},
+	"files": ["src/polyfills.ts", "src/test-setup.ts"],
+	"include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
