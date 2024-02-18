@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: 20.x
     - name: Install
-      run: pnpm ci
+      run: pnpm install
     - name: Build
       run: pnpm run build
     - name: Test
