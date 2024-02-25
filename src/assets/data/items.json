@@ -1,22 +1,16 @@
 {
-  "items":{
-    "box":{
-      "ammoBonus":0,
-      "actionBonus":0,
-      "action":0,
-      "health":0,
-      "armor":0,
-      "curse":0,
-      "karma":0
-      },
-    "health":{
-
-    },
-    "gaz":{
-
-    },
-    "weapons":{
-
-    }
-  }
+	"items": {
+		"box": {
+			"ammoBonus": 0,
+			"actionBonus": 0,
+			"action": 0,
+			"health": 0,
+			"armor": 0,
+			"curse": 0,
+			"karma": 0
+		},
+		"health": {},
+		"gaz": {},
+		"weapons": {}
+	}
 }

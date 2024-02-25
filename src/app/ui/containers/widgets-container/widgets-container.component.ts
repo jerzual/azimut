@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-widgets-container',
-	templateUrl: './widgets-container.component.html',
-	styleUrls: ['./widgets-container.component.css'],
+	standalone: true,
+	template: ` <p>widgets-container works!</p> `,
+	styles: [``],
 })
 export class WidgetsContainerComponent {
 	constructor() {}

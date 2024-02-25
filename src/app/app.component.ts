@@ -7,11 +7,41 @@ import { UserInterfaceStore } from './ui';
 
 @Component({
 	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css'],
 	standalone: true,
 	imports: [NgIf, LoadingComponent, RouterOutlet, SceneComponent],
 	providers: [UserInterfaceStore],
+	template: `
+		<app-loading *ngIf="loading"></app-loading>
+		<main class="azimut-main">
+			<app-scene></app-scene>
+		</main>
+		<aside class="azimut-ui">
+			<router-outlet></router-outlet>
+		</aside>
+	`,
+	styles: `
+		.azimut-main {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 0;
+		}
+
+		.azimut-ui {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 10;
+			pointer-events: none;
+		}
+		.azimut-ui ::ng-deep .widget {
+			pointer-events: all;
+		}
+	`,
 })
 export class AppComponent implements OnInit {
 	public loading = true;
