@@ -168,6 +168,13 @@
 		"schematicCollections": ["@angular-eslint/schematics"]
 	},
 	"schematics": {
+		"@schematics/angular:component": {
+			"style": "css",
+			"inlineStyle": true,
+			"inlineTemplate": true,
+			"standalone": true,
+			"changeDetection": "OnPush"
+		},
 		"@angular-eslint/schematics:application": {
 			"setParserOptionsProject": true
 		},
