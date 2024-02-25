@@ -1,252 +1,252 @@
 {
-    "frames": {
-        "_colors.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 256,
-                "h": 128
-            }
-        },
-        "box-crate.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "box-gaz.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "box-health.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "dessin.svg": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 640,
-                "h": 640
-            }
-        },
-        "enemy-base.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "enemy-fly.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "enemy-rat1.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "enemy-rat2.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "enemy-spider.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "enemy-spider2.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "human-anon.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-child.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-guard.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-hazelsuit.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-hero.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-junkie.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-labguy.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "human-security.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "item-barrel.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-bat.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-crowbar.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-fireaxe.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-gun.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-shotgun.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "item-torch.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 32
-            }
-        },
-        "sprite-child.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "sprite-enemy-base.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "sprite-hazelsuit.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "sprite-hero.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        },
-        "sprite-salary-man.png": {
-            "frame": {
-                "x": 0,
-                "y": 0,
-                "w": 32,
-                "h": 64
-            }
-        }
-    }
+	"frames": {
+		"_colors.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 256,
+				"h": 128
+			}
+		},
+		"box-crate.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"box-gaz.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"box-health.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"dessin.svg": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 640,
+				"h": 640
+			}
+		},
+		"enemy-base.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"enemy-fly.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"enemy-rat1.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"enemy-rat2.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"enemy-spider.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"enemy-spider2.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"human-anon.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-child.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-guard.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-hazelsuit.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-hero.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-junkie.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-labguy.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"human-security.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"item-barrel.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-bat.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-crowbar.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-fireaxe.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-gun.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-shotgun.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"item-torch.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 32
+			}
+		},
+		"sprite-child.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"sprite-enemy-base.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"sprite-hazelsuit.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"sprite-hero.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		},
+		"sprite-salary-man.png": {
+			"frame": {
+				"x": 0,
+				"y": 0,
+				"w": 32,
+				"h": 64
+			}
+		}
+	}
 }

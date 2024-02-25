@@ -1,4 +1,5 @@
-import { Item, ItemImpl } from '../Item';
+import { describe, expect, it } from 'vitest';
+import { Item, ItemImpl } from './Item';
 
 describe('Item interface', () => {
 	it('can be created', () => {

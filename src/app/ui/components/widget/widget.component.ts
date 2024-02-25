@@ -5,8 +5,23 @@ import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-widget',
-	templateUrl: './widget.component.html',
-	styleUrls: ['./widget.component.css'],
+	template: `<div
+		class="widget window"
+		[ngClass]="{
+			'window-closed': state.closed
+		}"
+		ngDraggable
+		[handle]="windowHandle"
+	>
+		<div class="window-head" #windowHandle>
+			<h3 class="window-title">{{ title }}</h3>
+			<button class="window-close">Close</button>
+		</div>
+		<div class="window-body">
+			<ng-content></ng-content>
+		</div>
+	</div> `,
+	styles: ``,
 	standalone: true,
 	imports: [AngularDraggableModule, CommonModule],
 })

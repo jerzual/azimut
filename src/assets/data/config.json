@@ -1,4 +1,4 @@
 {
-    "databaseHost": "http://localhost:5984",
-    "backendUrl": "http://localhost:4200"
+	"databaseHost": "http://localhost:5984",
+	"backendUrl": "http://localhost:4200"
 }
