@@ -41,6 +41,12 @@ importers:
       '@angular/ssr':
         specifier: ^17.3.7
         version: 17.3.7(@angular/common@17.3.8(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.4))
+      '@babylonjs/core':
+        specifier: ^7.6.0
+        version: 7.6.0
+      '@babylonjs/materials':
+        specifier: ^7.6.0
+        version: 7.6.0(@babylonjs/core@7.6.0)
       '@ngrx/signals':
         specifier: ^17.2.0
         version: 17.2.0(@angular/core@17.3.8(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1)
@@ -1131,6 +1137,14 @@ packages:
   '@babel/types@7.24.5':
     resolution: {integrity: sha512-6mQNsaLeXTw0nxYUYu+NSa4Hx4BlF1x1x8/PMFbiR+GBSr+2DkECc69b8hgy2frEodNcvPffeH8YfWd3LI6jhQ==}
     engines: {node: '>=6.9.0'}
+
+  '@babylonjs/core@7.6.0':
+    resolution: {integrity: sha512-Pr5TlHQBdTYLkw+HmWZo1V6VYnP48wxEGBAscHcgZuuETo2ITCmsRLv0o+XY0QL1eAL8grQBM5eOkAInNt4SvA==}
+
+  '@babylonjs/materials@7.6.0':
+    resolution: {integrity: sha512-o5PcKNf/NE+P81E1fQyuoNrCND6dV5RJZga03JzHIs48/+2veq11Dj4FGAOinmqQwe/0U2yrl3v4hsRVwt4YtQ==}
+    peerDependencies:
+      '@babylonjs/core': ^7.0.0
 
   '@bcherny/json-schema-ref-parser@10.0.5-fork':
     resolution: {integrity: sha512-E/jKbPoca1tfUPj3iSbitDZTGnq6FUFjkH6L8U2oDwSuwK1WhnnVtCG7oFOTg/DDnyoXbQYUiUiGOibHqaGVnw==}
@@ -8348,6 +8362,12 @@ snapshots:
       '@babel/helper-string-parser': 7.24.1
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
+
+  '@babylonjs/core@7.6.0': {}
+
+  '@babylonjs/materials@7.6.0(@babylonjs/core@7.6.0)':
+    dependencies:
+      '@babylonjs/core': 7.6.0
 
   '@bcherny/json-schema-ref-parser@10.0.5-fork':
     dependencies:
