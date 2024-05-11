@@ -1,0 +1,30 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Start local env with docker-compose
+      run: docker-compose -f docker-compose.yml up -d couchdb server
+
+    - name: Build end-to-end test image
+      run: docker build -tag azimut-tests --target e2e .
+
+    - name: Run e2e image
+      run: docker run -v $(pwd)/playwright-report:/app/playwright-report --name azimut-tests --network=host playwright-tests
+
+
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30

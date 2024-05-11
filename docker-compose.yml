@@ -1,13 +1,12 @@
-version: '3'
+
 volumes:
-  logs:
-    driver: local
   db:
     driver: local
 networks:
   azimut-network:
+  playwright-network:
 services:
-  # MySQL database
+  # main database
   couchdb:
     image: couchdb:2.3.1
     restart: always
@@ -22,16 +21,16 @@ services:
       - db:/opt/couchdb/data
     ports:
       - 5984:5984
+    networks:
+      - azimut-network
 
   # Angular + express running on node
   server:
     build:
       context: .
+      target: run
       args:
         NG_ENV: local
-    volumes:
-      - .:/usr/src/azimut
-      - /usr/src/azimut/node_modules
     restart: always
     links:
       - couchdb
@@ -42,12 +41,23 @@ services:
       - NODE_ENV=development
       - AZIMUT_COUCHDB_HOST
       - AZIMUT_FRONT_URL
+    networks:
+      - azimut-network
+      - playwright-network
 
+  # end to end tests with playwright
   e2e:
-    image: node:18
     build:
-      context: ./e2e
-    command: npm ci
+      context: .
+      target: e2e
+    links:
+      - server
+    environment:
+      - AZIMUT_FRONT_URL=http://server:4000
+    ports:
+      - 9323:9323
     volumes:
-      - ./e2e:/usr/src/app
+      - ./playwright-reports:/app/playwright-reports
+    networks:
+      - playwright-network
 

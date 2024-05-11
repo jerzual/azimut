@@ -6,15 +6,14 @@
     "serve": "ng serve",
     "test": "vitest",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "playwright test",
     "gen:config": "json2ts --input src/assets/config-schema.json --output src/assets/config.d.ts",
     "gen:sprites": "json2ts --input src/assets/sprites-schema.json --output src/assets/sprites.d.ts",
     "gen": "npm run gen:config && npm run gen:sprites",
     "serve:ssr": "ng run azimut:serve-ssr",
     "build": "ng build --configuration production && ng run azimut:server:production",
     "build:dev": "ng build && ng run azimut:server",
-    "start": "node dist/server/main.js",
-    "prerender": "ng run azimut:prerender"
+    "start": "node dist/server/main.js"
   },
   "engines": {
     "node": ">=20.x"
@@ -65,6 +64,7 @@
     "@angular/compiler-cli": "^17.3.8",
     "@angular/language-service": "^17.3.8",
     "@nx/vite": "^18.3.4",
+    "@playwright/test": "^1.44.0",
     "@testing-library/angular": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/express": "^4.17.21",
@@ -77,6 +77,7 @@
     "image-size": "^1.1.1",
     "jsdom": "^22.1.0",
     "json-schema-to-typescript": "^13.1.2",
+    "playwright": "^1.44.0",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "supertest": "^6.3.4",

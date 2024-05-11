@@ -1,23 +1,35 @@
-FROM node:18
+FROM node:20-bookworm-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY pnpm-lock.yaml /app/
+COPY package.json /app/
+WORKDIR /app
 
-# Create app directory
-WORKDIR /usr/src/azimut
+# intermediate image with prod dependencies only
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-# Install app dependencies
-#COPY package.json .
-# For npm@5 or later, copy package-lock.json as well
-#COPY package-lock.json .
-# install will run build-client and build-server
-RUN npm ci
-RUN npm run build:ssr
+# intermediate image with source and build artifacts
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+COPY . /app
+RUN pnpm run build
 
-# Bundle app source
-#COPY . .
-# Map the port
+# production image
+FROM base AS run
+COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
 EXPOSE 4000
-EXPOSE 4200
+CMD [ "pnpm", "start" ]
 
-CMD [ "npm", "run", "serve:ssr" ]
-
-# At the end, set the user to use when running this image
-USER node
+# end-to-end tests image
+FROM mcr.microsoft.com/playwright:v1.44.0-jammy AS e2e
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /tests
+WORKDIR /tests
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+EXPOSE 9323
+CMD [ "pnpm", "run", "e2e" ]
