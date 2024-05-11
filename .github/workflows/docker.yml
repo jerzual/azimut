@@ -1,0 +1,27 @@
+name: Docker Image Build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-with-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: run
+          platforms: linux/amd64,linux/arm64
+          push: false
+          tags: jerzual/azimut:latest
+
