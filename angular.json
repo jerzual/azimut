@@ -82,7 +82,7 @@
 					}
 				},
 				"test": {
-					"builder": "@analogjs/platform:vitest"
+					"builder": "@analogjs/vitest-angular:test"
 				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
