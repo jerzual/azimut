@@ -6,15 +6,18 @@
  */
 
 /**
+ * Base url
+ */
+export type PropertiesBackendUrl = string;
+/**
+ * host of couchdb
+ */
+export type PropertiesDatabaseHost = string;
+
+/**
  * Environment configuration
  */
 export interface ConfigurationSchema {
-	/**
-	 * Base url
-	 */
-	backendUrl?: string;
-	/**
-	 * host of couchdb
-	 */
-	databaseHost?: string;
+	backendUrl?: PropertiesBackendUrl;
+	databaseHost?: PropertiesDatabaseHost;
 }

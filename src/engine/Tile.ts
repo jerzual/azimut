@@ -7,7 +7,7 @@ export interface Tile {
 	walkable: boolean;
 	diggable: boolean;
 	transportTo?: Tile;
-	items?: Array<Item>;
+	items?: Item[];
 }
 export enum TileType {
 	EMPTY,

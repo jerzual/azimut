@@ -11,17 +11,24 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser-esbuild",
+					"builder": "@angular-devkit/build-angular:application",
 					"options": {
-						"outputPath": "dist/browser",
+						"outputPath": {
+							"base": "dist"
+						},
 						"index": "src/index.html",
-						"main": "src/main.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": ["zone.js"],
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": ["src/styles.css"],
-						"scripts": []
+						"scripts": [],
+						"browser": "src/main.ts",
+						"server": "src/main.server.ts",
+						"outputMode": "server",
+						"ssr": {
+							"entry": "src/server.ts"
+						}
 					},
 					"configurations": {
 						"production": {
@@ -46,14 +53,15 @@
 							"outputHashing": "all",
 							"optimization": {
 								"scripts": true,
-								"styles": { "minify": true, "inlineCritical": false },
+								"styles": {
+									"minify": true,
+									"inlineCritical": false
+								},
 								"fonts": false
 							}
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
@@ -73,7 +81,8 @@
 						"development": {
 							"buildTarget": "azimut:build:development"
 						}
-					}
+					},
+					"defaultConfiguration": "development"
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
@@ -88,77 +97,6 @@
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
 						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-					}
-				},
-				"server": {
-					"builder": "@angular-devkit/build-angular:server",
-					"options": {
-						"outputPath": "dist/server",
-						"main": "server.ts",
-						"tsConfig": "tsconfig.server.json",
-						"inlineStyleLanguage": "scss"
-					},
-					"configurations": {
-						"production": {
-							"outputHashing": "media",
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.prod.ts"
-								}
-							],
-							"optimization": true,
-							"buildOptimizer": true
-						},
-						"development": {
-							"optimization": false,
-							"sourceMap": true,
-							"extractLicenses": false,
-							"vendorChunk": true,
-							"buildOptimizer": false
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"e2e": {
-					"builder": "@angular-devkit/build-angular:protractor",
-					"options": {
-						"protractorConfig": "e2e/protractor.conf.js",
-						"devServerTarget": "azimut:serve"
-					},
-					"configurations": {
-						"production": {
-							"devServerTarget": "azimut:serve:production"
-						}
-					}
-				},
-				"serve-ssr": {
-					"builder": "@angular-devkit/build-angular:ssr-dev-server",
-					"options": {
-						"browserTarget": "azimut:build",
-						"serverTarget": "azimut:server"
-					},
-					"configurations": {
-						"development": {
-							"browserTarget": "azimut:build:development",
-							"serverTarget": "azimut:server:development"
-						},
-						"production": {
-							"browserTarget": "azimut:build:production",
-							"serverTarget": "azimut:server:production"
-						}
-					},
-					"defaultConfiguration": "development"
-				},
-				"prerender": {
-					"builder": "@angular-devkit/build-angular:prerender",
-					"options": {
-						"browserTarget": "azimut:build:production",
-						"serverTarget": "azimut:server:production",
-						"routes": ["/"]
-					},
-					"configurations": {
-						"production": {}
 					}
 				}
 			}

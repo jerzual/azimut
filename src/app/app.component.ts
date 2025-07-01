@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoadingComponent } from './core/components/loading/loading.component';
-import { NgIf } from '@angular/common';
 import { SceneComponent } from './scene/components/scene/scene.component';
 import { UserInterfaceStore } from './ui';
 
 @Component({
 	selector: 'app-root',
-	standalone: true,
-	imports: [NgIf, LoadingComponent, RouterOutlet, SceneComponent],
+	imports: [LoadingComponent, RouterOutlet, SceneComponent],
 	providers: [UserInterfaceStore],
-	template: `
-		<app-loading *ngIf="loading"></app-loading>
+	template: `@if (loading) {
+			<app-loading />
+		}
 		<main class="azimut-main">
-			<app-scene></app-scene>
+			@defer {
+				<app-scene></app-scene>
+			}
 		</main>
 		<aside class="azimut-ui">
 			<router-outlet></router-outlet>
-		</aside>
-	`,
+		</aside> `,
 	styles: `
 		.azimut-main {
 			position: absolute;

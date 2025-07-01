@@ -1,14 +1,14 @@
-import { TexturePackerSchema } from '../assets/sprites';
-import { numberLiteralTypeAnnotation } from '@babel/types';
+import type { TexturePackerSchema } from '../assets/sprites.schema';
 
-const fs = require('fs');
-const path = require('path');
-const imageSize = require('image-size');
+import fs from 'node:fs';
+import path from 'node:path';
+import imageSize from 'image-size';
+import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
 
 // sprites data structure
 const sprites: TexturePackerSchema = { frames: {} };
 // input file path
-const spritesPath = path.join(__dirname, '..', 'assets', 'sprites');
+const spritesPath = path.join(process.cwd(), 'src', 'assets', 'sprites');
 // data structure
 export interface FileDimensions {
 	fileName: string;
@@ -19,7 +19,7 @@ export interface FileDimensions {
 fs.readdir(
 	spritesPath,
 	{
-		encoding: 'UTF-8',
+		encoding: 'utf-8',
 	},
 	(err: Error, files: string[]) => {
 		if (err) {
@@ -34,7 +34,7 @@ fs.readdir(
 						(resolve, reject) => {
 							imageSize(
 								path.join(spritesPath, fileName),
-								(error: Error, dimensions) => {
+								(error: Error | null, dimensions: ISizeCalculationResult) => {
 									if (error) {
 										return reject(error);
 									}
@@ -58,7 +58,7 @@ fs.readdir(
 
 			// write it
 			fs.writeFile(
-				path.join(__dirname, '..', 'assets', 'data', 'sprites.json'),
+				path.join(process.cwd(), 'src', 'assets', 'data', 'sprites.json'),
 				JSON.stringify(sprites),
 				(error, args) => {
 					if (error) {

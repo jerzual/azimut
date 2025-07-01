@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ConfigurationSchema } from 'src/assets/config';
+import { Injectable, inject } from '@angular/core';
+import { ConfigurationSchema } from '../../../assets/config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class ConfigService {
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	fetchConfig(): Observable<ConfigurationSchema> {
 		return this.httpClient.get<ConfigurationSchema>('assets/data/config.json');

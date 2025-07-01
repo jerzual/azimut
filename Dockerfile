@@ -1,23 +1,24 @@
-FROM node:18
+FROM node:24-slim AS base
 
-# Create app directory
-WORKDIR /usr/src/azimut
+ENV PNPM_HOME="/pnpm"
 
-# Install app dependencies
-#COPY package.json .
-# For npm@5 or later, copy package-lock.json as well
-#COPY package-lock.json .
-# install will run build-client and build-server
-RUN npm ci
-RUN npm run build:ssr
+ENV PATH="$PNPM_HOME:$PATH"
 
-# Bundle app source
-#COPY . .
-# Map the port
+RUN corepack enable
+COPY . /app
+WORKDIR /app
+
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
+
+FROM base
+COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+
 EXPOSE 4000
-EXPOSE 4200
 
-CMD [ "npm", "run", "serve:ssr" ]
-
-# At the end, set the user to use when running this image
-USER node
+CMD [ "pnpm", "run", "serve" ]

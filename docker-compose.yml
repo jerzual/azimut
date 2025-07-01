@@ -1,4 +1,3 @@
-version: '3'
 volumes:
   logs:
     driver: local
@@ -7,23 +6,26 @@ volumes:
 networks:
   azimut-network:
 services:
-  # MySQL database
+  # database
   couchdb:
-    image: couchdb:2.3.1
+    image: couchdb:3.5.0
     restart: always
     env_file:
       #- .env.dist
       - .env
     environment:
       - AZIMUT_COUCHDB_HOST
-      - COUCHDB_USER:AZIMUT_COUCHDB_USER
-      - COUCHDB_PASSWORD:AZIMUT_COUCHDB_PASSWORD
+      - "COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}"
+      - "COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}"
+      - "COUCHDB_SECRET=${COUCHDB_SECRET:-123456}"
     volumes:
       - db:/opt/couchdb/data
     ports:
-      - 5984:5984
+      - '5984:5984'
+      - '4369:4369'
+      - '9100:9100'
 
-  # Angular + express running on node
+  # Angular + fastify running on node.js
   server:
     build:
       context: .
@@ -37,17 +39,14 @@ services:
       - couchdb
     ports:
       - 4000:4000
-      - 4100:4100
     environment:
       - NODE_ENV=development
       - AZIMUT_COUCHDB_HOST
       - AZIMUT_FRONT_URL
 
-  e2e:
-    image: node:18
-    build:
-      context: ./e2e
-    command: npm ci
-    volumes:
-      - ./e2e:/usr/src/app
+  tests:
+    image: mcr.microsoft.com/playwright:v1.53.0-noble
+    command: npx -y playwright@1.53.0 run-server --port 3000 --host 0.0.0.0
+    ports:
+      - 3000:3000
 
