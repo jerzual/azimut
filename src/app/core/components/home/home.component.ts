@@ -56,13 +56,10 @@ import { RouterLinkActive, RouterLink } from '@angular/router';
 			}
 		`,
 	],
-	standalone: true,
 	imports: [RouterLinkActive, RouterLink],
 })
 export class HomeComponent implements OnInit {
 	public newGameKey!: string;
-
-	constructor() {}
 
 	ngOnInit() {
 		this.newGameKey = this.getGameKey();

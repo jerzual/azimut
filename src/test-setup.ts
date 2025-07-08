@@ -8,7 +8,7 @@ import { getTestBed } from '@angular/core/testing';
 
 /* global mocks for jsdom */
 const mock = () => {
-	let storage: { [key: string]: string } = {};
+	let storage: Record<string, string> = {};
 	return {
 		getItem: (key: string) => (key in storage ? storage[key] : null),
 		setItem: (key: string, value: string) => (storage[key] = value || ''),

@@ -1,5 +1,4 @@
 import { signalStore, withState } from '@ngrx/signals';
-import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { withEntities } from '@ngrx/signals/entities';
 import { Widget } from '../models/widget.model';
 
@@ -19,7 +18,6 @@ export const initialState: State = {
 
 export const UserInterfaceStore = signalStore(
 	{ providedIn: 'root' },
-	withDevtools('ui'),
 	withState<State>(initialState),
 	withEntities<Widget>(),
 );

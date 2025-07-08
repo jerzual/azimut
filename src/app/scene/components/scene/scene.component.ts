@@ -1,14 +1,15 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core';
+import {
+	Component,
+	CUSTOM_ELEMENTS_SCHEMA,
+	ChangeDetectionStrategy,
+} from '@angular/core';
 import { extend, NgtCanvas } from 'angular-three';
 import { Mesh, BoxGeometry } from 'three';
-
 
 extend({
 	Mesh, // makes ngt-mesh available
 	BoxGeometry, // makes ngt-box-geometry available
 });
-
-
 
 @Component({
 	// This Component is rendered in the Custom Renderer
@@ -25,7 +26,6 @@ export class SceneGraphComponent {}
 
 @Component({
 	selector: 'app-scene',
-	standalone: true,
 	styles: [
 		`
 			#renderZone {

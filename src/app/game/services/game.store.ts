@@ -12,16 +12,20 @@ import { computed } from '@angular/core';
 
 export interface State {
 	loaded: boolean;
-	selectedId?: string;
+	selectedId: string | undefined;
 }
 
 export const GameStore = signalStore(
 	{ providedIn: 'root' },
 	withDevtools('game'),
-	withState<State>({ loaded: false }),
+	withState<State>({ loaded: false, selectedId: undefined }),
 	withEntities<Game>(),
 	withComputed((state) => ({
-		selected: computed(() => state.entities()[state.selectedId()]),
+		selected: computed(() => {
+			const id = state.selectedId();
+			if (!id) return;
+			return state.entities().find((entity) => entity.id === id);
+		}),
 		games: computed(() =>
 			state
 				.entities()

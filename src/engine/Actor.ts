@@ -7,8 +7,8 @@ export interface Actor {
 	uuid: string;
 	actionPoints: number;
 	life: number;
-	items: Array<Item>;
-	actionsQueue: Array<Action>;
+	items: Item[];
+	actionsQueue: Action[];
 	status: ActorStatus;
 }
 
@@ -24,8 +24,8 @@ export class ActorImpl extends Entity implements Actor {
 	//
 	actionPoints: number;
 	life: number;
-	items: Array<Item>;
-	actionsQueue: Array<Action>;
+	items: Item[];
+	actionsQueue: Action[];
 	status: ActorStatus;
 	constructor(clone: Partial<ActorImpl>) {
 		super();

@@ -1,3 +1,5 @@
+# Azimut Game (working title)
+
 <pre>
 ██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ 
 █ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    
@@ -8,81 +10,40 @@
  ▀                                   
 </pre>
 
-a turn based party survival game
+A turn based party survival game in your browser
 
-it is a total rework of old code, based on couchdb sync + docker dev env
+It is a total rework of old, still non-working, code... and a side-project, so don't expect anything.
 
-## Principle
+## Tech Stack
 
-team based, turn based, isometric / 3D mixed with sprites.
+TypeScript, the web platform.
 
-worlds are created by each players, connected by synchronized replicated dbs.
-game allows you a number of points per turn, you have 12 hours to compute a turn.
-you have a party of one to 4 heroes, in a world shared between players.
-world has biomes and sould be a graph of
+- [THREE.js](https://threejs.org/) & [angular-three](https://angularthree.netlify.app/) for the 3D / game engine 
+- [Angular](https://angular.dev/) as the main UI framework 
+- [Signal store](https://ngrx.io/guide/signals/signal-store) for state management
+- [RxDB](https://rxdb.info/) for data replication and local-first aspects.
+- [Rot.js](https://ondras.github.io/rot.js/hp/) for level generation / rogue-like aspects.
+- [Tone.js](https://tonejs.github.io/) and [Tonal](https://github.com/tonaljs/tonal) for music / sound
+- [node.js](https://nodejs.org) / [fastify](https://fastify.dev) / [couchdb](https://docs.couchdb.org) for server-side storage.
+- [vitest](https://vitest.dev/) / [playwright](https://playwright.dev/) for tests.
 
-| worlds
-| / -> view
-| 000/ -> 
+## How to run ?
 
-| /worlds/000/ -> 
+### Pre-requisites
 
-## tech stack
+- [git](https://git-scm.com/)
+- [node.js](https://nodejs.org/) & [pnpm](https://pnpm.io/)
+- [docker](https://hub.docker.com/)
 
-javascript(typescript) and web stuff
+### Installation
 
-- THREE.js for the 3D / game engine 
-- angular/ngrx/custom svgs for the ui
-- rot.js for level generation / rogue-like aspects.
-- tone.js for music / sound
-- node.js / express / couchdb / pouchdb for server-side storage.
+```bash
+git clone git@github.com:jerzual/azimut.git
+cd azimut
+make build
+make start
+```
 
-## how to run
+### Development
 
-### prerequisites
-
-have docker + docker-compose installed
-
-## inspiration
-
-### Gameplay
-
-- klei's invisible inc
-- dishonored series
-- little big adventure
-
-### Art style
-
-- Another world style : flat shapes, simple SVG shapes as much as possible
-- flat shapes, pastel colors
-
-### Story
-
-- Zombie movies, sci fi light humor
-- Stranger things
-- Groundhound day
-
-## Gameplay loop
-
-1. explore, move your party around in the overworld.
-2. dungeon (inside of buildings, underground mines, caves or find key or boss item)
-3. stealth or fight.
-
-## Level generation
-
-generates a city-like area with biomes :
-
-* a downtown / huge buildings area
-* residential / commercial area
-* countryside
-* mountain
-* seashore
-* swamp
-* desert
-
-then each biomes have levels like :
-
-* bubbles (caves, mine)
-* dungeon
-* building (levels on top of each other)
-
+Open <http://localhost:4000>

@@ -4,7 +4,7 @@ import { ConcreteBehavior, Behavior } from './Behavior';
 const MAX_ITEMS = 42;
 
 export class HasInventoryAgent {
-	items: Array<Item>;
+	items: Item[];
 
 	get isFull() {
 		return this.items.length < MAX_ITEMS;

@@ -5,7 +5,7 @@ import Tile from './Tile';
 
 export interface Level {
 	// array of positions
-	tiles: Array<Tile>;
+	tiles: Tile[];
 	currentPlayers: number;
 	width: number;
 	height: number;
