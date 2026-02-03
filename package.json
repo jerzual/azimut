@@ -41,7 +41,7 @@
 		"angular2-draggable": "^16.0.0",
 		"chance": "^1.1.13",
 		"fast-simplex-noise": "^4.0.0",
-		"fastify": "^5.4.0",
+		"fastify": "^5.7.3",
 		"nanoid": "^5.1.5",
 		"ngx-device-detector": "^9.0.0",
 		"ngxtension": "4.0.0",
