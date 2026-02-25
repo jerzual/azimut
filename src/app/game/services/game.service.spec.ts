@@ -2,13 +2,16 @@ import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { GameService } from './game.service';
+import { GameStore } from './game.store';
 
 describe('GameService', () => {
 	let service: GameService;
+	let gameStore: InstanceType<typeof GameStore>;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({});
 		service = TestBed.inject(GameService);
+		gameStore = TestBed.inject(GameStore);
 	});
 
 	it('should be created', () => {
@@ -29,5 +32,22 @@ describe('GameService', () => {
 		const firstTile = city.levels[0].tiles[0];
 		expect(firstTile.elevation).toBeGreaterThanOrEqual(0);
 		expect(firstTile.biome).toBeDefined();
+	});
+
+	it('should store city in GameStore on newGame', () => {
+		expect(gameStore.currentCity()).toBeNull();
+
+		const { city } = service.newGame('test-seed-456');
+
+		expect(gameStore.currentCity()).toBe(city);
+		expect(gameStore.terrain()).toBe(city.levels[0]);
+	});
+
+	it('should clear city from GameStore on quitGame', () => {
+		service.newGame('test-seed-789');
+		expect(gameStore.currentCity()).not.toBeNull();
+
+		service.quitGame();
+		expect(gameStore.currentCity()).toBeNull();
 	});
 });

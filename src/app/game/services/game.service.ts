@@ -26,11 +26,12 @@ export class GameService {
 			.build();
 
 		this.gameStore.addGame(game);
+		this.gameStore.setCurrentCity(city);
 
 		return { game, city };
 	}
 
 	quitGame() {
-		// TODO: implement
+		this.gameStore.clearCurrentCity();
 	}
 }
