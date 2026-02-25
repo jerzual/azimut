@@ -16,7 +16,7 @@ describe('GameService', () => {
 	});
 
 	it('should create a new game with city and terrain', () => {
-		const { game, city } = service.newGame();
+		const { game, city } = service.newGame('test-seed-123');
 
 		expect(game.id).toBeTruthy();
 		expect(game.seed).toBeTruthy();
