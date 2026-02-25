@@ -1,4 +1,4 @@
-const Directions = {
+export const Directions = {
 	Axial: [
 		[0, -1],
 		[1, 0],

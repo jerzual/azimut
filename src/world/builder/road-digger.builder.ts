@@ -7,8 +7,12 @@ export default class RoadDigger extends RandomBuilder {
 		super({ seed });
 		this.city = city;
 	}
-	digMainRoads() {}
-	placeBiomes() {}
+	digMainRoads() {
+		// TODO: implement
+	}
+	placeBiomes() {
+		// TODO: implement
+	}
 	build() {
 		return this.city;
 	}

@@ -13,8 +13,8 @@ export const enum Behaviors {
 }
 /** Agent  holds the state of a behavior */
 export interface Agent {
-	state?: any[];
-	params?: any[];
+	state?: unknown[];
+	params?: unknown[];
 }
 /** behavior required fields */
 export interface Behavior {
@@ -35,8 +35,8 @@ export class ConcreteBehavior implements Behavior {
 
 export function behaviorFactory(
 	execute: () => void,
-	type: any,
-	agent: any,
+	type: Behaviors,
+	agent: Agent,
 ): Behavior {
 	return new ConcreteBehavior(nanoid(), execute, type, agent);
 }

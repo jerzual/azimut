@@ -1,14 +1,17 @@
 import City from '../city.class';
 import RandomBuilder from './random.builder';
-import RoadDigger from './road-digger.builder';
 
 export default class SquareBuilder extends RandomBuilder {
-	city: City;
-	constructor({ seed }) {
+	city!: City;
+	constructor({ seed }: { seed: string }) {
 		super({ seed });
 	}
-	placeSquare() {}
-	placeBiomes() {}
+	placeSquare() {
+		// TODO: implement
+	}
+	placeBiomes() {
+		// TODO: implement
+	}
 	build() {
 		return this.city;
 	}

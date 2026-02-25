@@ -1,3 +1,6 @@
 export class DrawableBehavior {
-	draw(canvas: HTMLCanvasElement) {}
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	draw(canvas: HTMLCanvasElement) {
+		// TODO: implement
+	}
 }

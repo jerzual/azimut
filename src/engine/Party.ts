@@ -1,6 +1,6 @@
 import Actor from './Actor';
 
-const MAX_PARTY_MEMBERS = 7;
+export const MAX_PARTY_MEMBERS = 7;
 
 export interface Party {
 	uuid: string;
@@ -8,13 +8,13 @@ export interface Party {
 }
 
 export class PartyImpl implements Party {
-	uuid: string;
+	uuid!: string;
 	members: Actor[];
 	constructor() {
 		// Array of Actors
 		this.members = [];
 	}
-	push(member) {
+	push(member: Actor) {
 		this.members.push(member);
 	}
 }
