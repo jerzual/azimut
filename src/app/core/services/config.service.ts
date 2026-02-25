@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ConfigurationSchema } from '../../../assets/config';
+import { ConfigurationSchema } from '../../../assets/config.schema';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

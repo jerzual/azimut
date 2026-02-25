@@ -16,15 +16,11 @@ export enum ItemType {
 	WEAPON,
 }
 
-export class ItemImpl {
-	uuid: string;
-	// display name
-	name: string;
-	// number of turns before it breaks
-	duration: number;
-	// sprite
-	spriteName: string;
-	// once loaded sprite instance here
+export class ItemImpl implements Item {
+	uuid!: string;
+	name!: string;
+	duration!: number;
+	spriteName!: string;
 	spriteInstance?: Sprite;
 }
 export default Item;

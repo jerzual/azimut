@@ -13,7 +13,7 @@ export class City {
 	levels: Level[];
 	width: number;
 	height: number;
-	constructor({ width, height }) {
+	constructor({ width, height }: { width?: number; height?: number } = {}) {
 		this.levels = [];
 		this.width = width || MIN_CITY_SIZE;
 		this.height = height || MIN_CITY_SIZE;

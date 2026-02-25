@@ -18,12 +18,12 @@ export enum TileType {
 	TELEPORTER,
 }
 export class TileImpl implements Tile {
-	x: number;
-	y: number;
-	type: TileType;
-	walkable: boolean;
-	diggable: boolean;
-	transportTo: Tile;
+	x!: number;
+	y!: number;
+	type!: TileType;
+	walkable!: boolean;
+	diggable!: boolean;
+	transportTo!: Tile;
 	get key() {
 		return `${this.x},${this.y}`;
 	}
