@@ -6,7 +6,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import { getTestBed } from '@angular/core/testing';
 
-/* global mocks for jsdom */
+// mocks for jsdom
 const mock = () => {
 	let storage: Record<string, string> = {};
 	return {

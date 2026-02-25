@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import {
 	HttpClientTestingModule,
 	HttpTestingController,
@@ -9,7 +9,6 @@ import { ConfigService } from './config.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ConfigService', () => {
-	const baseHref = '/fr/';
 	let httpMock: HttpTestingController;
 	beforeEach(() => {
 		TestBed.configureTestingModule({

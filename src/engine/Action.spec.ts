@@ -1,5 +1,5 @@
 import { ActionTypes, actionFactory } from './Action';
-import { describe, it, test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 
 describe('Action interface', () => {
 	test('provides a factory function', () => {

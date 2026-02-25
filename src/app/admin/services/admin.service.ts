@@ -7,8 +7,6 @@ import { nanoid } from 'nanoid';
 	providedIn: 'root',
 })
 export class AdminService {
-	constructor() {}
-
 	getUsers(): Observable<Partial<Player>> {
 		return of({
 			uuid: nanoid(),

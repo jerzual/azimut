@@ -11,7 +11,7 @@ export interface Level {
 	height: number;
 }
 // Each type of level means a different map GeneratorFunction.
-enum LevelType {
+export enum LevelType {
 	CAVERN, // ROT.Map.
 	BUILDING_FLOOR,
 	OPEN_FIELD,

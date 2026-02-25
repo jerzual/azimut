@@ -3,7 +3,7 @@ a Path encapsulate an array of tiles, and the currentLocation along it
  */
 import Tile from './Tile';
 
-class Path {
+export class Path {
 	// array of positions
 	tiles: Tile[];
 	currentIndex: number;

@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
 	template: ` <p>widgets-container works!</p> `,
 	styles: [``],
 })
-export class WidgetsContainerComponent {
-	constructor() {}
-}
+export class WidgetsContainerComponent {}
