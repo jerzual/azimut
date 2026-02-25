@@ -91,7 +91,7 @@
 					}
 				},
 				"test": {
-					"builder": "@analogjs/vitest-angular:test"
+					"builder": "@angular/build:unit-test"
 				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
@@ -103,10 +103,8 @@
 		}
 	},
 	"cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ],
-    "analytics": false
+		"schematicCollections": ["@angular-eslint/schematics"],
+		"analytics": false
 	},
 	"schematics": {
 		"@schematics/angular:component": {
@@ -114,35 +112,35 @@
 			"inlineStyle": true,
 			"inlineTemplate": true,
 			"standalone": true,
-      "changeDetection": "OnPush",
-      "type": "component"
+			"changeDetection": "OnPush",
+			"type": "component"
 		},
 		"@angular-eslint/schematics:application": {
 			"setParserOptionsProject": true
 		},
 		"@angular-eslint/schematics:library": {
 			"setParserOptionsProject": true
-    },
-    "@schematics/angular:directive": {
-      "type": "directive"
-    },
-    "@schematics/angular:service": {
-      "type": "service"
-    },
-    "@schematics/angular:guard": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:interceptor": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:module": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:pipe": {
-      "typeSeparator": "."
-    },
-    "@schematics/angular:resolver": {
-      "typeSeparator": "."
-    }
+		},
+		"@schematics/angular:directive": {
+			"type": "directive"
+		},
+		"@schematics/angular:service": {
+			"type": "service"
+		},
+		"@schematics/angular:guard": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:interceptor": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:module": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:pipe": {
+			"typeSeparator": "."
+		},
+		"@schematics/angular:resolver": {
+			"typeSeparator": "."
+		}
 	}
 }

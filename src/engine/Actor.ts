@@ -20,7 +20,7 @@ export enum ActorStatus {
 }
 
 export class ActorImpl extends Entity implements Actor {
-	uuid!: string;
+	declare uuid: string;
 	//
 	actionPoints: number;
 	life: number;

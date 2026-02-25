@@ -4,7 +4,7 @@ import { describe, beforeEach, it, expect } from 'vitest';
 import { GameStore } from './game.store';
 
 describe('GameStore', () => {
-	let service;
+	let service: InstanceType<typeof GameStore>;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({});
