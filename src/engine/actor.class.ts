@@ -1,6 +1,6 @@
-import Item from './Item';
-import { Entity } from './Entity';
-import { Action } from './Action';
+import Item from './item.class';
+import { Entity } from './entity.class';
+import { Action } from './action.class';
 import { nanoid } from 'nanoid';
 
 export interface Actor {

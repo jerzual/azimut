@@ -1,4 +1,4 @@
-import { Behaviors } from './Behavior';
+import { Behaviors } from './behavior.class';
 
 export class Fightable {
 	type: Behaviors = Behaviors.Fightable;

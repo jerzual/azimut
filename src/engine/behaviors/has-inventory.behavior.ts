@@ -1,5 +1,5 @@
-import Item from '../Item';
-import { ConcreteBehavior, Behavior } from './Behavior';
+import Item from '../item.class';
+import { ConcreteBehavior, Behavior } from './behavior.class';
 
 const MAX_ITEMS = 42;
 

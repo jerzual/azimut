@@ -1,4 +1,4 @@
-import Actor from '../../engine/Actor';
+import Actor from '../../engine/actor.class';
 import RandomBuilder from './random.builder';
 
 export default class HeroBuilder extends RandomBuilder {

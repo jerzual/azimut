@@ -1,4 +1,4 @@
-import Actor from './Actor';
+import Actor from './actor.class';
 
 export const MAX_PARTY_MEMBERS = 7;
 

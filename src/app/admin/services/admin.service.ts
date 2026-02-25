@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Player } from '../../../engine/Player';
+import { Player } from '../../../engine/player.interface';
 import { of, Observable } from 'rxjs';
 import { nanoid } from 'nanoid';
 

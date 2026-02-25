@@ -1,4 +1,4 @@
-import Item from './Item';
+import Item from './item.class';
 
 export interface Tile {
 	x: number;

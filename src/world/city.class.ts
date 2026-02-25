@@ -1,4 +1,4 @@
-import Level from '../engine/Level';
+import Level from '../engine/level.interface';
 
 const MIN_CITY_SIZE = 512;
 
