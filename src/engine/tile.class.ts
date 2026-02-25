@@ -1,3 +1,4 @@
+import { BiomeType } from './biome.enum';
 import Item from './item.class';
 
 export interface Tile {
@@ -6,6 +7,8 @@ export interface Tile {
 	type: TileType;
 	walkable: boolean;
 	diggable: boolean;
+	elevation?: number;
+	biome?: BiomeType;
 	transportTo?: Tile;
 	items?: Item[];
 }
@@ -23,6 +26,8 @@ export class TileImpl implements Tile {
 	type!: TileType;
 	walkable!: boolean;
 	diggable!: boolean;
+	elevation?: number;
+	biome?: BiomeType;
 	transportTo!: Tile;
 	get key() {
 		return `${this.x},${this.y}`;

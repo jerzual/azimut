@@ -39,7 +39,6 @@
 		"@tonaljs/tonal": "^4.10.0",
 		"angular-three": "^4.0.9",
 		"angular2-draggable": "^16.0.0",
-		"chance": "^1.1.13",
 		"fast-simplex-noise": "^4.0.0",
 		"fastify": "^5.4.0",
 		"nanoid": "^5.1.5",
@@ -54,6 +53,7 @@
 		"zone.js": "~0.15.1"
 	},
 	"devDependencies": {
+		"@analogjs/vite-plugin-angular": "^2.2.3",
 		"@angular-architects/ngrx-toolkit": "^21.0.1",
 		"@angular-eslint/builder": "21.2.0",
 		"@angular-eslint/eslint-plugin": "21.2.0",
@@ -86,4 +86,3 @@
 		"vitest": "^4.0.18"
 	}
 }
-
