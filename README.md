@@ -1,13 +1,13 @@
 # Azimut Game (working title)
 
 <pre>
-██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀ 
-█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █    
-█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █    
-█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █     
-   █           ▐    █  █▄ ▄█  ▀      
-  █                ▀    ▀▀▀          
- ▀                                   
+██   ▄▄▄▄▄▄   ▄█ █▀▄▀█   ▄     ▄▄▄▄▀
+█ █ ▀   ▄▄▀   █  █ █ █    █ ▀▀▀ █
+█▄▄█ ▄▀▀   ▄▀ █  █ ▄ █ █   █    █
+█  █ ▀▀▀▀▀▀   ▐█ █   █ █   █   █
+   █           ▐    █  █▄ ▄█  ▀
+  █                ▀    ▀▀▀
+ ▀
 </pre>
 
 A turn based party survival game in your browser
@@ -18,8 +18,8 @@ It is a total rework of old, still non-working, code... and a side-project, so d
 
 TypeScript, the web platform.
 
-- [THREE.js](https://threejs.org/) & [angular-three](https://angularthree.netlify.app/) for the 3D / game engine 
-- [Angular](https://angular.dev/) as the main UI framework 
+- [Angular 21](https://angular.dev/) as the main UI framework
+- [THREE.js](https://threejs.org/) & [angular-three v4](https://angularthree.org/) for the 3D / game engine
 - [Signal store](https://ngrx.io/guide/signals/signal-store) for state management
 - [RxDB](https://rxdb.info/) for data replication and local-first aspects.
 - [Rot.js](https://ondras.github.io/rot.js/hp/) for level generation / rogue-like aspects.
@@ -32,7 +32,7 @@ TypeScript, the web platform.
 ### Pre-requisites
 
 - [git](https://git-scm.com/)
-- [node.js](https://nodejs.org/) & [pnpm](https://pnpm.io/)
+- [node.js >= 24](https://nodejs.org/) & [pnpm](https://pnpm.io/)
 - [docker](https://hub.docker.com/)
 
 ### Installation
@@ -40,10 +40,17 @@ TypeScript, the web platform.
 ```bash
 git clone git@github.com:jerzual/azimut.git
 cd azimut
+pnpm install
+pnpm start
+```
+
+### Docker (full stack)
+
+```bash
 make build
 make start
 ```
 
 ### Development
 
-Open <http://localhost:4000>
+Open <http://localhost:4200>

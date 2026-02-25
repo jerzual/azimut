@@ -1,7 +1,7 @@
 /*
  * a Level is a set of tiles, it is linked to a socket.io room.
  */
-import Tile from './Tile';
+import Tile from './tile.class';
 
 export interface Level {
 	// array of positions

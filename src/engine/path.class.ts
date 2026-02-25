@@ -1,7 +1,7 @@
 /*
 a Path encapsulate an array of tiles, and the currentLocation along it
  */
-import Tile from './Tile';
+import Tile from './tile.class';
 
 export class Path {
 	// array of positions

@@ -1,4 +1,4 @@
-import { ActionTypes, actionFactory } from './Action';
+import { ActionTypes, actionFactory } from './action.class';
 import { describe, test, expect } from 'vitest';
 
 describe('Action interface', () => {
