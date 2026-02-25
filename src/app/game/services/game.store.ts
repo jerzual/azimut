@@ -6,7 +6,7 @@ import {
 	withMethods,
 	withState,
 } from '@ngrx/signals';
-import { withEntities } from '@ngrx/signals/entities';
+import { addEntity, withEntities } from '@ngrx/signals/entities';
 import { Game } from '../models/game.model';
 import { computed } from '@angular/core';
 
@@ -37,6 +37,9 @@ export const GameStore = signalStore(
 	withMethods((store) => ({
 		select: (id: string) => {
 			patchState(store, (state) => ({ ...state, selectedId: id }));
+		},
+		addGame: (game: Game) => {
+			patchState(store, addEntity(game));
 		},
 	})),
 );
