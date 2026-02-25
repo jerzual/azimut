@@ -9,16 +9,18 @@ import {
 import { addEntity, withEntities } from '@ngrx/signals/entities';
 import { Game } from '../models/game.model';
 import { computed } from '@angular/core';
+import { City } from '../../../world/city.class';
 
 export interface State {
 	loaded: boolean;
 	selectedId: string | undefined;
+	currentCity: City | null;
 }
 
 export const GameStore = signalStore(
 	{ providedIn: 'root' },
 	withDevtools('game'),
-	withState<State>({ loaded: false, selectedId: undefined }),
+	withState<State>({ loaded: false, selectedId: undefined, currentCity: null }),
 	withEntities<Game>(),
 	withComputed((state) => ({
 		selected: computed(() => {
@@ -33,6 +35,7 @@ export const GameStore = signalStore(
 					(a, b) => a.created.getMilliseconds() - b.created.getMilliseconds(),
 				),
 		),
+		terrain: computed(() => state.currentCity()?.levels[0] ?? null),
 	})),
 	withMethods((store) => ({
 		select: (id: string) => {
@@ -40,6 +43,12 @@ export const GameStore = signalStore(
 		},
 		addGame: (game: Game) => {
 			patchState(store, addEntity(game));
+		},
+		setCurrentCity: (city: City) => {
+			patchState(store, { currentCity: city });
+		},
+		clearCurrentCity: () => {
+			patchState(store, { currentCity: null });
 		},
 	})),
 );

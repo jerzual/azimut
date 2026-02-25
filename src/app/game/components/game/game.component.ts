@@ -7,20 +7,10 @@ import {
 	ElementRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BiomeType } from '../../../../engine/biome.enum';
+import { BIOME_COLORS } from '../../../../constants/biome-colors.const';
 import { City } from '../../../../world/city.class';
 import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
-
-const BIOME_COLORS: Record<BiomeType, string> = {
-	[BiomeType.Swamp]: '#4a6741',
-	[BiomeType.Desert]: '#c2b280',
-	[BiomeType.Country]: '#7ab793',
-	[BiomeType.Residential]: '#a0855b',
-	[BiomeType.Urban]: '#808080',
-	[BiomeType.Downtown]: '#505050',
-	[BiomeType.Airport]: '#d0d0d0',
-};
 
 @Component({
 	selector: 'app-game',
