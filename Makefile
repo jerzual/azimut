@@ -1,4 +1,4 @@
-.PHONY: help start stop init test clean
+.PHONY: help start stop init test test-show clean
 .DEFAULT_GOAL := help
 
 help: ## Show this help message
@@ -25,7 +25,7 @@ clean: ## Clean build artifacts and dependencies
 	rm -rf dist node_modules
 
 start: ## Start the docker containers
-	docker-compose up -d
+	docker compose up -d
 
 stop: ## Stop the docker containers
 	docker compose down
@@ -35,5 +35,8 @@ init: ## Initialize couchdb collections
 	curl -X PUT http://user:password@127.0.0.1:5984/_replicator \
 	curl -X PUT http://user:password@127.0.0.1:5984/_global_changes
 
-test: ## Run tests inside docker container (requires docker compose stack to be started)
-	 PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:3000/ BASE_URL=http://server:4000/ npx playwright test
+test: ## Run e2e tests (requires: make start)
+	PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:3000/ npx playwright test
+
+test-show: ## Open the HTML report with screenshots/traces
+	npx playwright show-report
