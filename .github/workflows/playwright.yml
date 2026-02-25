@@ -1,37 +1,151 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 env:
   NODE_VERSION: '24.x'
   PNPM_VERSION: '10'
+
 jobs:
-  test:
-    timeout-minutes: 60
+  e2e:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        version: ${{ env.PNPM_VERSION }}
-        run_install: false
-    - name: Install dependencies
-      run: pnpm install
-    - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
-    - name: Build the app
-      run: pnpm run build
-    - name: Run Playwright tests
-      run: pnpm exec playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - name: Create .env for docker-compose
+        run: |
+          cat > .env << 'EOF'
+          AZIMUT_COUCHDB_HOST=couchdb
+          AZIMUT_COUCHDB_USER=admin
+          AZIMUT_COUCHDB_PASSWORD=password
+          COUCHDB_SECRET=ci-secret
+          AZIMUT_FRONT_URL=http://server:4000
+          EOF
+
+      - name: Build and start Docker stack
+        run: docker compose up -d --build
+
+      - name: Wait for server to be ready
+        run: timeout 120 bash -c 'until curl -sf http://localhost:4000 > /dev/null 2>&1; do sleep 2; done'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Playwright tests
+        id: tests
+        env:
+          PW_TEST_CONNECT_WS_ENDPOINT: ws://127.0.0.1:3000/
+          PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
+        run: npx playwright test --reporter=html,json
+
+      - name: Generate test summary
+        if: ${{ !cancelled() }}
+        run: |
+          node -e "
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('results.json', 'utf8'));
+
+          const suites = report.suites || [];
+          let passed = 0, failed = 0, flaky = 0, skipped = 0;
+          const failures = [];
+
+          function walk(specs) {
+            for (const spec of specs) {
+              if (spec.specs) walk(spec.specs);
+              if (spec.tests) {
+                for (const test of spec.tests) {
+                  const status = test.status;
+                  if (status === 'expected') passed++;
+                  else if (status === 'unexpected') { failed++; failures.push(spec.title + ' > ' + test.projectName); }
+                  else if (status === 'flaky') flaky++;
+                  else if (status === 'skipped') skipped++;
+                }
+              }
+            }
+          }
+          function walkSuites(suites) {
+            for (const suite of suites) {
+              if (suite.suites) walkSuites(suite.suites);
+              if (suite.specs) walk(suite.specs);
+            }
+          }
+          walkSuites(suites);
+
+          const total = passed + failed + flaky + skipped;
+          const icon = failed > 0 ? ':x:' : ':white_check_mark:';
+          const status = failed > 0 ? 'FAILED' : 'PASSED';
+          const duration = (report.stats?.duration || 0) / 1000;
+
+          let md = '## ' + icon + ' Playwright E2E Results: ' + status + '\n\n';
+          md += '| Status | Count |\n|--------|-------|\n';
+          md += '| :white_check_mark: Passed | ' + passed + ' |\n';
+          if (failed > 0) md += '| :x: Failed | ' + failed + ' |\n';
+          if (flaky > 0) md += '| :warning: Flaky | ' + flaky + ' |\n';
+          if (skipped > 0) md += '| :fast_forward: Skipped | ' + skipped + ' |\n';
+          md += '| **Total** | **' + total + '** |\n';
+          md += '\n:stopwatch: Duration: ' + duration.toFixed(1) + 's\n';
+
+          if (failures.length > 0) {
+            md += '\n### Failed Tests\n\n';
+            for (const f of failures) md += '- \`' + f + '\`\n';
+          }
+
+          fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, md, { flag: 'a' });
+          fs.writeFileSync('playwright-summary.md', md);
+          "
+
+      - name: Comment on PR
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          COMMENT_TAG="<!-- playwright-results -->"
+
+          # Delete previous comment if it exists
+          EXISTING=$(gh api "repos/${{ github.repository }}/issues/${PR_NUMBER}/comments" --jq ".[] | select(.body | contains(\"${COMMENT_TAG}\")) | .id" 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            for id in $EXISTING; do
+              gh api -X DELETE "repos/${{ github.repository }}/issues/comments/${id}"
+            done
+          fi
+
+          # Post new comment with hidden tag for future replacement
+          BODY="$(printf '%s\n%s' "${COMMENT_TAG}" "$(cat playwright-summary.md)")"
+          gh pr comment "${PR_NUMBER}" --body "${BODY}"
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Docker logs on failure
+        if: failure()
+        run: docker compose logs
+
+      - name: Stop Docker stack
+        if: always()
+        run: docker compose down
