@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { nanoid } from 'nanoid';
 import CityBuilder from '../../../world/builder/city.builder';
 import { City } from '../../../world/city.class';
 import { Game } from '../models/game.model';
@@ -11,13 +10,11 @@ import { GameStore } from './game.store';
 export class GameService {
 	private gameStore = inject(GameStore);
 
-	newGame(): { game: Game; city: City } {
-		const id = nanoid();
-		const seed = nanoid();
+	newGame(seed: string): { game: Game; city: City } {
 		const now = new Date();
 
 		const game: Game = {
-			id,
+			id: seed,
 			seed,
 			created: now,
 			lastPlayed: now,
