@@ -16,6 +16,7 @@ const angularNodeAppEngine = new AngularNodeAppEngine();
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 server.register(fastifyStatic, { root: browserDistFolder, wildcard: false });
+server.get('/health', (_req, reply) => reply.send({ status: 'ok' }));
 server.get('*', async (req, reply) => {
 	try {
 		const response = await angularNodeAppEngine.handle(req.raw, {
