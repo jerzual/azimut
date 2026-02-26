@@ -78,8 +78,7 @@ export class GameComponent {
 		const terrain = city.levels[0];
 
 		for (const tile of terrain.tiles) {
-			ctx.fillStyle =
-				tile.biome != null ? BIOME_COLORS[tile.biome] : '#000000';
+			ctx.fillStyle = tile.biome != null ? BIOME_COLORS[tile.biome] : '#000000';
 			ctx.fillRect(tile.x, tile.y, 1, 1);
 		}
 	}

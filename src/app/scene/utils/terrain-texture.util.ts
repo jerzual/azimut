@@ -1,4 +1,9 @@
-import { DataTexture, NearestFilter, RGBAFormat, UnsignedByteType } from 'three';
+import {
+	DataTexture,
+	NearestFilter,
+	RGBAFormat,
+	UnsignedByteType,
+} from 'three';
 import Level from '../../../engine/level.interface';
 import {
 	BIOME_COLORS_RGB,
@@ -21,7 +26,13 @@ export function createTerrainTexture(terrain: Level): DataTexture {
 		data[i + 3] = 255;
 	}
 
-	const texture = new DataTexture(data, width, height, RGBAFormat, UnsignedByteType);
+	const texture = new DataTexture(
+		data,
+		width,
+		height,
+		RGBAFormat,
+		UnsignedByteType,
+	);
 	texture.magFilter = NearestFilter;
 	texture.minFilter = NearestFilter;
 	texture.needsUpdate = true;

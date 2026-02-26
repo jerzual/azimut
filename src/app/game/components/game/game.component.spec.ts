@@ -46,8 +46,7 @@ describe('GameComponent', () => {
 					useValue: {
 						snapshot: {
 							paramMap: {
-								get: (key: string) =>
-									key === 'id' ? testSeed : null,
+								get: (key: string) => (key === 'id' ? testSeed : null),
 							},
 						},
 					},
