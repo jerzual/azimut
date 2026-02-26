@@ -72,7 +72,7 @@ services:
       - 4000:4000
     environment:
       - NODE_ENV=development
-      - AZIMUT_COUCHDB_HOST
+      - "AZIMUT_COUCHDB_HOST=${AZIMUT_COUCHDB_HOST:-http://couchdb:5984}"
       - AZIMUT_FRONT_URL
     networks:
       - azimut-network

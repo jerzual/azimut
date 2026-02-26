@@ -23,7 +23,7 @@ jobs:
       - name: Create .env for docker-compose
         run: |
           cat > .env << 'EOF'
-          AZIMUT_COUCHDB_HOST=couchdb
+          AZIMUT_COUCHDB_HOST=http://couchdb:5984
           AZIMUT_COUCHDB_USER=admin
           AZIMUT_COUCHDB_PASSWORD=password
           COUCHDB_SECRET=ci-secret
@@ -34,7 +34,9 @@ jobs:
         run: docker compose up -d --build
 
       - name: Wait for server to be ready
-        run: timeout 120 bash -c 'until curl -sf http://localhost:4000 > /dev/null 2>&1; do sleep 2; done'
+        run: |
+          timeout 120 bash -c 'until curl -sf http://localhost:4000 > /dev/null 2>&1; do sleep 2; done'
+          docker compose logs server --tail 5
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -61,6 +63,13 @@ jobs:
       - name: Generate test summary
         if: ${{ !cancelled() }}
         run: |
+          if [ ! -f results.json ]; then
+            echo "## :x: Playwright E2E Results: NO RESULTS" > playwright-summary.md
+            echo "" >> playwright-summary.md
+            echo "Tests did not produce results. Check the Docker logs for errors." >> playwright-summary.md
+            cat playwright-summary.md >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           node -e "
           const fs = require('fs');
           const report = JSON.parse(fs.readFileSync('results.json', 'utf8'));
@@ -119,6 +128,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ ! -f playwright-summary.md ]; then exit 0; fi
           PR_NUMBER=${{ github.event.pull_request.number }}
           COMMENT_TAG="<!-- playwright-results -->"
 
