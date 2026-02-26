@@ -68,8 +68,7 @@ describe('GameComponent', () => {
 		expect(mockGameService.newGame).toHaveBeenCalledWith(testSeed);
 	});
 
-	it('should store the game and city', () => {
+	it('should store the game', () => {
 		expect(component.game()?.seed).toBe(testSeed);
-		expect(component.city()?.levels.length).toBe(1);
 	});
 });

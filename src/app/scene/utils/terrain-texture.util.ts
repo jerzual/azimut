@@ -5,10 +5,7 @@ import {
 	UnsignedByteType,
 } from 'three';
 import Level from '../../../engine/level.interface';
-import {
-	BIOME_COLORS_RGB,
-	DEFAULT_TILE_COLOR_RGB,
-} from '../../../constants/biome-colors.const';
+import { elevationToRgb } from '../../../engine/elevation-colors.const';
 
 export function createTerrainTexture(terrain: Level): DataTexture {
 	const { width, height, tiles } = terrain;
@@ -16,10 +13,7 @@ export function createTerrainTexture(terrain: Level): DataTexture {
 
 	for (const tile of tiles) {
 		const i = (tile.y * width + tile.x) * 4;
-		const [r, g, b] =
-			tile.biome != null
-				? BIOME_COLORS_RGB[tile.biome]
-				: DEFAULT_TILE_COLOR_RGB;
+		const [r, g, b] = elevationToRgb(tile.elevation ?? 0);
 		data[i] = r;
 		data[i + 1] = g;
 		data[i + 2] = b;

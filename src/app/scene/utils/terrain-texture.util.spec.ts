@@ -1,20 +1,19 @@
 import { describe, it, expect } from 'vitest';
 import { createTerrainTexture } from './terrain-texture.util';
-import { BiomeType } from '../../../engine/biome.enum';
-import { BIOME_COLORS_RGB } from '../../../constants/biome-colors.const';
+import { elevationToRgb } from '../../../engine/elevation-colors.const';
 import type Level from '../../../engine/level.interface';
 import type { Tile } from '../../../engine/tile.class';
 import { TileType } from '../../../engine/tile.class';
 import { NearestFilter } from 'three';
 
-function makeTile(x: number, y: number, biome?: BiomeType): Tile {
+function makeTile(x: number, y: number, elevation = 0): Tile {
 	return {
 		x,
 		y,
 		type: TileType.FLOOR,
 		walkable: true,
 		diggable: false,
-		biome,
+		elevation,
 	};
 }
 
@@ -25,7 +24,7 @@ describe('createTerrainTexture', () => {
 			height: 4,
 			currentPlayers: 0,
 			tiles: Array.from({ length: 16 }, (_, i) =>
-				makeTile(i % 4, Math.floor(i / 4), BiomeType.Desert),
+				makeTile(i % 4, Math.floor(i / 4), 0.5),
 			),
 		};
 
@@ -38,36 +37,33 @@ describe('createTerrainTexture', () => {
 		texture.dispose();
 	});
 
-	it('should write correct RGB values for biome tiles', () => {
+	it('should write correct RGB values based on elevation', () => {
 		const terrain: Level = {
 			width: 2,
 			height: 1,
 			currentPlayers: 0,
-			tiles: [
-				makeTile(0, 0, BiomeType.Desert),
-				makeTile(1, 0, BiomeType.Swamp),
-			],
+			tiles: [makeTile(0, 0, 0.0), makeTile(1, 0, 0.9)],
 		};
 
 		const texture = createTerrainTexture(terrain);
 		const data = texture.image.data as Uint8Array;
 
-		const [dr, dg, db] = BIOME_COLORS_RGB[BiomeType.Desert];
-		expect(data[0]).toBe(dr);
-		expect(data[1]).toBe(dg);
-		expect(data[2]).toBe(db);
+		const [lr, lg, lb] = elevationToRgb(0.0);
+		expect(data[0]).toBe(lr);
+		expect(data[1]).toBe(lg);
+		expect(data[2]).toBe(lb);
 		expect(data[3]).toBe(255);
 
-		const [sr, sg, sb] = BIOME_COLORS_RGB[BiomeType.Swamp];
-		expect(data[4]).toBe(sr);
-		expect(data[5]).toBe(sg);
-		expect(data[6]).toBe(sb);
+		const [hr, hg, hb] = elevationToRgb(0.9);
+		expect(data[4]).toBe(hr);
+		expect(data[5]).toBe(hg);
+		expect(data[6]).toBe(hb);
 		expect(data[7]).toBe(255);
 
 		texture.dispose();
 	});
 
-	it('should use black for tiles with no biome', () => {
+	it('should use elevation 0 color for tiles with no elevation', () => {
 		const terrain: Level = {
 			width: 1,
 			height: 1,
@@ -78,9 +74,10 @@ describe('createTerrainTexture', () => {
 		const texture = createTerrainTexture(terrain);
 		const data = texture.image.data as Uint8Array;
 
-		expect(data[0]).toBe(0);
-		expect(data[1]).toBe(0);
-		expect(data[2]).toBe(0);
+		const [r, g, b] = elevationToRgb(0);
+		expect(data[0]).toBe(r);
+		expect(data[1]).toBe(g);
+		expect(data[2]).toBe(b);
 		expect(data[3]).toBe(255);
 
 		texture.dispose();
@@ -91,7 +88,7 @@ describe('createTerrainTexture', () => {
 			width: 1,
 			height: 1,
 			currentPlayers: 0,
-			tiles: [makeTile(0, 0, BiomeType.Urban)],
+			tiles: [makeTile(0, 0, 0.5)],
 		};
 
 		const texture = createTerrainTexture(terrain);
