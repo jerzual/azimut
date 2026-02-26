@@ -22,9 +22,7 @@ describe('GameStore', () => {
 
 	it('should set and clear currentCity', () => {
 		const city = new City({ width: 64, height: 64 });
-		city.levels = [
-			{ tiles: [], width: 64, height: 64, currentPlayers: 0 },
-		];
+		city.levels = [{ tiles: [], width: 64, height: 64, currentPlayers: 0 }];
 
 		service.setCurrentCity(city);
 		expect(service.currentCity()).toBe(city);

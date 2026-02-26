@@ -8,12 +8,7 @@ import {
 } from '@angular/core';
 import { extend, injectStore } from 'angular-three';
 import { NgtCanvas } from 'angular-three/dom';
-import {
-	Mesh,
-	PlaneGeometry,
-	MeshBasicMaterial,
-	DataTexture,
-} from 'three';
+import { Mesh, PlaneGeometry, MeshBasicMaterial, DataTexture } from 'three';
 import { GameStore } from '../../../game/services/game.store';
 import { createTerrainTexture } from '../../utils/terrain-texture.util';
 
