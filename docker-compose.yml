@@ -18,14 +18,42 @@ services:
       - "COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}"
       - "COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}"
       - "COUCHDB_SECRET=${COUCHDB_SECRET:-123456}"
+      - "COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}"
     volumes:
       - db:/opt/couchdb/data
     ports:
       - '5984:5984'
       - '4369:4369'
       - '9100:9100'
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:5984/_up || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
     networks:
       - azimut-network
+
+  # Create CouchDB system databases on first start
+  couchdb-init:
+    image: curlimages/curl:latest
+    depends_on:
+      couchdb:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - azimut-network
+    command: >
+      sh -c '
+        curl -s -X PUT "http://$${COUCHDB_USER}:$${COUCHDB_PASSWORD}@couchdb:5984/_users?n=$${COUCHDB_REPLICAS}" &&
+        curl -s -X PUT "http://$${COUCHDB_USER}:$${COUCHDB_PASSWORD}@couchdb:5984/_replicator?n=$${COUCHDB_REPLICAS}" &&
+        curl -s -X PUT "http://$${COUCHDB_USER}:$${COUCHDB_PASSWORD}@couchdb:5984/_global_changes?n=$${COUCHDB_REPLICAS}" &&
+        echo "CouchDB system databases initialized"
+      '
+    environment:
+      - "COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}"
+      - "COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}"
+      - "COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}"
 
   # Angular + fastify running on node.js
   server:
@@ -37,8 +65,9 @@ services:
       - .:/usr/src/azimut
       - /usr/src/azimut/node_modules
     restart: always
-    links:
-      - couchdb
+    depends_on:
+      couchdb:
+        condition: service_healthy
     ports:
       - 4000:4000
     environment:
