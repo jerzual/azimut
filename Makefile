@@ -31,9 +31,9 @@ stop: ## Stop the docker containers
 	docker compose down
 
 init: ## Initialize couchdb collections
-	curl -X PUT http://user:password@127.0.0.1:5984/_users \
-	curl -X PUT http://user:password@127.0.0.1:5984/_replicator \
-	curl -X PUT http://user:password@127.0.0.1:5984/_global_changes
+	curl -sf -X PUT http://admin:password@127.0.0.1:5984/_users
+	curl -sf -X PUT http://admin:password@127.0.0.1:5984/_replicator
+	curl -sf -X PUT http://admin:password@127.0.0.1:5984/_global_changes
 
 test: ## Run e2e tests (requires: make start)
 	PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:3000/ npx playwright test
