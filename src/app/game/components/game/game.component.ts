@@ -7,10 +7,10 @@ import {
 	ElementRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BIOME_COLORS } from '../../../../constants/biome-colors.const';
-import { City } from '../../../../world/city.class';
+import { elevationToRgb } from '../../../../engine/elevation-colors.const';
 import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
+import { GameStore } from '../../services/game.store';
 
 @Component({
 	selector: 'app-game',
@@ -50,22 +50,21 @@ import { GameService } from '../../services/game.service';
 export class GameComponent {
 	private route = inject(ActivatedRoute);
 	private gameService = inject(GameService);
+	private gameStore = inject(GameStore);
 
 	game = signal<Game | null>(null);
-	city = signal<City | null>(null);
 	minimap = viewChild<ElementRef<HTMLCanvasElement>>('minimap');
 
 	constructor() {
 		const seed = this.route.snapshot.paramMap.get('id')!;
-		const { game, city } = this.gameService.newGame(seed);
+		const { game } = this.gameService.newGame(seed);
 		this.game.set(game);
-		this.city.set(city);
 
 		afterNextRender(() => this.drawMinimap());
 	}
 
 	private drawMinimap() {
-		const city = this.city();
+		const city = this.gameStore.currentCity();
 		const canvas = this.minimap()?.nativeElement;
 		if (!city || !canvas) return;
 
@@ -78,7 +77,8 @@ export class GameComponent {
 		const terrain = city.levels[0];
 
 		for (const tile of terrain.tiles) {
-			ctx.fillStyle = tile.biome != null ? BIOME_COLORS[tile.biome] : '#000000';
+			const [r, g, b] = elevationToRgb(tile.elevation ?? 0);
+			ctx.fillStyle = `rgb(${r},${g},${b})`;
 			ctx.fillRect(tile.x, tile.y, 1, 1);
 		}
 	}

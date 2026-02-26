@@ -8,23 +8,34 @@ import {
 } from '@angular/core';
 import { extend, injectStore } from 'angular-three';
 import { NgtCanvas } from 'angular-three/dom';
-import { Mesh, PlaneGeometry, MeshBasicMaterial, DataTexture } from 'three';
+import {
+	Mesh,
+	PlaneGeometry,
+	MeshStandardMaterial,
+	AmbientLight,
+	DirectionalLight,
+	DataTexture,
+} from 'three';
 import { GameStore } from '../../../game/services/game.store';
 import { createTerrainTexture } from '../../utils/terrain-texture.util';
+import { createTerrainGeometry } from '../../utils/terrain-geometry.util';
 
 extend({
 	Mesh,
 	PlaneGeometry,
-	MeshBasicMaterial,
+	MeshStandardMaterial,
+	AmbientLight,
+	DirectionalLight,
 });
 
 @Component({
 	selector: 'app-scene-graph',
 	template: `
+		<ngt-ambient-light [intensity]="0.6" />
+		<ngt-directional-light [position]="[200, 300, 100]" [intensity]="0.8" />
 		@if (terrainTexture()) {
-			<ngt-mesh [rotation]="[-1.5707963, 0, 0]">
-				<ngt-plane-geometry [args]="planeArgs()" />
-				<ngt-mesh-basic-material [map]="terrainTexture()" />
+			<ngt-mesh [geometry]="terrainGeometry()" [rotation]="[-1.5707963, 0, 0]">
+				<ngt-mesh-standard-material [map]="terrainTexture()" />
 			</ngt-mesh>
 		}
 	`,
@@ -45,9 +56,10 @@ export class SceneGraphComponent {
 		return createTerrainTexture(terrain);
 	});
 
-	planeArgs = computed<[number, number]>(() => {
+	terrainGeometry = computed(() => {
 		const terrain = this.terrain();
-		return terrain ? [terrain.width, terrain.height] : [1, 1];
+		if (!terrain) return null;
+		return createTerrainGeometry(terrain);
 	});
 
 	constructor() {
@@ -67,7 +79,7 @@ export class SceneGraphComponent {
 			const camera = this.store.camera();
 			const cx = terrain.width / 2;
 			const cz = terrain.height / 2;
-			camera.position.set(cx, 400, cz + 450);
+			camera.position.set(cx + 300, 300, cz + 300);
 			camera.lookAt(cx, 0, cz);
 		});
 	}
