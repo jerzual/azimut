@@ -71,8 +71,12 @@ server.register(async function (fastify) {
 if (isMainModule(import.meta.url)) {
 	const port = +(process.env['PORT'] || 4000);
 	const host = process.env['HOST'] || '0.0.0.0';
-	server.listen({ port, host }, () => {
-		console.log(`Fastify server listening on http://${host}:${port}`);
+	server.listen({ port, host }, (err, address) => {
+		if (err) {
+			console.error(err);
+			process.exit(1);
+		}
+		console.log(`Fastify server listening on ${address}`);
 	});
 }
 
