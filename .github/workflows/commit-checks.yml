@@ -40,6 +40,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: [install]
+    outputs:
+      result: ${{ steps.run.outcome }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -59,11 +61,14 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Build
+        id: run
         run: pnpm run build
 
   lint:
     runs-on: ubuntu-latest
     needs: [install]
+    outputs:
+      result: ${{ steps.run.outcome }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -82,12 +87,15 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Check format
+      - name: Lint
+        id: run
         run: pnpm run lint
 
   test:
     runs-on: ubuntu-latest
     needs: [install]
+    outputs:
+      result: ${{ steps.run.outcome }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -107,11 +115,14 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Test
+        id: run
         run: pnpm run test
 
   format:
     runs-on: ubuntu-latest
     needs: [install]
+    outputs:
+      result: ${{ steps.run.outcome }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -130,13 +141,63 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Check format
+      - name: Format check
+        id: run
         run: pnpm run format:check
-
 
   aggregate:
     runs-on: ubuntu-latest
+    if: ${{ !cancelled() }}
     needs: [build, lint, test, format]
+    permissions:
+      pull-requests: write
     steps:
-      - name: Finalize
-        run: echo "Done ✔"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate summary
+        run: |
+          icon() { if [ "$1" = "success" ]; then echo ":white_check_mark:"; else echo ":x:"; fi; }
+
+          BUILD="${{ needs.build.outputs.result }}"
+          LINT="${{ needs.lint.outputs.result }}"
+          TEST="${{ needs.test.outputs.result }}"
+          FORMAT="${{ needs.format.outputs.result }}"
+
+          if [ "$BUILD" = "success" ] && [ "$LINT" = "success" ] && [ "$TEST" = "success" ] && [ "$FORMAT" = "success" ]; then
+            STATUS="PASSED"
+            ICON=":white_check_mark:"
+          else
+            STATUS="FAILED"
+            ICON=":x:"
+          fi
+
+          cat > commit-checks-summary.md << EOF
+          ## ${ICON} Commit Checks: ${STATUS}
+
+          | Check | Result |
+          |-------|--------|
+          | $(icon "$BUILD") Build | ${BUILD} |
+          | $(icon "$LINT") Lint | ${LINT} |
+          | $(icon "$TEST") Test | ${TEST} |
+          | $(icon "$FORMAT") Format | ${FORMAT} |
+          EOF
+
+          cat commit-checks-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment on PR
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          COMMENT_TAG="<!-- commit-checks-results -->"
+
+          EXISTING=$(gh api "repos/${{ github.repository }}/issues/${PR_NUMBER}/comments" --jq ".[] | select(.body | contains(\"${COMMENT_TAG}\")) | .id" 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            for id in $EXISTING; do
+              gh api -X DELETE "repos/${{ github.repository }}/issues/comments/${id}"
+            done
+          fi
+
+          BODY="$(printf '%s\n%s' "${COMMENT_TAG}" "$(cat commit-checks-summary.md)")"
+          gh pr comment "${PR_NUMBER}" --body "${BODY}"
