@@ -54,3 +54,52 @@ make start
 ### Development
 
 Open <http://localhost:4200>
+
+## Running E2E Tests
+
+E2E tests use Playwright with a remote browser running inside Docker. The test runner executes locally and connects to the browser container via WebSocket.
+
+### Docker stack services
+
+| Service        | Port | Description                           |
+|----------------|------|---------------------------------------|
+| `couchdb`      | 5984 | CouchDB database                      |
+| `couchdb-init` | -    | Creates system databases on first run |
+| `server`       | 4000 | Angular SSR + Fastify server          |
+| `tests`        | 3000 | Playwright remote browser             |
+
+### 1. Start the Docker stack
+
+```bash
+make start
+```
+
+Wait for all services to be healthy:
+
+```bash
+docker compose ps
+```
+
+The `server` service should show `healthy` before running tests.
+
+### 2. Run the tests
+
+```bash
+make test
+```
+
+Screenshots, traces, and video recordings are saved to `test-results/`.
+
+### 3. View the HTML report
+
+```bash
+make test-show
+```
+
+Opens an interactive report with embedded screenshots, traces, and videos.
+
+### 4. Stop the stack
+
+```bash
+make stop
+```
