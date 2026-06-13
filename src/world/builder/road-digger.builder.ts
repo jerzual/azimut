@@ -1,5 +1,5 @@
-import RandomBuilder from './random.builder';
 import City from '../city.class';
+import RandomBuilder from './random.builder';
 
 export default class RoadDigger extends RandomBuilder {
 	city: City;

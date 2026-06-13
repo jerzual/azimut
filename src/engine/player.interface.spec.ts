@@ -1,5 +1,6 @@
-import { Player, playerFactory } from './player.interface';
 import { describe, expect, it } from 'vitest';
+
+import { Player, playerFactory } from './player.interface';
 
 describe('Player interface', () => {
 	it('creates a player', () => {

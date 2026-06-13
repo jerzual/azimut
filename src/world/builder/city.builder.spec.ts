@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { BiomeType } from '../../engine/biome.enum';
 import CityBuilder from './city.builder';
 

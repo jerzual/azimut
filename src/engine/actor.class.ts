@@ -1,7 +1,8 @@
-import Item from './item.class';
-import { Entity } from './entity.class';
-import { Action } from './action.class';
 import { nanoid } from 'nanoid';
+
+import { Action } from './action.class';
+import { Entity } from './entity.class';
+import Item from './item.class';
 
 export interface Actor {
 	uuid: string;

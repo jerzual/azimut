@@ -3,11 +3,10 @@
 // Allows us to bring in the recommended core rules from eslint itself
 import pkg from '@eslint/js';
 const { configs } = pkg;
-// Allows us to use the typed utility for our config, and to bring in the recommended rules for TypeScript projects from typescript-eslint
-import { config, configs as tsConfigs } from 'typescript-eslint';
-
 // Allows us to bring in the recommended rules for Angular projects from angular-eslint
 import { configs as ngConfigs, processInlineTemplates } from 'angular-eslint';
+// Allows us to use the typed utility for our config, and to bring in the recommended rules for TypeScript projects from typescript-eslint
+import { config, configs as tsConfigs } from 'typescript-eslint';
 
 // Export our config array, which is composed together thanks to the typed utility function from typescript-eslint
 export default config(

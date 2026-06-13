@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { describe, beforeEach, it, expect } from 'vitest';
 
-import { GameStore } from './game.store';
 import { City } from '../../../world/city.class';
+import { GameStore } from './game.store';
 
 describe('GameStore', () => {
 	let service: InstanceType<typeof GameStore>;

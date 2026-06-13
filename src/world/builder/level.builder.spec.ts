@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { LevelBuilder } from './level.builder';
 
 describe('LevelBuilder', () => {

@@ -22,7 +22,8 @@ export default defineConfig({
 
 		/* Connect to the remote Playwright browser running in Docker */
 		connectOptions: {
-			wsEndpoint: process.env['PW_TEST_CONNECT_WS_ENDPOINT'] || 'ws://127.0.0.1:3000/',
+			wsEndpoint:
+				process.env['PW_TEST_CONNECT_WS_ENDPOINT'] || 'ws://127.0.0.1:3000/',
 		},
 
 		/* Visual feedback: capture screenshots, traces, and video */

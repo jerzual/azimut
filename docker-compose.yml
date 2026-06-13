@@ -15,10 +15,10 @@ services:
       - .env
     environment:
       - AZIMUT_COUCHDB_HOST
-      - "COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}"
-      - "COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}"
-      - "COUCHDB_SECRET=${COUCHDB_SECRET:-123456}"
-      - "COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}"
+      - 'COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}'
+      - 'COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}'
+      - 'COUCHDB_SECRET=${COUCHDB_SECRET:-123456}'
+      - 'COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}'
     volumes:
       - db:/opt/couchdb/data
     ports:
@@ -26,7 +26,7 @@ services:
       - '4369:4369'
       - '9100:9100'
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://localhost:5984/_up || exit 1"]
+      test: ['CMD-SHELL', 'curl -sf http://localhost:5984/_up || exit 1']
       interval: 5s
       timeout: 5s
       retries: 10
@@ -40,7 +40,7 @@ services:
     depends_on:
       couchdb:
         condition: service_healthy
-    restart: "no"
+    restart: 'no'
     networks:
       - azimut-network
     command: >
@@ -51,9 +51,9 @@ services:
         echo "CouchDB system databases initialized"
       '
     environment:
-      - "COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}"
-      - "COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}"
-      - "COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}"
+      - 'COUCHDB_USER=${AZIMUT_COUCHDB_USER:-admin}'
+      - 'COUCHDB_PASSWORD=${AZIMUT_COUCHDB_PASSWORD:-password}'
+      - 'COUCHDB_REPLICAS=${COUCHDB_REPLICAS:-1}'
 
   # Angular + fastify running on node.js
   server:
@@ -71,14 +71,18 @@ services:
     ports:
       - 4000:4000
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:4000/health').then(r=>{if(!r.ok)throw r.status}).catch(()=>process.exit(1))\""]
+      test:
+        [
+          'CMD-SHELL',
+          'node -e "fetch(''http://localhost:4000/health'').then(r=>{if(!r.ok)throw r.status}).catch(()=>process.exit(1))"',
+        ]
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 10s
     environment:
       - NODE_ENV=development
-      - "AZIMUT_COUCHDB_HOST=${AZIMUT_COUCHDB_HOST:-http://couchdb:5984}"
+      - 'AZIMUT_COUCHDB_HOST=${AZIMUT_COUCHDB_HOST:-http://couchdb:5984}'
       - AZIMUT_FRONT_URL
     networks:
       - azimut-network
@@ -93,4 +97,3 @@ services:
     depends_on:
       server:
         condition: service_healthy
-

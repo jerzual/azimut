@@ -1,4 +1,5 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
+import { computed } from '@angular/core';
 import {
 	patchState,
 	signalStore,
@@ -7,9 +8,9 @@ import {
 	withState,
 } from '@ngrx/signals';
 import { addEntity, withEntities } from '@ngrx/signals/entities';
-import { Game } from '../models/game.model';
-import { computed } from '@angular/core';
+
 import { City } from '../../../world/city.class';
+import { Game } from '../models/game.model';
 
 export interface State {
 	loaded: boolean;

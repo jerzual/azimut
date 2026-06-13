@@ -1,9 +1,10 @@
-import type { TexturePackerSchema } from '../assets/sprites.schema';
-
 import fs from 'node:fs';
 import path from 'node:path';
+
 import imageSize from 'image-size';
 import type { ISizeCalculationResult } from 'image-size/dist/types/interface';
+
+import type { TexturePackerSchema } from '../assets/sprites.schema';
 
 // sprites data structure
 const sprites: TexturePackerSchema = { frames: {} };

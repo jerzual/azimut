@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { LoadingComponent } from './core/components/loading/loading.component';
 import { SceneComponent } from './scene/components/scene/scene.component';
 import { UserInterfaceStore } from './ui';

@@ -19,7 +19,7 @@
 ### Art style
 
 - Another world style : flat shapes, simple SVG shapes as much as possible
-- Flat shapes, pastel colors, 
+- Flat shapes, pastel colors,
 
 ### Story
 
@@ -36,17 +36,16 @@
 
 Generates a city-like area with biomes :
 
-* a downtown / huge buildings area
-* residential / commercial area
-* countryside
-* mountain
-* seashore
-* swamp
-* desert
+- a downtown / huge buildings area
+- residential / commercial area
+- countryside
+- mountain
+- seashore
+- swamp
+- desert
 
 Then each biomes have levels like :
 
-* bubbles (caves, mine)
-* dungeon
-* building (levels on top of each other)
-
+- bubbles (caves, mine)
+- dungeon
+- building (levels on top of each other)

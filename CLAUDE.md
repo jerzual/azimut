@@ -15,27 +15,32 @@ Follow the guidelines from [`doc/guidelines.md`](./doc/guidelines.md)
 **Package manager is `pnpm`**. Requires Node >= 24.
 
 ### Local Development
+
 - `pnpm start` - Start Angular dev server (via `ng serve`)
 - `pnpm build` - Production build with SSR
 - `pnpm serve` - Start the production SSR server (`node dist/server/server.mjs`)
 
 ### Testing
+
 - `pnpm test` - Run all tests with Vitest (via @analogjs/vitest-angular)
 - `pnpm test:watch` - Run tests in watch mode
 - `npx vitest run src/path/to/file.spec.ts` - Run a single test file
 
 ### Code Quality
+
 - `pnpm lint` - Run ESLint on TypeScript and HTML files
 - `pnpm lint:fix` - Auto-fix lint issues
 - `pnpm format` - Format all files with Prettier
 - `pnpm format:check` - Check formatting without modifying
 
 ### Schema Generation
+
 - `pnpm gen` - Generate TypeScript types from all JSON schemas
 - `pnpm gen:config` - Generate `config.schema.ts` from `config-schema.json`
 - `pnpm gen:sprites` - Generate `sprites.schema.ts` from `sprites-schema.json`
 
 ### Docker / Full Stack
+
 - `make start` - Start docker-compose stack (CouchDB + server + Playwright)
 - `make stop` - Stop docker containers
 - `make build` - Build the app (installs deps if needed)
@@ -65,18 +70,21 @@ Custom TypeScript engine using an Entity-Behavior pattern:
 ### Angular Application (`src/app/`)
 
 **Routing** (lazy-loaded):
+
 - `''` → HomeComponent
 - `'games'` → game routes (`''` → GamesListComponent, `':id'` → GameComponent)
 - `'admin'` → admin routes (`''` → AdminRootComponent)
 
 **State Management** - @ngrx/signals with `signalStore`:
+
 - `GameStore` (`src/app/game/services/game.store.ts`) - Entity collection for games, uses `withEntities<Game>()`, `withDevtools()`, computed signals for selection/sorting.
 - `UserInterfaceStore` (`src/app/ui/services/user-interface.store.ts`) - UI state (overlay, dialog, dimensions) + widget entities.
 
 **Feature Areas**:
+
 - `core/` - Services: config (with ConfigRepository), keyboard input, gamepad input, window management
 - `game/` - Game lifecycle: store, service, list/play components
-- `scene/` - Three.js 3D rendering via angular-three v4 (`NgtCanvas` from `angular-three/dom`, `*canvasContent` directive, `extend()`, `CUSTOM_ELEMENTS_SCHEMA` for ngt-* elements). Requires `provideNgtRenderer()` in app config.
+- `scene/` - Three.js 3D rendering via angular-three v4 (`NgtCanvas` from `angular-three/dom`, `*canvasContent` directive, `extend()`, `CUSTOM_ELEMENTS_SCHEMA` for ngt-\* elements). Requires `provideNgtRenderer()` in app config.
 - `ui/` - Widget system: draggable widgets with container management
 - `admin/` - Admin dashboard
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { nanoid } from 'nanoid';
 import { RouterLinkActive, RouterLink } from '@angular/router';
+import { nanoid } from 'nanoid';
 
 @Component({
 	selector: 'app-home',

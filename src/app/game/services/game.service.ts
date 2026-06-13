@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+
 import CityBuilder from '../../../world/builder/city.builder';
 import { City } from '../../../world/city.class';
 import { Game } from '../models/game.model';

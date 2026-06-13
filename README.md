@@ -62,7 +62,7 @@ E2E tests use Playwright with a remote browser running inside Docker. The test r
 ### Docker stack services
 
 | Service        | Port | Description                           |
-|----------------|------|---------------------------------------|
+| -------------- | ---- | ------------------------------------- |
 | `couchdb`      | 5984 | CouchDB database                      |
 | `couchdb-init` | -    | Creates system databases on first run |
 | `server`       | 4000 | Angular SSR + Fastify server          |

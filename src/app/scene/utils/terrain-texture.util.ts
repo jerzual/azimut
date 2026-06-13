@@ -4,8 +4,9 @@ import {
 	RGBAFormat,
 	UnsignedByteType,
 } from 'three';
-import Level from '../../../engine/level.interface';
+
 import { elevationToRgb } from '../../../engine/elevation-colors.const';
+import Level from '../../../engine/level.interface';
 
 export function createTerrainTexture(terrain: Level): DataTexture {
 	const { width, height, tiles } = terrain;

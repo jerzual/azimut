@@ -1,7 +1,8 @@
-import { Injectable, inject } from '@angular/core';
-import { ConfigurationSchema } from '../../../assets/config.schema';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { ConfigurationSchema } from '../../../assets/config.schema';
 
 /**
  * This is the only module that uses relative path to get host config.

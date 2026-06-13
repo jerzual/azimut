@@ -1,10 +1,11 @@
+import { NearestFilter } from 'three';
 import { describe, it, expect } from 'vitest';
-import { createTerrainTexture } from './terrain-texture.util';
+
 import { elevationToRgb } from '../../../engine/elevation-colors.const';
 import type Level from '../../../engine/level.interface';
 import type { Tile } from '../../../engine/tile.class';
 import { TileType } from '../../../engine/tile.class';
-import { NearestFilter } from 'three';
+import { createTerrainTexture } from './terrain-texture.util';
 
 function makeTile(x: number, y: number, elevation = 0): Tile {
 	return {

@@ -1,4 +1,5 @@
 import { makeNoise2D } from 'fast-simplex-noise';
+
 import Level from '../../engine/level.interface';
 import Tile, { TileType } from '../../engine/tile.class';
 import RandomBuilder from './random.builder';

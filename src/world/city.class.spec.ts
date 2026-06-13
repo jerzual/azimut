@@ -1,5 +1,6 @@
-import { City } from './city.class';
 import { describe, it, expect } from 'vitest';
+
+import { City } from './city.class';
 
 describe('City interface', () => {
 	it('', () => {

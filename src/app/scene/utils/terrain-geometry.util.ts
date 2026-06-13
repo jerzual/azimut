@@ -1,4 +1,5 @@
 import { PlaneGeometry } from 'three';
+
 import Level from '../../../engine/level.interface';
 
 const ELEVATION_SCALE = 30;

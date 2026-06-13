@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
 import {
 	HttpClientTestingModule,
 	HttpTestingController,
 } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { describe, beforeEach, it, expect } from 'vitest';
 
 import { ConfigService } from './config.service';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ConfigService', () => {
 	let httpMock: HttpTestingController;

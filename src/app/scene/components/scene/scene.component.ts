@@ -16,9 +16,10 @@ import {
 	DirectionalLight,
 	DataTexture,
 } from 'three';
+
 import { GameStore } from '../../../game/services/game.store';
-import { createTerrainTexture } from '../../utils/terrain-texture.util';
 import { createTerrainGeometry } from '../../utils/terrain-geometry.util';
+import { createTerrainTexture } from '../../utils/terrain-texture.util';
 
 extend({
 	Mesh,

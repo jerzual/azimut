@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { describe, beforeEach, it, expect, vi } from 'vitest';
 
-import { GameComponent } from './game.component';
 import { GameService } from '../../services/game.service';
+import { GameComponent } from './game.component';
 
 describe('GameComponent', () => {
 	let component: GameComponent;

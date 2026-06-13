@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Player } from '../../../engine/player.interface';
-import { of, Observable } from 'rxjs';
 import { nanoid } from 'nanoid';
+import { of, Observable } from 'rxjs';
+
+import { Player } from '../../../engine/player.interface';
 
 @Injectable({
 	providedIn: 'root',

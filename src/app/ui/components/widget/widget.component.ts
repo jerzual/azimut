@@ -1,7 +1,8 @@
-import { Component, input } from '@angular/core';
-import { Widget } from '../../models/widget.model';
-import { AngularDraggableModule } from 'angular2-draggable';
 import { CommonModule } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { AngularDraggableModule } from 'angular2-draggable';
+
+import { Widget } from '../../models/widget.model';
 
 @Component({
 	selector: 'app-widget',

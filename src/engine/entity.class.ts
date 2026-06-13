@@ -1,5 +1,6 @@
-import { Behavior, Behaviors } from './behaviors/behavior.class';
 import { nanoid } from 'nanoid';
+
+import { Behavior, Behaviors } from './behaviors/behavior.class';
 
 export class Entity {
 	uuid: string;

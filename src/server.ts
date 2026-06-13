@@ -1,14 +1,14 @@
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import {
 	AngularNodeAppEngine,
 	createNodeRequestHandler,
 	isMainModule,
 	writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-import fastifyStatic from '@fastify/static';
 import fastifyReverseProxy from '@fastify/http-proxy';
+import fastifyStatic from '@fastify/static';
 import fastify from 'fastify';
 
 const server = fastify({ logger: true });

@@ -1,5 +1,6 @@
 import { signalStore, withState } from '@ngrx/signals';
 import { withEntities } from '@ngrx/signals/entities';
+
 import { Widget } from '../models/widget.model';
 
 export interface State {

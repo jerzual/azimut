@@ -7,6 +7,7 @@ import {
 	ElementRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { elevationToRgb } from '../../../../engine/elevation-colors.const';
 import { Game } from '../../models/game.model';
 import { GameService } from '../../services/game.service';
