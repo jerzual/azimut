@@ -1,52 +1,24 @@
 /**
- * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
- *
- * This file is divided into 2 sections:
- *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
- *
- * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
- * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
- * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
- *
- * Learn more in https://angular.io/guide/browser-support
+ * Polyfills loaded before the app (see `polyfills` in angular.json).
  */
-
-/***************************************************************************************************
- * BROWSER POLYFILLS
- */
+import 'zone.js';
 
 /**
- * By default, zone.js will patch all possible macroTask and DomEvents
- * user can disable parts of macroTask/DomEvents patch by setting following flags
- * because those flags need to be set before `zone.js` being loaded, and webpack
- * will put import in the top of bundle, so user need to create a separate file
- * in this directory (for example: zone-flags.ts), and put the following flags
- * into that file, and then add the following code before importing zone.js.
- * import './zone-flags.ts';
- *
- * The flags allowed in zone-flags.ts are listed here.
- *
- * The following flags will work for all browsers.
- *
- * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
- * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
- *
- *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
- *  with the following flag, it will bypass `zone.js` patch for IE/Edge
- *
- *  (window as any).__Zone_enable_cross_context_check = true;
- *
+ * `crypto.randomUUID` only exists in secure contexts (https or localhost).
+ * angular-three needs it, so plain http hosts (e.g. http://server:4000 in the
+ * docker e2e stack) would break the 3D canvas without this fallback.
+ * `crypto.getRandomValues` is available in all contexts.
  */
-
-/***************************************************************************************************
- * Zone JS is required by default for Angular itself.
- */
-import 'zone.js'; // Included with Angular CLI.
-
-/***************************************************************************************************
- * APPLICATION IMPORTS
- */
+if (typeof crypto !== 'undefined' && !crypto.randomUUID) {
+	crypto.randomUUID = () => {
+		const bytes = crypto.getRandomValues(new Uint8Array(16));
+		bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
+		bytes[8] = (bytes[8] & 0x3f) | 0x80; // variant 10xx
+		const h = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join(
+			'',
+		);
+		return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}` as ReturnType<
+			Crypto['randomUUID']
+		>;
+	};
+}
