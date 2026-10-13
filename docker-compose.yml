@@ -61,9 +61,6 @@ services:
       context: .
       args:
         NG_ENV: local
-    volumes:
-      - .:/usr/src/azimut
-      - /usr/src/azimut/node_modules
     restart: always
     depends_on:
       couchdb:
