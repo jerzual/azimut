@@ -82,6 +82,7 @@
 		"vitest": "^4.0.18"
 	},
 	"engines": {
-		"node": ">=24.x"
-	}
+		"node": ">=26"
+	},
+	"packageManager": "pnpm@12.11.2"
 }
