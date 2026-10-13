@@ -28,14 +28,15 @@
 						"outputMode": "server",
 						"ssr": {
 							"entry": "src/server.ts"
-						}
+						},
+						"allowedCommonJsDependencies": ["fast-simplex-noise"]
 					},
 					"configurations": {
 						"production": {
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1.1mb",
 									"maximumError": "1.5mb"
 								},
 								{
