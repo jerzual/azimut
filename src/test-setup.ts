@@ -1,37 +1,25 @@
-import '@analogjs/vite-plugin-angular/setup-vitest';
-import { getTestBed } from '@angular/core/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
+/**
+ * Setup file for `ng test` (see `setupFiles` in angular.json).
+ * The TestBed environment is initialized by `@angular/build:unit-test`.
+ */
 
-// mocks for jsdom
-const mock = () => {
-	let storage: Record<string, string> = {};
-	return {
-		getItem: (key: string) => (key in storage ? storage[key] : null),
-		setItem: (key: string, value: string) => (storage[key] = value || ''),
-		removeItem: (key: string) => delete storage[key],
-		clear: () => (storage = {}),
-	};
-};
+// ResizeObserver is not implemented in jsdom (used by ngxtension resize)
+class ResizeObserverMock implements ResizeObserver {
+	observe(): void {
+		// noop
+	}
+	unobserve(): void {
+		// noop
+	}
+	disconnect(): void {
+		// noop
+	}
+}
 
-Object.defineProperty(window, 'localStorage', { value: mock() });
-Object.defineProperty(window, 'sessionStorage', { value: mock() });
-Object.defineProperty(window, 'getComputedStyle', {
-	value: () => ['-webkit-appearance'],
-});
-
-Object.defineProperty(document.body.style, 'transform', {
-	value: () => {
-		return {
-			enumerable: true,
-			configurable: true,
-		};
-	},
-});
-
-getTestBed().initTestEnvironment(
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting(),
-);
+if (typeof window.ResizeObserver === 'undefined') {
+	Object.defineProperty(window, 'ResizeObserver', {
+		writable: true,
+		configurable: true,
+		value: ResizeObserverMock,
+	});
+}
