@@ -7,8 +7,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '24.x'
-  PNPM_VERSION: '10'
+  NODE_VERSION: '26'
 
 jobs:
   e2e:
@@ -18,7 +17,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Create .env for docker-compose
         run: |
@@ -38,27 +37,18 @@ jobs:
           timeout 120 bash -c 'until curl -sf http://localhost:4000/health > /dev/null 2>&1; do sleep 2; done'
           docker compose logs server --tail 5
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup pnpm and node.js
+        uses: pnpm/setup@v3
         with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: false
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@${{ env.NODE_VERSION }}
+          cache: true
 
       - name: Run Playwright tests
         id: tests
         env:
           PW_TEST_CONNECT_WS_ENDPOINT: ws://127.0.0.1:3000/
           PLAYWRIGHT_JSON_OUTPUT_NAME: results.json
-        run: npx playwright test --reporter=html,json
+        run: pnpm exec playwright test --reporter=html,json
 
       - name: Generate test summary
         if: ${{ !cancelled() }}
@@ -145,7 +135,7 @@ jobs:
           gh pr comment "${PR_NUMBER}" --body "${BODY}"
 
       - name: Upload HTML report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report

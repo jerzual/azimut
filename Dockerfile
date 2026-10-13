@@ -1,10 +1,10 @@
-FROM node:24-slim AS base
+FROM node:26-slim AS base
 
 ENV PNPM_HOME="/pnpm"
 
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN corepack enable
+RUN npm install -g corepack@latest && corepack enable
 COPY . /app
 WORKDIR /app
 
