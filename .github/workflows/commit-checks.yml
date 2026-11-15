@@ -101,14 +101,22 @@ jobs:
         uses: actions/checkout@v7
       - name: Generate summary
         run: |
-          icon() { if [ "$1" = "success" ]; then echo ":white_check_mark:"; else echo ":x:"; fi; }
+          icon() {
+            if [ "$1" = "success" ];
+              then echo ":white_check_mark:";
+              else echo ":x:";
+            fi;
+          }
 
           BUILD="${{ needs.build.outputs.result }}"
           LINT="${{ needs.lint.outputs.result }}"
           TEST="${{ needs.test.outputs.result }}"
           FORMAT="${{ needs.format.outputs.result }}"
 
-          if [ "$BUILD" = "success" ] && [ "$LINT" = "success" ] && [ "$TEST" = "success" ] && [ "$FORMAT" = "success" ]; then
+          if [ "$BUILD" = "success" ] \
+          && [ "$LINT" = "success" ] \
+          && [ "$TEST" = "success" ] \
+          && [ "$FORMAT" = "success" ]; then
             STATUS="PASSED"
             ICON=":white_check_mark:"
           else
